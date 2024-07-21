@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">  
+    <title>IBAROH</title>
+    <style>
+body, html {
+    height: 100%;
+}
+body {
+font-family: Arial, sans-serif;
+padding: 0px;
+margin: 0%;
+}
+.page {
+display: none;   
+}
+.active {
+display: block;
+}
+.menu-items {
+            visibility: hidden;
+            position: fixed;
+            top: 50px;
+            right: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            width: 150px;
+            z-index: 1;     
+}
+.menu-items.show {
+            visibility: visible;
+            opacity: 1;
+}
+.menu-items button {
+            display: block;
+            width: 100%;
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            color: #333;
+            border-bottom: 1px solid #ddd;
+}
+.menu-items button:hover {
+  background-color: #f0f0f0;
+}
+.container {
+    display: block;
+    cursor: pointer;
+    float: right;
+    margin-top: 13PX;
+}
+.bar1, .bar2, .bar3 {
+    width: 20px;
+    height: 3px;
+    background-color: rgb(255, 255, 255);
+    margin: 3px 0;
+    transition: 0.4s;
+    margin-right: 20PX;
+} 
+.change .bar1 {
+    transform: translate(0, 6px) rotate(-45deg);
+}
+.change .bar2 {opacity: 0;}
+.change .bar3 {
+    transform: translate(0, -6px) rotate(45deg);
+}
+body {
+    font-family: "Lato", sans-serif;
+}
+.sidepanel  {
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    height: 100%;
+    top: 0;
+    left: -20PX;
+    background-color: rgb(0, 115, 135);
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 10px;
+}
+.sidepanel a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 13px;
+    color: #ffffff;
+    display: block;
+    transition: 0.3s;
+    outline: none;
+    border: 1px solid #ffffff;
+    border-radius: 30PX;
+}
+.sidepanel a:hover {
+    color: #f1f1f1;
+    font-family: sans-serif;
+    border: none;
+    padding: 10px 20px;
+    font-size: 15px;
+    outline: none;
+    background: transparent;
+    color: #f8f9f9;
+    background: rgb(0, 0, 0);
+    border: 1px solid #ffffff;
+    -webkit-transition-duration: 0,5s; /* for Safari */
+    transition-duration: 0.2s;
+    display: block;     
+}
+.sidepanel .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 20px;
+}
+.openbtn:hover {
+    background-color:rgb(255, 255, 255);
+}
+@media screen and (max-width: 600px) {
+    .search-box {
+        width: 85%;
+    }
+}
+body {
+    font-family: "Lato", sans-serif;
+}
+.openbtn:hover {
+    background-color:#444;
+}
+.search-box {
+    width: 300px;
+    display: flex;
+    margin: 0 auto;
+    position: fixed;
+    right: 50px;
+    margin-top:-22px;
+}
+input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+}
+.search-button {
+    width: 20%;
+    padding: 10px;
+    background-color: #3080f7;
+    color: #fff;
+    border: 1px solid #6657da;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #1d5bbf;
+}
+@media screen and (max-width: 600px) {
+    .search-box {
+        width: 85%;
+    }
+}
+@font-face {
+  font-family: 'CustomArabicFont';
+  src: url('arabic-font.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal; 
+}
+.head1{
+    background-color: rgb(0, 115, 135);
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.logoppmu{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    width: 200px;
+}
+.judul1{
+    color:  rgb(0, 115, 135);
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: -15px;
+    
+}
+.judul{
+    color:  rgb(0, 115, 135);
+    font-size: 20px;
+    text-align: center;
+}
+.paragraf{
+    text-align:justify;
+    text-indent: 30px;
+    font-size: 16px;
+    font-family:sans-serif;
+    padding: 5px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+.paragraf2{
+    text-align:justify;
+    text-indent: 30px;
+    font-size: 13px;
+    font-family:sans-serif;
+    padding: 5px;
+}
+@media screen and (max-height: 450px) {
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: px;
+    }
+}
+.slider-container {
+    max-width: 400px;
+    margin: 20px auto;
+    position: relative;
+    margin-top: 0px; 
+}
+.mySlides {
+    display: none;
+}  
+.slide {
+    width: 100%;
+    height: auto;
+}  
+form {
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+fieldset {
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+legend {
+  font-weight: bold;
+  color: #333;
+  padding: 0 5px;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+input[type="text"],
+input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+input[type="submit"] {
+  background-color: rgb(0, 115, 135);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+@media (max-width: 600px) {
+  form {
+      padding: 10px;
+  }
+  input[type="text"],
+  input[type="submit"] {
+      padding: 8px;
+  }
+}
+.chat-container {
+  width: 90%;
+  height: auto;
+  max-height: 500px;
+  overflow: auto;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+.chat-container1 {
+  width: 90%;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+.chat-message:last-child {
+  margin-bottom: 0;
+}
+.chat-input1 {
+  border: 5;
+  outline: none;
+  resize: none;
+  padding: 8px;
+  font-size: 16px;
+  margin-bottom: 5px;
+  width: 100%;
+  height: 38px;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+.chat-input2 {
+border: 5;
+outline: none;
+  resize: none;
+  padding: 8px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 150px;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+.kirim {
+  background-color: rgb(0, 115, 135);
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+.kirim:hover {
+  background-color: red;
+}
+.container {
+display: block;
+cursor: pointer;
+float: right;
+}
+@font-face {
+font-family: 'CustomArabicFont';
+src: url('arabic-font.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+.rtl, .indonesia {
+text-align: justify;
+font-size: 20px;
+}
+.rtl {
+direction: rtl;
+font-family: 'CustomArabicFont', 'Traditional Arabic', Tahoma, sans-serif;
+}
+.chat-container {
+  width: 90%;
+  height: auto;
+  max-height: 500px;
+  overflow: auto;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+.chat-message:last-child {
+  margin-bottom: 0;
+}
+#dataTable1 {
+width: 100%;
+border-collapse: collapse;
+max-width: 100%;
+margin-top: 8px;
+}
+#dataTable1 th,
+#dataTable1 td {
+display: block;
+padding: 5px;
+font-size: 16px;
+border-radius: 5px;
+margin-top: -1px;
+margin-bottom: 5px;
+color: black;
+}
+#dataTable1 th:nth-child(1),
+#dataTable1 td:nth-child(1) {
+width: auto;
+float: center;
+background-color: rgb(0, 115, 135);
+color: #ffffff;
+}
+#dataTable1 th:nth-child(2),
+#dataTable1 td:nth-child(2) {
+width: auto;
+float: center;
+background-color: #ecf8fb;
+color: #000b41;
+}
+#dataTable1 th:nth-child(3),
+#dataTable1 td:nth-child(3) {
+width: auto;
+float: center;
+background-color: #fffff0;
+color: #000b41;
+font-size: 10px;
+}
+#dataTable1 tr:last-child td {
+border-radius: 5px;
+}
+#dataTable1 tr:first-child td {
+border-radius: 5px;
+background-color: black;
+color: #ffffff;
+}
+.TABEL {
+width: 100%;
+margin: 0px;
+overflow: hidden;
+}
+#dataTable1 td.rtl {
+direction: rtl;
+}
+#dataTable1 td.indonesia {
+direction: ltr;
+}
+.underline-text {
+color:#ff1a1a;
+}
+#dataTable1 tbody tr:first-child {
+display: none;
+}
+.highlight {
+background-color: yellow;
+}
+footer{
+    background-color: rgb(0, 115, 135);
+    margin-top: 20px;
+    padding-top: 10px;
+  }
+.kontak {
+    height: 200px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+ul {
+    list-style-type: none; /* Remove default list style */
+    padding: 0; /* Remove default padding */
+} 
+ul li {
+    position: relative; /* Set position to relative for icon positioning */
+    padding-left: 30px; /* Add padding for icon */
+    margin-bottom: 10px; /* Add margin between list items */
+  }
+ul li::before {
+    content: "\2713"; /* Unicode for the checkmark character */
+    font-size: 20px; /* Set size of the icon */
+    color: rgb(0, 115, 135);
+    position: absolute; /* Position icon absolutely */
+    left: 0; /* Position icon to the left of the list item */
+    top: 50%; /* Align icon vertically */
+    transform: translateY(-50%); /* Adjust vertical alignment */
+}
+#dataTable2 tbody tr:first-child td,
+#dataTable3 tbody tr:first-child td,
+#dataTable4 tbody tr:first-child td,
+#dataTable5 tbody tr:first-child td,
+#dataTable6 tbody tr:first-child td,
+#dataTable7 tbody tr:first-child td,
+#dataTable8 tbody tr:first-child td,
+#dataTable9 tbody tr:first-child td,
+#dataTable10 tbody tr:first-child td,
+#dataTable11 tbody tr:first-child td,
+#dataTable12 tbody tr:first-child td,
+#dataTable13 tbody tr:first-child td,
+#dataTable14 tbody tr:first-child td,
+#dataTable15 tbody tr:first-child td,
+#dataTable16 tbody tr:first-child td,
+#dataTable17 tbody tr:first-child td,
+#dataTable18 tbody tr:first-child td,
+#dataTable19 tbody tr:first-child td,
+#dataTable20 tbody tr:first-child td,
+#dataTable21 tbody tr:first-child td {
+  background-color: rgb(0, 115, 135);
+  color: #f1f1f1;
+  text-align: center;
+}
+#dataTable2 th,
+#dataTable2 td,
+#dataTable3 th,
+#dataTable3 td,
+#dataTable4 th,
+#dataTable4 td,
+#dataTable5 th,
+#dataTable5 td,
+#dataTable6 th,
+#dataTable6 td,
+#dataTable7 th,
+#dataTable7 td,
+#dataTable8 th,
+#dataTable8 td,
+#dataTable9 th,
+#dataTable9 td,
+#dataTable10 th,
+#dataTable10 td,
+#dataTable11 th,
+#dataTable11 td,
+#dataTable12 th,
+#dataTable12 td,
+#dataTable13 th,
+#dataTable13 td,
+#dataTable14 th,
+#dataTable14 td,
+#dataTable15 th,
+#dataTable15 td,
+#dataTable16 th,
+#dataTable16 td,
+#dataTable17 th,
+#dataTable17 td,
+#dataTable18 th,
+#dataTable18 td,
+#dataTable19 th,
+#dataTable19 td,
+#dataTable20 th,
+#dataTable20 td,
+#dataTable21 th,
+#dataTable21 td {
+    font-size: 10PX;
+    overflow: auto;
+}
+.colorful-table {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    border-collapse: collapse;
+    border: 2px solid  rgb(0, 115, 135);
+    background-color: #fff;
+    box-shadow: 0 5px 5px black;
+    overflow: auto;
+}
+.colorful-table th, .colorful-table td {
+    border: 1px solid  rgb(0, 115, 135);
+    padding: 8px;
+    text-align: center;
+}
+.colorful-table th {
+    background-color:  rgb(0, 115, 135);
+    color: #fff;
+    border-bottom: 2px solid rgb(0, 115, 135); 
+}
+.colorful-table td {
+    border-bottom: 1px solid  rgb(0, 115, 135);
+    text-align: left;
+}
+.colorful-table tr:last-child td {
+    border-bottom: none; 
+}
+.menuikon {
+    display:flex;
+    flex-wrap:wrap-reverse;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    position: relative; 
+}
+.menuikon button {
+    display: flex;
+    width: 150px;
+    height: 100px;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px; 
+    background: none;
+    border: 2px solid #3080f7; 
+    border-radius: 10px; 
+    cursor: pointer;
+    padding: 10px;
+    transition: transform 0.3s, box-shadow 0.3s; 
+    position: relative; 
+}
+.menuikon button:hover {
+    transform: scale(1.1); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+}
+.menuikon button img {
+    width: 50px; 
+    height: 50px; 
+}
+.menuikon button span {
+    font-size: 12px; 
+    text-align: center;
+    max-width: 70px; 
+}
+.menuikon2 {
+    display:flex;
+    flex-wrap:wrap-reverse;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    position: relative;
+}
+.menuikon2 button {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px; 
+    background: none;
+    border: 3px solid rgb(0, 115, 135);
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 10px;
+    transition: transform 0.3s, box-shadow 0.3s; 
+    position: relative; 
+}
+.menuikon2 button:hover {
+    transform: scale(1.1); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+}
+.menuikon2 button img {
+    width: 50px; 
+    height: 50px; 
+}
+.menuikon2 button span {
+    font-size: 12px; 
+    text-align: center;
+    max-width: 70px;
+}
+.judtab {
+    width:90%;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    border: none;
+    margin-bottom: 0px;
+    font-style: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:rgb(0, 115, 135);
+    margin-bottom: 2px;
+}
+.judtab td {
+    padding: 0px;
+    text-align: left;
+    position: relative;
+}
+.judtab td i {
+    margin-right: 5px;
+    color: rgb(0, 115, 135);
+}
+.judtab td:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+}
+    </style>
+</head>
+<body>
+  <div class="menu">
+    <div class="container" onclick="toggleMenu(this)">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </div>
+    <div class="menu-items" id="menuItems">
+        <button class="nav-button" onclick="showPage('halaman1')">HOME</button>
+        <button class="nav-button" onclick="showPage('halaman2')">PROFIL PONDOK</button>
+        <button class="nav-button" onclick="showPage('halaman3')">PROFIL MADRASAH</button>
+        <button class="nav-button" onclick="showPage('halaman4')">PROFIL TPQ</button>
+        <button class="nav-button" onclick="showPage('halaman5')">KURIKULUM PENDIDIKAN</button>
+        <button class="nav-button" onclick="showPage('halaman6')">PENDAFTARAN SANTRI</button>
+        
+        <button class="nav-button" onclick="location.reload()">REFRES</button>
+    </div>
+    <div class="head1">
+        <img src="https://drive.google.com/thumbnail?id=1mVUhRYZ7eMfa6CmfWa3YdazPtJpneM8N" alt="" class="logoppmu">
+    </div>
+</div>
+<script>
+    function toggleMenu(x) {
+        x.classList.toggle("change");
+        var menuItems = document.getElementById('menuItems');
+        menuItems.classList.toggle('show');
+    }
+  
+    function showPage(pageId) {
+        // Menyembunyikan semua halaman
+        document.querySelectorAll('.page').forEach(page => {
+            page.classList.remove('active');
+        });
+        // Menampilkan halaman yang dipilih
+        document.getElementById(pageId).classList.add('active');
+        // Menutup menu setelah memilih halaman
+        document.getElementById('menuItems').classList.remove('show');
+        document.querySelector('.container').classList.remove('change');
+    }
+</script>
+<div id="halaman1" class="page active">
+  <div class="slider-container">
+    <div id="slide-wrapper1" class="slide-wrapper"></div>
+    <div id="slide-wrapper2" class="slide-wrapper"></div>
+    <div id="slide-wrapper3" class="slide-wrapper"></div>
+    <div id="slide-wrapper4" class="slide-wrapper"></div>
+    <div id="slide-wrapper5" class="slide-wrapper"></div>
+    <div id="slide-wrapper6" class="slide-wrapper"></div>
+  </div>
+  <script>
+    const API_KEY = 'AIzaSyA8x0yI8zCPUgZktmGNvQVTzhm1fdZ0K74';
+    const SPREADSHEET_ID = '1iwWuzbLpFgWLdQt-jv82WfEWmAveOZ1irgIUuyjzzLo';
+    const RANGE = 'sheet1'; // Mengambil range yang lebih spesifik
+    function extractIdFromUrl(url) {
+  const regex = /\/d\/(.*?)\//;
+  const match = url.match(regex);
+  if (match && match[1]) {
+    return match[1];
+  }
+  return null;
+  }
+  function processDataAndPopulateSlides(data) {
+  const values = data.values;
+  
+  for (let colIndex = 0; colIndex < values[0].length; colIndex++) {
+    const columnValues = values.map(row => row[colIndex]);
+    const slideWrapperId = `slide-wrapper${colIndex + 1}`;
+    const slideWrapper = document.getElementById(slideWrapperId);
+    if (!slideWrapper) {
+      console.log(`slide-wrapper dengan ID ${slideWrapperId} tidak ditemukan.`);
+      continue;
+    }
+  
+    columnValues.forEach(cellValue => {
+      if (cellValue.trim() !== '-') {
+        const imgTag = document.createElement('img');
+        const imageId = extractIdFromUrl(cellValue);
+        if (imageId) {
+          imgTag.src = `https://drive.google.com/thumbnail?id=${imageId}`;
+          imgTag.alt = 'Page Image';
+          imgTag.classList.add('slide'); // Tambahkan class untuk styling gambar
+  
+          const div = document.createElement('div');
+          div.appendChild(imgTag);
+          slideWrapper.appendChild(div);
+        } else {
+          console.log('ID tidak ditemukan dalam URL.');
+        }
+      }
+    });
+  }
+  }
+  
+  function extractIdFromUrl(url) {
+  const match = url.match(/[-\w]{25,}/);
+  return match ? match[0] : null;
+  }
+    function getData() {
+  fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE}?key=${API_KEY}`)
+    .then(response => response.json())
+    .then(data => {
+      processDataAndPopulateSlides(data);
+      showSlide(1); // Menampilkan slide pertama setelah data selesai dimuat
+    })
+    .catch(error => console.error('Error fetching data:', error));
+  }
+    getData();
+    let currentSlideIndex = 0;
+  let intervalId;
+  
+  function showNextSlide() {
+    currentSlideIndex++;
+    showSlide(currentSlideIndex);
+  }
+  
+  function showPrevSlide() {
+    currentSlideIndex--;
+    showSlide(currentSlideIndex);
+  }
+  
+  function showSlide(slideIndex) {
+    const slides = document.querySelectorAll('.slide-wrapper');
+    if (slideIndex >= slides.length) {
+        currentSlideIndex = 0;
+    } else if (slideIndex < 0) {
+        currentSlideIndex = slides.length - 1;
+    }
+  
+    slides.forEach((slide, index) => {
+        if (index === currentSlideIndex) {
+            slide.style.display = 'block';
+        } else {
+            slide.style.display = 'none';
+        }
+    });
+  }
+  
+  function startAutoSlide() {
+    intervalId = setInterval(() => {
+        showNextSlide();
+    }, 5000); // Geser setiap 5 detik (5000 milidetik)
+  }
+  
+  function stopAutoSlide() {
+    clearInterval(intervalId);
+  }
+  
+  startAutoSlide(); // Mulai otomatis geser
+  </script>
+    <div>
+        <h1 class="judul1">INFORMASI PENDAFTARAN</h1>
+        <h1 class="judul1">PP. MANBA'UL 'ULUM</h1>
+        <P class="paragraf">Pondok pesantren Manba'ul Ulum adalah lembaga pendidikan yang bertujuan untuk mencetak generasi muda berakhlakul karimah yang menjalankan nilai-nilai agama islam berhaluan ahlussunnah waljama'ah,
+        karenanya dalam program pendidikan didesain untuk mendalami kitab-kitab salafi, selain itu juga terdapat pengajian Al -Qur'an dengan cara tahfidz serta qiro'ah.</p>
+    </div>
+    <div class="menuikon2">
+      <button onclick="showPage('halaman6')">
+          <img class="ikon" src="https://drive.google.com/thumbnail?id=1FwDw99epPiGe_lMi4sbpgJiqf_PzGd2D" alt="icon">
+          <span>BROSUR DIGITAL</span>
+      </button>
+    </div>
+    
+    <script>
+        function isArabic(text) {
+          const arabicRegex = /[\u0600-\u06FF]/;
+          return arabicRegex.test(text);
+        }
+      
+        function processText(text) {
+          let processedText = text.replace(/\*(.*?)\*/g, '<span class="underline-text">$1</span>');
+          processedText = processedText.replace(/\#(.*?)\#/g, '<span class="center-text">$1</span>');
+          processedText = processedText.replace(/\^(.*?)\^/g, '<span class="quote-text">$1</span>');
+          processedText = processedText.replace(/\$(.*?)\$/g, '<span class="bold">$1</span>');
+      
+          return processedText;
+        }
+      
+        function toggleRowVisibility(event) {
+          const button = event.target;
+          const row = button.closest('tr');
+          const contentRow = row.nextElementSibling;
+      
+          if (contentRow && contentRow.classList.contains('expanded-row')) {
+            contentRow.remove(); // Remove the expanded row
+          } else {
+            const newRow = row.parentNode.insertRow(row.rowIndex + 1);
+            newRow.classList.add('expanded-row');
+      
+            const newCell = newRow.insertCell(0);
+            newCell.colSpan = row.cells.length;
+      
+            const contentDiv = document.createElement('div');
+            newRow.appendChild(newCell);
+            newCell.appendChild(contentDiv);
+      
+            row.querySelectorAll('td').forEach((cell, index) => {
+              if (index !== 0) {
+                const cellContent = cell.cloneNode(true);
+                cellContent.style.display = 'block';
+                contentDiv.appendChild(cellContent);
+              }
+            });
+          }
+        }
+
+        function processDataAndPopulateTable(data, tableId) {
+          const values = data.values;
+          const tableBody = document.querySelector(`#${tableId} tbody`);
+          tableBody.innerHTML = '';
+      
+          values.forEach(row => {
+            const newRow = tableBody.insertRow();
+            row.forEach(cellValue => {
+              const newCell = newRow.insertCell();
+              const isArabicText = isArabic(cellValue);
+      
+              if (isArabicText) {
+                newCell.classList.add('rtl');
+              } else {
+                newCell.classList.add('indonesia');
+              }
+      
+              // Replace new line characters (\n) with <br> tags
+              const newText = document.createElement('div');
+              newText.innerHTML = processText(cellValue).replace(/\n/g, '<br>');
+              newCell.appendChild(newText);
+            });
+          });
+        }
+      
+        function getData(spreadsheetId, range, tableId) {
+          const API_KEY = 'AIzaSyA8x0yI8zCPUgZktmGNvQVTzhm1fdZ0K74';
+          fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${API_KEY}`)
+            .then(response => response.json())
+            .then(data => processDataAndPopulateTable(data, tableId))
+            .catch(error => console.error('Error fetching data:', error));
+        }
+      
+        document.addEventListener('DOMContentLoaded', () => {
+          const SPREADSHEET_ID1 = '1Xc26ggKR2amOU-2tAilSO7Ma7bTfA5XyocMUtFhsR38';
+          const RANGE1 = 'KOMENTAR';
+          getData(SPREADSHEET_ID1, RANGE1, 'dataTable1');
+      
+          const SPREADSHEET_ID2 = '1Xc26ggKR2amOU-2tAilSO7Ma7bTfA5XyocMUtFhsR38';
+          const RANGE2 = 'PEMBAYARAN_MADIN';
+          getData(SPREADSHEET_ID2, RANGE2, 'dataTable2');
+      
+          const SPREADSHEET_ID3 = '1Xc26ggKR2amOU-2tAilSO7Ma7bTfA5XyocMUtFhsR38';
+          const RANGE3 = 'PEMBAYARAN_TPQ';
+          getData(SPREADSHEET_ID3, RANGE3, 'dataTable3');
+      
+          const SPREADSHEET_ID4 = '1Xc26ggKR2amOU-2tAilSO7Ma7bTfA5XyocMUtFhsR38';
+          const RANGE4 = 'KURIKULUM_PP';
+          getData(SPREADSHEET_ID4, RANGE4, 'dataTable4');
+      
+          const SPREADSHEET_ID5 = '1Xc26ggKR2amOU-2tAilSO7Ma7bTfA5XyocMUtFhsR38';
+          const RANGE5 = 'KURIKULUM_MADIN';
+          getData(SPREADSHEET_ID5, RANGE5, 'dataTable5');
+      
+          const SPREADSHEET_ID6 = '1Xc26ggKR2amOU-2tAilSO7Ma7bTfA5XyocMUtFhsR38';
+          const RANGE6 = 'KURIKULUM_TPQ';
+          getData(SPREADSHEET_ID6, RANGE6, 'dataTable6');
+      
+          const SPREADSHEET_ID7 = '1lgnUGg3e-Xav7e26XauDyQ9V5-se09dqvFu4IuQ6xTY';
+          const RANGE7 = 'PERTAHUN_PA';
+          getData(SPREADSHEET_ID7, RANGE7, 'dataTable7');
+      
+          const SPREADSHEET_ID8 = '1lgnUGg3e-Xav7e26XauDyQ9V5-se09dqvFu4IuQ6xTY';
+          const RANGE8 = 'PSSB';
+          getData(SPREADSHEET_ID8, RANGE8, 'dataTable8');
+      
+          const SPREADSHEET_ID9 = '1lgnUGg3e-Xav7e26XauDyQ9V5-se09dqvFu4IuQ6xTY';
+          const RANGE9 = 'DAFTAR_ULANG';
+          getData(SPREADSHEET_ID9, RANGE9, 'dataTable9');
+      
+          const SPREADSHEET_ID10 = '1lgnUGg3e-Xav7e26XauDyQ9V5-se09dqvFu4IuQ6xTY';
+          const RANGE10 = 'MAKAN';
+          getData(SPREADSHEET_ID10, RANGE10, 'dataTable10');
+      
+          const SPREADSHEET_ID11 = '1lgnUGg3e-Xav7e26XauDyQ9V5-se09dqvFu4IuQ6xTY';
+          const RANGE11 = 'DAFTAR_ULANGPI';
+          getData(SPREADSHEET_ID11, RANGE11, 'dataTable11');
+      
+          const SPREADSHEET_ID12 = '1lgnUGg3e-Xav7e26XauDyQ9V5-se09dqvFu4IuQ6xTY';
+          const RANGE12 = 'PSBPI';
+          getData(SPREADSHEET_ID12, RANGE12, 'dataTable12');
+      
+          const SPREADSHEET_ID13 = '1lgnUGg3e-Xav7e26XauDyQ9V5-se09dqvFu4IuQ6xTY';
+          const RANGE13 = 'KEGIATAN';
+          getData(SPREADSHEET_ID13, RANGE13, 'dataTable13');
+
+          const SPREADSHEET_ID14 = '1lgnUGg3e-Xav7e26XauDyQ9V5-se09dqvFu4IuQ6xTY';
+          const RANGE14 = 'HARIAN_MTSPA';
+          getData(SPREADSHEET_ID14, RANGE14, 'dataTable14');
+
+          const SPREADSHEET_ID15 = '1lgnUGg3e-Xav7e26XauDyQ9V5-se09dqvFu4IuQ6xTY';
+          const RANGE15 = 'HARIAN_SLFPA';
+          getData(SPREADSHEET_ID15, RANGE15, 'dataTable15');
+
+          const SPREADSHEET_ID16 = '1lgnUGg3e-Xav7e26XauDyQ9V5-se09dqvFu4IuQ6xTY';
+          const RANGE16 = 'MINGGUAN_PA';
+          getData(SPREADSHEET_ID16, RANGE16, 'dataTable16');
+
+          const SPREADSHEET_ID17 = '1lgnUGg3e-Xav7e26XauDyQ9V5-se09dqvFu4IuQ6xTY';
+          const RANGE17 = 'HARIAN_MTSPI';
+          getData(SPREADSHEET_ID17, RANGE17, 'dataTable17');
+
+          const SPREADSHEET_ID18 = '1lgnUGg3e-Xav7e26XauDyQ9V5-se09dqvFu4IuQ6xTY';
+          const RANGE18 = 'HARIAN_SLFPI';
+          getData(SPREADSHEET_ID18, RANGE18, 'dataTable18');
+
+          const SPREADSHEET_ID19 = '1lgnUGg3e-Xav7e26XauDyQ9V5-se09dqvFu4IuQ6xTY';
+          const RANGE19 = 'TAHFIDZ';
+          getData(SPREADSHEET_ID19, RANGE19, 'dataTable19');
+
+          const SPREADSHEET_ID20 = '1lgnUGg3e-Xav7e26XauDyQ9V5-se09dqvFu4IuQ6xTY';
+          const RANGE20 = 'MINGGUAN_PI';
+          getData(SPREADSHEET_ID20, RANGE20, 'dataTable20');
+
+          const SPREADSHEET_ID21 = '1Xc26ggKR2amOU-2tAilSO7Ma7bTfA5XyocMUtFhsR38';
+          const RANGE21 = 'SYARAT_PENDAFTARAN';
+          getData(SPREADSHEET_ID21, RANGE21, 'dataTable21');
+      });  
+      </script>
+      
+</div>
+<div id="halaman2" class="page">
+    <div class="slideshow-container">
+    <div class="mySlides">
+    <img class="slideimg" src="https://drive.google.com/thumbnail?id=13rIF52Nrj09jt05YZnUqUfHG4Z-XXc_J" alt="Slide 1">
+    </div>
+        
+    <div class="mySlides">
+    <img class="slideimg" src="https://drive.google.com/thumbnail?id=1MJXGdMMw5NbZDRTvjWceTDkYSH6EGn5C" alt="Slide 2">
+    </div>
+          
+    <div class="mySlides">
+    <img class="slideimg" src="https://drive.google.com/thumbnail?id=1Zoqqntlz-FUlJgQ5ml_31qDdMQ6aAG96" alt="Slide 3">
+    </div>
+
+    <div>
+        <h1 class="judul">PROFIL PONDOK PESANTREN</h1>
+        <P class="paragraf">Pondok pesantren Manba'ul Ulum adalah lembaga pendidikan yang bertujuan untuk mencetak generasi muda berakhlakul karimah yang menjalankan nilai-nilai agama islam berhaluan ahlussunnah waljama'ah,
+        karenanya dalam program pendidikan didesain untuk mendalami kitab-kitab salafi, selain itu juga terdapat pengajian Al -Qur'an dengan cara tahfidz serta qiro'ah.</p>
+        <p class="paragraf">Setiap malam jum'at diadakan berbagai bentuk jam'iyah seperti jam'iyah maulid addiba'iy, al barzanjiy, khitobiyah, dan manaqib. </p>
+        <p class="paragraf">Selain melalui pendidikan madrasah, pendalaman kitab-kitab salaf juga diajarkan melalui musyawarah harian, musyawaroh mingguan, bahtsul masa'il, praktek fiqh ubudiyah serta pengajian harian yang terbagi dalam berbagai tingkatan yaitu : tingkat Jurumiyah, Mutammimah, Alfiyah dan Funnun. </P>
+    </div>
+    <div>
+        <h1 class="judul">PROGRAM PENDIDIKAN</h1>
+        <ul>
+          <li>Madrasah Diniyah Manba'ul 'Ulum</li>
+          <li>Taman Pendidikan Al Qur'an</li>
+          <li>Kajian kitab-kitab Salaf</li>
+          <li>Tahfidzil Qur'an</li>
+          <li>Tartilil Qur'an</li>
+          <li>Bahtsul Masail</li>
+          <li>Shorogan kitab-kitab Salaf</li>
+          <li>Jam'iyah</li>
+        </ul>
+      </div>
+      <div>
+        <h1 class="judul">UNIT PENDIDIKAN</h1>
+        <ul>
+          <li>Asrama Putra & Asrama Putri</li>
+          <li>Masjid / tempat ibadah</li>
+          <li>Gedung Madrasah</li>
+          <li>Gedung Tpq</li>
+          <li>Aula</li>
+        </ul>
+      </div>
+    </div>
+</div>
+<div id="halaman3" class="page">
+    <div class="slideshow-container">
+        <div class="mySlides">
+        <img class="slideimg" src="https://drive.google.com/thumbnail?id=13rIF52Nrj09jt05YZnUqUfHG4Z-XXc_J" alt="Slide 1">
+        </div>
+            
+        <div class="mySlides">
+        <img class="slideimg" src="https://drive.google.com/thumbnail?id=1MJXGdMMw5NbZDRTvjWceTDkYSH6EGn5C" alt="Slide 2">
+        </div>
+              
+        <div class="mySlides">
+        <img class="slideimg" src="https://drive.google.com/thumbnail?id=1Zoqqntlz-FUlJgQ5ml_31qDdMQ6aAG96" alt="Slide 3">
+        </div>
+    </div>
+        <div>
+            <h1 class="judul">PROFIL MADRASAH</h1>
+            <P class="paragraf">Madrasah Diniyah Manba'ul 'Ulum adalah salah satu sarana pendalaman kitab salaf yang ada di pesantren Manba'ul 'Ulum</p>
+            <p class="paragraf">Namun demikian di Madin ini juga banyak diikuti oleh siswa siswi sekitar pesantren </p>
+            <p class="paragraf">Sehingga dalam kurikulumnya juga menyesuaikan dengan tingkatan umur dan kemampuan siswa. </P>
+        </div>
+        <div>
+          <h1 class="judul">JENJANG PENDIDIKAN</h1>
+          <ul>
+            <li>Madrasah Ibtidaiyah 6 tahun</li>
+            <li>Madrasah Tsanawiyah 3 tahun</li>
+            <li>Madrasah Aliyah 3 tahun</li>
+          </ul>
+        </div>
+        <h1 class="judul">ADMINISTRASI MADRASAH</h1>
+        <div>
+            <div class="chat-container">
+                <div class="chat-body" id="chatBody2">
+                <div class="TABEL">
+                <table class="colorful-table" id="dataTable2">
+                  <tbody>
+                    <tr>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </tbody>
+                </table>
+                </div>
+                </div>
+            </div>
+        </div>
+</div>
+<div id="halaman4" class="page">
+    <div class="slideshow-container">
+        <div class="mySlides">
+        <img class="slideimg" src="https://drive.google.com/thumbnail?id=13rIF52Nrj09jt05YZnUqUfHG4Z-XXc_J" alt="Slide 1">
+        </div>
+            
+        <div class="mySlides">
+        <img class="slideimg" src="https://drive.google.com/thumbnail?id=1MJXGdMMw5NbZDRTvjWceTDkYSH6EGn5C" alt="Slide 2">
+        </div>
+              
+        <div class="mySlides">
+        <img class="slideimg" src="https://drive.google.com/thumbnail?id=1Zoqqntlz-FUlJgQ5ml_31qDdMQ6aAG96" alt="Slide 3">
+        </div>
+    </div>
+    <div>
+        <h1 class="judul">PROFIL TPQ</h1>
+        <P class="paragraf">Tpq Manba'ul 'Ulum memberikan pendidikan tentang bacaan Al Qur'an ( belajar membaca Al Qur'an, Ghoro'ibul Qur'an dan tajwidul Qur'an ) bagi anak-anak usia dini ( mulai umur 4 tahun )</p>
+        <p class="paragraf">Pelajaran tambahan setiap hari diantaranya belajar menulis, mahfudzot, bahasa arab, hafalan surat-surat pendek dan hafalan doa-doa</p>
+        <p class="paragraf">Selain itu juga diberikan pengajaran lain tentang masalah ubudiyah keseharian seperti praktek wudhu, praktek sholat serta pengajaran tauhid, fiqih dan akhlak melalui media elektronik. </P>
+    </div>
+    <h1 class="judul">ADMINISTRASI TPQ</h1>
+        <div>
+            <div class="chat-container">
+                <div class="chat-body" id="chatBody3">
+                <div class="TABEL">
+                <table class="colorful-table" id="dataTable3">
+                  <tbody>
+                    <tr>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </tbody>
+                </table>
+                </div>
+                </div>
+            </div>
+        </div>
+</div>
+<div id="halaman5" class="page">
+    <h1 class="judul">KURIKULUM PONDOK PESANTREN</h1>
+    <div class="chat-container">
+        <div class="chat-body" id="chatBody4">
+          <div class="TABEL">
+            <table class="colorful-table" id="dataTable4">
+              <tbody>
+                <tr>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <h1 class="judul">KURIKULUM MADRASAH</h1>
+      <div class="chat-container">
+        <div class="chat-body" id="chatBody5">
+          <div class="TABEL">
+            <table class="colorful-table" id="dataTable5">
+              <tbody>
+                <tr>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <h1 class="judul">KURIKULUM TPQ</h1>
+      <div class="chat-container">
+        <div class="chat-body" id="chatBody6">
+          <div class="TABEL">
+            <table class="colorful-table" id="dataTable6">
+              <tbody>
+                <tr>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+</div>
+<div id="halaman6" class="page">
+  <h1 class="judul">INFORMASI PENDAFTARAN</h1>
+    <div class="menuikon">
+        <button onclick="showPage('halaman7')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1FwDw99epPiGe_lMi4sbpgJiqf_PzGd2D" alt="icon">
+            <span>FORMULIR PUTRA</span>
+        </button>
+        <button onclick="showPage('halaman11')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1FwDw99epPiGe_lMi4sbpgJiqf_PzGd2D" alt="icon">
+            <span>FORMULIR PUTRI</span>
+        </button>
+        <button onclick="showPage('halaman9')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1Fmnm90dz9fWtV4r1uf8nQAHxf_eS7EcQ" alt="icon">
+            <span>PEMBAYARAN PUTRA</span>
+        </button>
+        <button onclick="showPage('halaman8')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1FqO3xrKtyrxVEpjvoVeWBHQxb9rEbz7-" alt="icon">
+            <span>KEGIATAN PUTRA</span>
+        </button>
+        <button onclick="showPage('halaman12')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1FqO3xrKtyrxVEpjvoVeWBHQxb9rEbz7-" alt="icon">
+            <span>KEGIATAN PUTRI</span>
+        </button>
+        <button onclick="showPage('halaman10')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1Fmnm90dz9fWtV4r1uf8nQAHxf_eS7EcQ" alt="icon">
+            <span>PEMBAYARAN PUTRI</span>
+        </button>
+    </div>
+    <div>
+      <div class="chat-container">
+          <div class="chat-body" id="chatBody21">
+          <div class="TABEL">
+          <table class="colorful-table" id="dataTable21">
+            <tbody>
+              <tr>
+                <th></th>
+                <th></th>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div id="halaman7" class="page">
+  <h1 class="judul">INFORMASI PENDAFTARAN</h1>
+    <div class="menuikon">
+        <button onclick="showPage('halaman7')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1FwDw99epPiGe_lMi4sbpgJiqf_PzGd2D" alt="icon">
+            <span>FORMULIR PUTRA</span>
+        </button>
+        <button onclick="showPage('halaman11')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1FwDw99epPiGe_lMi4sbpgJiqf_PzGd2D" alt="icon">
+            <span>FORMULIR PUTRI</span>
+        </button>
+        <button onclick="showPage('halaman9')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1Fmnm90dz9fWtV4r1uf8nQAHxf_eS7EcQ" alt="icon">
+            <span>PEMBAYARAN PUTRA</span>
+        </button>
+        <button onclick="showPage('halaman8')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1FqO3xrKtyrxVEpjvoVeWBHQxb9rEbz7-" alt="icon">
+            <span>KEGIATAN PUTRA</span>
+        </button>
+        <button onclick="showPage('halaman12')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1FqO3xrKtyrxVEpjvoVeWBHQxb9rEbz7-" alt="icon">
+            <span>KEGIATAN PUTRI</span>
+        </button>
+        <button onclick="showPage('halaman10')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1Fmnm90dz9fWtV4r1uf8nQAHxf_eS7EcQ" alt="icon">
+            <span>PEMBAYARAN PUTRI</span>
+        </button>
+    </div>
+    <h1 class="judul">FORMULIR PENDAFTARAN
+        <span>SANTRI PUTRA</span>
+    </h1>
+    <form name="chattdata2" id="chatForm" class="chat-form" method="post" action="">
+      <fieldset>
+          <legend>Data Pribadi</legend>
+          <label for="nama_lengkap">Nama Lengkap:</label><br>
+          <input type="text" name="nama_lengkap" id="nama_lengkap" class="chat-input" placeholder="Nama Lengkap"><br>
+  
+          <label for="nik">NIK:</label><br>
+          <input type="text" name="nik" id="nik" class="chat-input" placeholder="NIK"><br>
+  
+          <label for="tempat_tanggal_lahir">Tempat Tanggal Lahir:</label><br>
+          <input type="text" name="tempat_tanggal_lahir" id="tempat_tanggal_lahir" class="chat-input" placeholder="Tempat Tanggal Lahir"><br>
+  
+          <label for="nama_ayah">Nama Ayah:</label><br>
+          <input type="text" name="nama_ayah" id="nama_ayah" class="chat-input" placeholder="Nama Ayah"><br>
+  
+          <label for="nama_ibu">Nama Ibu:</label><br>
+          <input type="text" name="nama_ibu" id="nama_ibu" class="chat-input" placeholder="Nama Ibu"><br>
+      </fieldset>
+  
+      <fieldset>
+          <legend>Data Alamat</legend>
+          <label for="dusun_jalan">Dusun / Jalan:</label><br>
+          <input type="text" name="dusun_jalan" id="dusun_jalan" class="chat-input" placeholder="Dusun / Jalan"><br>
+  
+          <label for="rt">RT:</label><br>
+          <input type="text" name="rt" id="rt" class="chat-input" placeholder="RT"><br>
+  
+          <label for="rw">RW:</label><br>
+          <input type="text" name="rw" id="rw" class="chat-input" placeholder="RW"><br>
+  
+          <label for="desa_kelurahan">Desa / Kelurahan:</label><br>
+          <input type="text" name="desa_kelurahan" id="desa_kelurahan" class="chat-input" placeholder="Desa / Kelurahan"><br>
+  
+          <label for="kecamatan">Kecamatan:</label><br>
+          <input type="text" name="kecamatan" id="kecamatan" class="chat-input" placeholder="Kecamatan"><br>
+  
+          <label for="kabupaten_kota">Kabupaten / Kota:</label><br>
+          <input type="text" name="kabupaten_kota" id="kabupaten_kota" class="chat-input" placeholder="Kabupaten / Kota"><br>
+  
+          <label for="provinsi">Provinsi:</label><br>
+          <input type="text" name="provinsi" id="provinsi" class="chat-input" placeholder="Provinsi"><br>
+      </fieldset>
+  
+      <input type="submit" value="KIRIM">
+  </form>
+</div>
+<div id="halaman8" class="page">
+  <h1 class="judul">INFORMASI PENDAFTARAN</h1>
+    <div class="menuikon">
+        <button onclick="showPage('halaman7')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1FwDw99epPiGe_lMi4sbpgJiqf_PzGd2D" alt="icon">
+            <span>FORMULIR PUTRA</span>
+        </button>
+        <button onclick="showPage('halaman11')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1FwDw99epPiGe_lMi4sbpgJiqf_PzGd2D" alt="icon">
+            <span>FORMULIR PUTRI</span>
+        </button>
+        <button onclick="showPage('halaman9')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1Fmnm90dz9fWtV4r1uf8nQAHxf_eS7EcQ" alt="icon">
+            <span>PEMBAYARAN PUTRA</span>
+        </button>
+        <button onclick="showPage('halaman8')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1FqO3xrKtyrxVEpjvoVeWBHQxb9rEbz7-" alt="icon">
+            <span>KEGIATAN PUTRA</span>
+        </button>
+        <button onclick="showPage('halaman12')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1FqO3xrKtyrxVEpjvoVeWBHQxb9rEbz7-" alt="icon">
+            <span>KEGIATAN PUTRI</span>
+        </button>
+        <button onclick="showPage('halaman10')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1Fmnm90dz9fWtV4r1uf8nQAHxf_eS7EcQ" alt="icon">
+            <span>PEMBAYARAN PUTRI</span>
+        </button>
+    </div>
+<div>
+    <h1 class="judul">JADWAL KEGIATAN
+      <span></span>
+  </h1>
+  <h1 class="judul">
+      <span>SANTRI PUTRA</span>
+  </h1>
+  <table class="judtab">
+      <tr>
+          <td colspan="2"><i class="far fa-clock"></i> KEGIATAN HARIAN SANTRI MTS</td>
+      </tr>
+  </table>   
+    <div class="chat-container">
+      <div class="chat-body" id="chatBody14">
+      <div class="TABEL">
+      <table class="colorful-table" id="dataTable14">
+        <tbody>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      </div>
+  </div>
+</div>
+<div>
+<table class="judtab">
+    <tr>
+        <td colspan="2"><i class="far fa-clock"></i> KEGIATAN HARIAN SANTRI SALAF</td>
+    </tr>
+</table>   
+  <div class="chat-container">
+    <div class="chat-body" id="chatBody15">
+    <div class="TABEL">
+    <table class="colorful-table" id="dataTable15">
+      <tbody>
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    </div>
+</div>
+</div>
+<div>
+  <table class="judtab">
+      <tr>
+          <td colspan="2"><i class="far fa-clock"></i> KEGIATAN MINGGUAN SANTRI PUTRA</td>
+      </tr>
+  </table>   
+    <div class="chat-container">
+      <div class="chat-body" id="chatBody16">
+      <div class="TABEL">
+      <table class="colorful-table" id="dataTable16">
+        <tbody>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      </div>
+  </div>
+  </div>
+
+</div>
+<div id="halaman9" class="page">
+  <h1 class="judul">INFORMASI PENDAFTARAN</h1>
+    <div class="menuikon">
+        <button onclick="showPage('halaman7')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1FwDw99epPiGe_lMi4sbpgJiqf_PzGd2D" alt="icon">
+            <span>FORMULIR PUTRA</span>
+        </button>
+        <button onclick="showPage('halaman11')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1FwDw99epPiGe_lMi4sbpgJiqf_PzGd2D" alt="icon">
+            <span>FORMULIR PUTRI</span>
+        </button>
+        <button onclick="showPage('halaman9')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1Fmnm90dz9fWtV4r1uf8nQAHxf_eS7EcQ" alt="icon">
+            <span>PEMBAYARAN PUTRA</span>
+        </button>
+        <button onclick="showPage('halaman8')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1FqO3xrKtyrxVEpjvoVeWBHQxb9rEbz7-" alt="icon">
+            <span>KEGIATAN PUTRA</span>
+        </button>
+        <button onclick="showPage('halaman12')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1FqO3xrKtyrxVEpjvoVeWBHQxb9rEbz7-" alt="icon">
+            <span>KEGIATAN PUTRI</span>
+        </button>
+        <button onclick="showPage('halaman10')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1Fmnm90dz9fWtV4r1uf8nQAHxf_eS7EcQ" alt="icon">
+            <span>PEMBAYARAN PUTRI</span>
+        </button>
+    </div>
+    <h1 class="judul">BIAYA ADMINISTRASI  
+    </h1>
+    <h1 class="judul">
+        <span>SANTRI PUTRA</span>
+    </h1>
+    <table class="judtab">
+        <tr>
+            <td colspan="2"><i class="fas fa-coins"></i> PEMBAYARAN PERTAHUN</td>
+        </tr>
+    </table>   
+    <div>
+      <div class="chat-container">
+          <div class="chat-body" id="chatBody7">
+          <div class="TABEL">
+          <table class="colorful-table" id="dataTable7">
+            <tbody>
+              <tr>
+                <th></th>
+                <th></th>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+      </div>
+  </div>
+  <table class="judtab">
+    <tr>
+        <td colspan="2"><i class="fas fa-coins"></i> PENDAFTARAN SANTRI BARU</td>
+    </tr>
+</table>   
+<div>
+  <div class="chat-container">
+      <div class="chat-body" id="chatBody8">
+      <div class="TABEL">
+      <table class="colorful-table" id="dataTable8">
+        <tbody>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      </div>
+  </div>
+</div>
+<table class="judtab">
+  <tr>
+      <td colspan="2"><i class="fas fa-coins"></i> DAFTAR ULANG</td>
+  </tr>
+</table>   
+<div>
+<div class="chat-container">
+    <div class="chat-body" id="chatBody9">
+    <div class="TABEL">
+    <table class="colorful-table" id="dataTable9">
+      <tbody>
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    </div>
+</div>
+</div>
+<table class="judtab">
+  <tr>
+      <td colspan="2"><i class="fas fa-coins"></i> BIAYA MAKAN</td>
+  </tr>
+</table>   
+<div>
+<div class="chat-container">
+    <div class="chat-body" id="chatBody10">
+    <div class="TABEL">
+    <table class="colorful-table" id="dataTable10">
+      <tbody>
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    </div>
+</div>
+</div>
+</div>
+<div id="halaman10" class="page">
+  <h1 class="judul">INFORMASI PENDAFTARAN</h1>
+    <div class="menuikon">
+        <button onclick="showPage('halaman7')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1FwDw99epPiGe_lMi4sbpgJiqf_PzGd2D" alt="icon">
+            <span>FORMULIR PUTRA</span>
+        </button>
+        <button onclick="showPage('halaman11')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1FwDw99epPiGe_lMi4sbpgJiqf_PzGd2D" alt="icon">
+            <span>FORMULIR PUTRI</span>
+        </button>
+        <button onclick="showPage('halaman9')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1Fmnm90dz9fWtV4r1uf8nQAHxf_eS7EcQ" alt="icon">
+            <span>PEMBAYARAN PUTRA</span>
+        </button>
+        <button onclick="showPage('halaman8')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1FqO3xrKtyrxVEpjvoVeWBHQxb9rEbz7-" alt="icon">
+            <span>KEGIATAN PUTRA</span>
+        </button>
+        <button onclick="showPage('halaman12')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1FqO3xrKtyrxVEpjvoVeWBHQxb9rEbz7-" alt="icon">
+            <span>KEGIATAN PUTRI</span>
+        </button>
+        <button onclick="showPage('halaman10')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1Fmnm90dz9fWtV4r1uf8nQAHxf_eS7EcQ" alt="icon">
+            <span>PEMBAYARAN PUTRI</span>
+        </button>
+    </div>
+    <h1 class="judul">BIAYA ADMINISTRASI      
+    </h1>
+    <h1 class="judul">
+        <span>SANTRI PUTRI</span>
+    </h1>
+    <table class="judtab">
+        <tr>
+            <td colspan="2"><i class="fas fa-coins"></i> DAFTAR ULANG</td>
+        </tr>
+    </table>   
+    <div>
+      <div class="chat-container">
+          <div class="chat-body" id="chatBody11">
+          <div class="TABEL">
+          <table class="colorful-table" id="dataTable11">
+            <tbody>
+              <tr>
+                <th></th>
+                <th></th>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+      </div>
+  </div>
+  <table class="judtab">
+    <tr>
+        <td colspan="2"><i class="fas fa-coins"></i> PENDAFTARAN SANTRI BARU</td>
+    </tr>
+</table>   
+<div>
+  <div class="chat-container">
+      <div class="chat-body" id="chatBody12">
+        <div class="TABEL">
+        <table class="colorful-table" id="dataTable12">
+          <tbody>
+            <tr>
+              <th></th>
+              <th></th>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        </div>
+    </div>
+  </div>
+<table class="judtab">
+  <tr>
+      <td colspan="2"><i class="fas fa-coins"></i> KEGIATAN SELAMA 1 TAHUN</td>
+  </tr>
+</table>   
+<div>
+<div class="chat-container">
+    <div class="chat-body" id="chatBody13">
+    <div class="TABEL">
+    <table class="colorful-table" id="dataTable13">
+      <tbody>
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    </div>
+</div>
+</div>
+</div>
+<div id="halaman11" class="page">
+  <h1 class="judul">INFORMASI PENDAFTARAN</h1>
+    <div class="menuikon">
+        <button onclick="showPage('halaman7')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1FwDw99epPiGe_lMi4sbpgJiqf_PzGd2D" alt="icon">
+            <span>FORMULIR PUTRA</span>
+        </button>
+        <button onclick="showPage('halaman11')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1FwDw99epPiGe_lMi4sbpgJiqf_PzGd2D" alt="icon">
+            <span>FORMULIR PUTRI</span>
+        </button>
+        <button onclick="showPage('halaman9')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1Fmnm90dz9fWtV4r1uf8nQAHxf_eS7EcQ" alt="icon">
+            <span>PEMBAYARAN PUTRA</span>
+        </button>
+        <button onclick="showPage('halaman8')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1FqO3xrKtyrxVEpjvoVeWBHQxb9rEbz7-" alt="icon">
+            <span>KEGIATAN PUTRA</span>
+        </button>
+        <button onclick="showPage('halaman12')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1FqO3xrKtyrxVEpjvoVeWBHQxb9rEbz7-" alt="icon">
+            <span>KEGIATAN PUTRI</span>
+        </button>
+        <button onclick="showPage('halaman10')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1Fmnm90dz9fWtV4r1uf8nQAHxf_eS7EcQ" alt="icon">
+            <span>PEMBAYARAN PUTRI</span>
+        </button>
+    </div>
+    <h1 class="judul">FORMULIR PENDAFTARAN
+        <span>SANTRI PUTRI</span>
+    </h1>
+    <form name="chattdata2" id="chatForm" class="chat-form" method="post" action="">
+      <fieldset>
+          <legend>Data Pribadi</legend>
+          <label for="nama_lengkap">Nama Lengkap:</label><br>
+          <input type="text" name="nama_lengkap" id="nama_lengkap" class="chat-input" placeholder="Nama Lengkap"><br>
+  
+          <label for="nik">NIK:</label><br>
+          <input type="text" name="nik" id="nik" class="chat-input" placeholder="NIK"><br>
+  
+          <label for="tempat_tanggal_lahir">Tempat Tanggal Lahir:</label><br>
+          <input type="text" name="tempat_tanggal_lahir" id="tempat_tanggal_lahir" class="chat-input" placeholder="Tempat Tanggal Lahir"><br>
+  
+          <label for="nama_ayah">Nama Ayah:</label><br>
+          <input type="text" name="nama_ayah" id="nama_ayah" class="chat-input" placeholder="Nama Ayah"><br>
+  
+          <label for="nama_ibu">Nama Ibu:</label><br>
+          <input type="text" name="nama_ibu" id="nama_ibu" class="chat-input" placeholder="Nama Ibu"><br>
+      </fieldset>
+  
+      <fieldset>
+          <legend>Data Alamat</legend>
+          <label for="dusun_jalan">Dusun / Jalan:</label><br>
+          <input type="text" name="dusun_jalan" id="dusun_jalan" class="chat-input" placeholder="Dusun / Jalan"><br>
+  
+          <label for="rt">RT:</label><br>
+          <input type="text" name="rt" id="rt" class="chat-input" placeholder="RT"><br>
+  
+          <label for="rw">RW:</label><br>
+          <input type="text" name="rw" id="rw" class="chat-input" placeholder="RW"><br>
+  
+          <label for="desa_kelurahan">Desa / Kelurahan:</label><br>
+          <input type="text" name="desa_kelurahan" id="desa_kelurahan" class="chat-input" placeholder="Desa / Kelurahan"><br>
+  
+          <label for="kecamatan">Kecamatan:</label><br>
+          <input type="text" name="kecamatan" id="kecamatan" class="chat-input" placeholder="Kecamatan"><br>
+  
+          <label for="kabupaten_kota">Kabupaten / Kota:</label><br>
+          <input type="text" name="kabupaten_kota" id="kabupaten_kota" class="chat-input" placeholder="Kabupaten / Kota"><br>
+  
+          <label for="provinsi">Provinsi:</label><br>
+          <input type="text" name="provinsi" id="provinsi" class="chat-input" placeholder="Provinsi"><br>
+      </fieldset>
+  
+      <input type="submit" value="KIRIM">
+  </form>
+<script>
+    const pengeluaranForm = document.forms['chattdata2'];
+    const namaLengkap = document.getElementById('nama_lengkap');
+    const nik = document.getElementById('nik');
+    const tempatTanggalLahir = document.getElementById('tempat_tanggal_lahir');
+    const namaAyah = document.getElementById('nama_ayah');
+    const namaIbu = document.getElementById('nama_ibu');
+    const dusunJalan = document.getElementById('dusun_jalan');
+    const rt = document.getElementById('rt');
+    const rw = document.getElementById('rw');
+    const desaKelurahan = document.getElementById('desa_kelurahan');
+    const kecamatan = document.getElementById('kecamatan');
+    const kabupatenKota = document.getElementById('kabupaten_kota');
+    const provinsi = document.getElementById('provinsi');
+
+    const pengeluaranScriptURL = 'https://script.google.com/macros/s/AKfycbwohUVAWNe8lJ4xWQycwz9jER0M8IkcWU_Df5vq72gnNzJTn3BwYBmw6RKp52U2M5kJ/exec';
+    
+      // Reset form
+      pengeluaranForm.reset();
+    
+    pengeluaranForm.addEventListener('submit', e => {
+      e.preventDefault();
+      
+      const isArabic = /[\u0600-\u06FF]/.test(messageInput1.value);
+    
+      if (isArabic) {
+        messageInput1.style.direction = 'rtl';
+      } else {
+        messageInput1.style.direction = 'ltr';
+      }
+    
+      const formData = new FormData(pengeluaranForm);
+    
+      formData.forEach((value, key, fd) => {
+        fd.set(key, value.replace(/<br>/g, '\n'));
+      });
+    
+      fetch(pengeluaranScriptURL, {
+        method: 'POST',
+        body: formData,
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('chatt Success!', data);
+          pengeluaranForm.reset();
+        })
+        .catch(error => console.error('chatt Error!', error.message));
+    
+      // Setelah submit, sembunyikan pop-up
+      popupFormContainer.style.display = 'none';
+      // Reset form
+      pengeluaranForm.reset();
+    });
+    fetch(pengeluaranScriptURL, {
+    method: 'POST',
+    body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('chatt Success!', data);
+      pengeluaranForm.reset();
+    })
+    .catch(error => console.error('chatt Error!', error.message));
+</script>
+
+</div>
+<div id="halaman12" class="page">
+  <h1 class="judul">INFORMASI PENDAFTARAN</h1>
+    <div class="menuikon">
+        <button onclick="showPage('halaman7')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1FwDw99epPiGe_lMi4sbpgJiqf_PzGd2D" alt="icon">
+            <span>FORMULIR PUTRA</span>
+        </button>
+        <button onclick="showPage('halaman11')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1FwDw99epPiGe_lMi4sbpgJiqf_PzGd2D" alt="icon">
+            <span>FORMULIR PUTRI</span>
+        </button>
+        <button onclick="showPage('halaman9')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1Fmnm90dz9fWtV4r1uf8nQAHxf_eS7EcQ" alt="icon">
+            <span>PEMBAYARAN PUTRA</span>
+        </button>
+        <button onclick="showPage('halaman8')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1FqO3xrKtyrxVEpjvoVeWBHQxb9rEbz7-" alt="icon">
+            <span>KEGIATAN PUTRA</span>
+        </button>
+        <button onclick="showPage('halaman12')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1FqO3xrKtyrxVEpjvoVeWBHQxb9rEbz7-" alt="icon">
+            <span>KEGIATAN PUTRI</span>
+        </button>
+        <button onclick="showPage('halaman10')">
+            <img class="ikon" src="https://drive.google.com/thumbnail?id=1Fmnm90dz9fWtV4r1uf8nQAHxf_eS7EcQ" alt="icon">
+            <span>PEMBAYARAN PUTRI</span>
+        </button>
+    </div>
+    <div>
+      <h1 class="judul">JADWAL KEGIATAN
+        <span></span>
+    </h1>
+    <h1 class="judul">
+        <span>SANTRI PUTRI</span>
+    </h1>
+    <div>
+      <table class="judtab">
+          <tr>
+              <td colspan="2"><i class="far fa-clock"></i> KEGIATAN HARIAN MTS</td>
+          </tr>
+      </table>   
+        <div class="chat-container">
+          <div class="chat-body" id="chatBody17">
+          <div class="TABEL">
+          <table class="colorful-table" id="dataTable17">
+            <tbody>
+              <tr>
+                <th></th>
+                <th></th>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+          </div>
+      </div>
+      </div>
+  <div>
+  <table class="judtab">
+      <tr>
+          <td colspan="2"><i class="far fa-clock"></i> KEGIATAN HARIAN SANTRI SALAF</td>
+      </tr>
+  </table>   
+    <div class="chat-container">
+      <div class="chat-body" id="chatBody18">
+      <div class="TABEL">
+      <table class="colorful-table" id="dataTable18">
+        <tbody>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      </div>
+  </div>
+  </div>
+  <div>
+    <table class="judtab">
+        <tr>
+            <td colspan="2"><i class="far fa-clock"></i>KEGIATAN HARIAN SANTRI TAHFIDZ</td>
+        </tr>
+    </table>   
+      <div class="chat-container">
+        <div class="chat-body" id="chatBody19">
+        <div class="TABEL">
+        <table class="colorful-table" id="dataTable19">
+          <tbody>
+            <tr>
+              <th></th>
+              <th></th>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        </div>
+    </div>
+    </div>
+  <div>
+    <table class="judtab">
+        <tr>
+            <td colspan="2"><i class="far fa-clock"></i> KEGIATAN MINGGUAN SANTRI PUTRI</td>
+        </tr>
+    </table>   
+      <div class="chat-container">
+        <div class="chat-body" id="chatBody20">
+        <div class="TABEL">
+        <table class="colorful-table" id="dataTable20">
+          <tbody>
+            <tr>
+              <th></th>
+              <th></th>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        </div>
+    </div>
+  </div>
+</div>
+</div>
+<footer>
+  <!-- Tabel 1 -->
+<div class="chat-container">
+  <div class="chat-body" id="chatBody1">
+  <div class="TABEL">
+  <table id="dataTable1">
+    <tbody>
+      <tr>
+        <th></th>
+        <th></th>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  </div>
+  </div>
+  <div class="chat-container1">
+    <div id="popupFormContainer" class="chat-form-container">
+      <form name="chattdata" id="chatForm" class="chat-form" method="post" action="">
+        <textarea name="JUDUL" id="messageInput1" class="chat-input1" placeholder="Nama" required></textarea>
+        <textarea name="IBAROH" id="messageInput2" class="chat-input2" placeholder="Tinggalkan komentar anda di sini..." required></textarea>
+        <input class="kirim" type="submit" value="KIRIM">
+      </form>
+    </div>
+  </div>
+  <div class="footer-content">
+      <img src="https://drive.google.com/thumbnail?id=1hYLwa10ESZbBkdfF5on9HtxNFjx1Uyi1" class="kontak" alt="kontak">
+  </div>
+</footer>
+</body>
+</html>

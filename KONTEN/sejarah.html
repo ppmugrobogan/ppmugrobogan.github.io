@@ -450,7 +450,24 @@
             });
         });
         
-                </script>                                                
+                </script>  
+                <script>
+                    document.getElementById('shareWhatsApp').addEventListener('click', function() {
+                        const url = encodeURIComponent(window.location.href);
+                        window.open(`https://wa.me/?text=${url}`, '_blank');
+                    });
+                
+                    document.getElementById('shareOther').addEventListener('click', function() {
+                        if (navigator.share) {
+                            navigator.share({
+                                title: document.title,
+                                url: window.location.href
+                            }).catch(console.error);
+                        } else {
+                            alert("Browser Anda tidak mendukung fitur berbagi.");
+                        }
+                    });
+                </script>                                              
             </article>
         </section>
     </div>

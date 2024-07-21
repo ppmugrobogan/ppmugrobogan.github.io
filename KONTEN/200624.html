@@ -446,11 +446,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 text: text, // Teks yang akan dibagikan
                 url: url  // URL yang akan dibagikan
             }).catch(console.error); // Tangani error jika ada
-        } else {
-            alert("Browser Anda tidak mendukung fitur berbagi.");
         }
     });
 });
+
 
             document.getElementById('copyUrlButton').addEventListener('click', function() {
                 const url = window.location.href;

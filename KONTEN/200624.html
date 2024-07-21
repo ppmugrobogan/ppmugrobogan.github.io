@@ -431,16 +431,27 @@
 });
 
 
-            document.getElementById('shareOther').addEventListener('click', function() {
-                if (navigator.share) {
-                    navigator.share({
-                        title: document.title,
-                        url: window.location.href
-                    }).catch(console.error);
-                } else {
-                    alert("Browser Anda tidak mendukung fitur berbagi.");
-                }
-            });
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('shareOther').addEventListener('click', function() {
+        const url = window.location.href;  // Ambil URL saat ini
+        const text = `Hello from my App!\nCheck this out: ${url}\nDon't forget to visit again!`;
+
+        // Kirim URL ke MIT App Inventor
+        window.AppInventor.setWebViewString(text);
+
+        // Cek apakah browser mendukung navigator.share
+        if (navigator.share) {
+            navigator.share({
+                title: document.title, // Judul konten
+                text: text, // Teks yang akan dibagikan
+                url: url  // URL yang akan dibagikan
+            }).catch(console.error); // Tangani error jika ada
+        } else {
+            alert("Browser Anda tidak mendukung fitur berbagi.");
+        }
+    });
+});
+
             document.getElementById('copyUrlButton').addEventListener('click', function() {
                 const url = window.location.href;
                 navigator.clipboard.writeText(url).then(() => {

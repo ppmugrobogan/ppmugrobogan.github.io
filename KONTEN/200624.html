@@ -422,7 +422,7 @@
             });
         });
         document.getElementById('shareWhatsApp').addEventListener('click', function() {
-    const url = encodeURIComponent(window.location.href);  // Encode URL
+    const url = window.location.href;  // Gunakan URL asli tanpa encoding
     const text = `Check this out: ${url}`;
     // Kirim URL ke MIT App Inventor
     window.AppInventor.setWebViewString(text);

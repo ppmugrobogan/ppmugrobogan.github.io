@@ -421,10 +421,10 @@
         
         // URL sosial media (sesuaikan dengan URL yang sesuai)
         const socialMediaUrls = {
-            facebook: 'https://www.facebook.com/yourpage',
-            instagram: 'https://www.instagram.com/yourprofile',
-            youtube: 'https://www.youtube.com/yourchannel',
-            tiktok: 'https://www.tiktok.com/@yourusername'
+            facebook: 'https://web.facebook.com/ppmu.grobogan',
+            instagram: 'https://www.instagram.com/ppmu.grobogan',
+            youtube: 'https://www.youtube.com/c/PPMUGrobogan',
+            tiktok: 'https://www.tiktok.com/@ppmu.grobogan'
         };
         
         // Buat teks dengan judul halaman dan URL sosial media
@@ -441,13 +441,22 @@
         window.location.href = `whatsapp://send?text=${encodedText}`;
     });
 });
-
-
-
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('shareOther').addEventListener('click', function() {
-        const url = window.location.href;  // Ambil URL saat ini
-        const text = `Hello from my App!\nCheck this out: ${url}\nDon't forget to visit again!`;
+        // Ambil judul halaman
+        const title = document.title;
+
+        // URL sosial media (sesuaikan dengan URL yang sesuai)
+        const socialMediaUrls = {
+            facebook: 'https://web.facebook.com/ppmu.grobogan',
+            instagram: 'https://www.instagram.com/ppmu.grobogan',
+            youtube: 'https://www.youtube.com/c/PPMUGrobogan',
+            tiktok: 'https://www.tiktok.com/@ppmu.grobogan'
+        };
+
+        // Buat teks dengan judul halaman dan URL sosial media
+        const url = window.location.href;  // Ambil URL halaman saat ini
+        const text = `${title}\n${url}\n__________\nIkuti juga sosial media kami :\nFacebook: ${socialMediaUrls.facebook}\nInstagram: ${socialMediaUrls.instagram}\nYouTube: ${socialMediaUrls.youtube}\nTikTok: ${socialMediaUrls.tiktok}`;
 
         // Kirim URL ke MIT App Inventor
         window.AppInventor.setWebViewString(text);
@@ -462,16 +471,32 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('copyUrlButton').addEventListener('click', function() {
+        // Ambil URL saat ini
+        const url = window.location.href;
 
+        // URL sosial media (sesuaikan dengan URL yang sesuai)
+        const socialMediaUrls = {
+            facebook: 'https://web.facebook.com/ppmu.grobogan',
+            instagram: 'https://www.instagram.com/ppmu.grobogan',
+            youtube: 'https://www.youtube.com/c/PPMUGrobogan',
+            tiktok: 'https://www.tiktok.com/@ppmu.grobogan'
+        };
 
-            document.getElementById('copyUrlButton').addEventListener('click', function() {
-                const url = window.location.href;
-                navigator.clipboard.writeText(url).then(() => {
-                    alert("URL berhasil disalin ke clipboard!");
-                }).catch(err => {
-                    console.error("Gagal menyalin URL: ", err);
-                });
-            });
+        // Buat teks dengan judul halaman dan URL sosial media
+        const title = document.title;
+        const text = `${title}\n${url}\n__________\nIkuti juga sosial media kami :\nFacebook: ${socialMediaUrls.facebook}\nInstagram: ${socialMediaUrls.instagram}\nYouTube: ${socialMediaUrls.youtube}\nTikTok: ${socialMediaUrls.tiktok}`;
+
+        // Salin teks ke clipboard
+        navigator.clipboard.writeText(text).then(() => {
+            console.log("Teks berhasil disalin ke clipboard!");
+        }).catch(err => {
+            console.error("Gagal menyalin teks: ", err);
+        });
+    });
+});
+
         </script> 
     </div>
             </article>

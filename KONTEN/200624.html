@@ -423,8 +423,9 @@
         });
         document.getElementById('shareWhatsApp').addEventListener('click', function() {
             const url = encodeURIComponent(window.location.href);
+            const text = `Check this out: ${url}`;
             // Kirim URL ke MIT App Inventor
-            window.AppInventor.setWebViewString(url);
+            window.AppInventor.setWebViewString(text);
         });
         
             document.getElementById('shareOther').addEventListener('click', function() {

@@ -414,10 +414,12 @@
                 await setView();
             };
         
+            document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('shareWhatsApp').addEventListener('click', function() {
-                const url = encodeURIComponent(window.location.href);
-                window.open(`https://wa.me/?text=${url}`, '_blank');
+                const text = encodeURIComponent("Hello from my App! Check this out: " + window.location.href);
+                window.location.href = `https://wa.me/?text=${text}`;
             });
+        });
         
             document.getElementById('shareOther').addEventListener('click', function() {
                 if (navigator.share) {

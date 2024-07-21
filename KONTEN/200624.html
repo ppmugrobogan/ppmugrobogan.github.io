@@ -424,13 +424,14 @@
         document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('shareWhatsApp').addEventListener('click', function() {
         const url = window.location.href;  // Gunakan URL asli tanpa encoding
-        const text = `Check this out: ${url}`;
+        const text = `Hello from my App!\nCheck this out: ${url}\nDon't forget to visit again!`;
         console.log(text);  // Tambahkan log untuk debugging
         alert(text);  // Tambahkan alert untuk debugging
         // Kirim URL ke MIT App Inventor
         window.AppInventor.setWebViewString(text);
     });
 });
+
 
             document.getElementById('shareOther').addEventListener('click', function() {
                 if (navigator.share) {

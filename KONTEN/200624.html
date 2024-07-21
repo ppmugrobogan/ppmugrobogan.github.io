@@ -421,6 +421,11 @@
                 window.location.href = `whatsapp://send?text=${text}`;
             });
         });
+        document.getElementById('shareWhatsApp').addEventListener('click', function() {
+            const url = encodeURIComponent(window.location.href);
+            // Kirim URL ke MIT App Inventor
+            window.AppInventor.setWebViewString(url);
+        });
         
             document.getElementById('shareOther').addEventListener('click', function() {
                 if (navigator.share) {

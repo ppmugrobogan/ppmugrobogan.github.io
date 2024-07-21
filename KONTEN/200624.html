@@ -417,8 +417,8 @@
             document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('shareWhatsApp').addEventListener('click', function() {
                 const text = encodeURIComponent("Hello from my App! Check this out: " + window.location.href);
-                // Memicu pengalihan ke WhatsApp
-                window.location.href = `https://wa.me/?text=${text}`;
+                // Mengarahkan ke WhatsApp
+                window.location.href = `whatsapp://send?text=${text}`;
             });
         });
         

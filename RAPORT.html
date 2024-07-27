@@ -1255,7 +1255,7 @@ color:#ff1a1a;
           const newCell = newRow.insertCell();
           const isArabicText = isArabic(cellValue);
   
-          if (cellValue.trim() === '-') {
+          if (cellValue.trim() === '') {
             newCell.style.display = 'none';
           } else {
             if (isArabicText) {

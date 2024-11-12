@@ -452,22 +452,42 @@
         
                 </script>  
                 <script>
-                    document.getElementById('shareWhatsApp').addEventListener('click', function() {
-                        const url = encodeURIComponent(window.location.href);
-                        window.open(`https://wa.me/?text=${url}`, '_blank');
-                    });
+                    document.addEventListener('DOMContentLoaded', function() {
+                        // URL media sosial
+                        const socialMediaUrls = {
+                            facebook: 'https://web.facebook.com/ppmu.grobogan',
+                            instagram: 'https://www.instagram.com/ppmu.grobogan',
+                            youtube: 'https://www.youtube.com/c/PPMUGrobogan',
+                            tiktok: 'https://www.tiktok.com/@ppmu.grobogan'
+                        };
                 
-                    document.getElementById('shareOther').addEventListener('click', function() {
-                        if (navigator.share) {
-                            navigator.share({
-                                title: document.title,
-                                url: window.location.href
-                            }).catch(console.error);
-                        } else {
-                            
-                        }
+                        // Ambil judul halaman dan URL saat ini
+                        const title = document.title;
+                        const url = window.location.href;
+                
+                        // Buat teks yang akan dibagikan
+                        const text = `${title}\n${url}\n__________\nIkuti juga sosial media kami :\nFacebook: ${socialMediaUrls.facebook}\nInstagram: ${socialMediaUrls.instagram}\nYouTube: ${socialMediaUrls.youtube}\nTikTok: ${socialMediaUrls.tiktok}`;
+                        const encodedText = encodeURIComponent(text);
+                
+                        // Fungsi untuk membagikan melalui WhatsApp
+                        document.getElementById('shareWhatsApp').addEventListener('click', function() {
+                            window.open(`https://wa.me/?text=${encodedText}`, '_blank');
+                        });
+                
+                        // Fungsi untuk membagikan melalui fitur berbagi bawaan perangkat
+                        document.getElementById('shareOther').addEventListener('click', function() {
+                            if (navigator.share) {
+                                navigator.share({
+                                    title: title,
+                                    text: text,
+                                    url: url
+                                }).catch(console.error);
+                            } else {
+                                alert('Fitur berbagi tidak didukung pada perangkat ini.');
+                            }
+                        });
                     });
-                </script>                                              
+                </script>                                             
             </article>
         </section>
     </div>

@@ -619,7 +619,7 @@ ul li::before {
     align-items: center;
     gap: 5px; 
     background: none;
-    border: 2px solid #3080f7; 
+    border: 2px solid rgb(0, 115, 135); 
     border-radius: 10px; 
     cursor: pointer;
     padding: 10px;

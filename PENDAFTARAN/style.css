@@ -501,17 +501,12 @@ ul li::before {
 #dataTable11 tbody tr:last-child td,
 #dataTable12 tbody tr:last-child td,
 #dataTable13 tbody tr:last-child td,
-#dataTable17 tbody tr:last-child td,
-#dataTable18 tbody tr:last-child td,
-#dataTable19 tbody tr:last-child td,
-#dataTable20 tbody tr:last-child td,
 #dataTable21 tbody tr:last-child td,
 #dataTable22 tbody tr:last-child td,
 #dataTable23 tbody tr:last-child td,
 #dataTable24 tbody tr:last-child td,
 #dataTable25 tbody tr:last-child td,
 #dataTable26 tbody tr:last-child td,
-#dataTable27 tbody tr:last-child td,
 #dataTable28 tbody tr:last-child td,
 #dataTable29 tbody tr:last-child td {
   background-color: rgb(0, 115, 135);
@@ -709,4 +704,45 @@ ul li::before {
     width: 100%;
     height: 1px;
     background-color: #ccc;
+}
+
+.social-logo {
+    height: 25px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    margin-top: 15px;
+}
+.social-links a {
+    color: inherit; /* Menggunakan warna dari parent element */
+    text-decoration: none; /* Menghilangkan garis bawah */
+}
+.social-links a:visited {
+    color: inherit; /* Menggunakan warna dari parent element */
+}
+.social-links a:hover, a:active {
+    text-decoration: underline; /* Menambah garis bawah pada hover dan active */
+}
+         .share-buttons button {
+            background-color: #25D366; /* WhatsApp color */
+        }
+        .share-buttons button:last-child {
+            background-color: #3080f7; /* Default color for share button */
+        }
+        .share-buttons button img {
+            margin-right: 8px;
+            width: 20px;
+            height: 20px;
+        }
+.kontak {
+    height: 200px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+.copyright {
+    display: block;
+    height: 10px;
+    margin-bottom: 30px;
+    margin-top: -25px;
+    margin-left: 150px;
 }

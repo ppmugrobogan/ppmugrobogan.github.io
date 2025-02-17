@@ -31,7 +31,6 @@
   <meta name="msapplication-square310x310logo" content="mstile-310x310.png"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <meta name="google-site-verification" content="btNWOcFtS1cdl712hZvB3J2ffnhTsRjoBINBKScttoI" />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Edu+TAS+Beginner:wght@400..700&display=swap" rel="stylesheet">
@@ -46,6 +45,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
     }
 
     .container {
@@ -56,34 +56,32 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
       background-image: url('GAMBAR/background.jpg');
       background-size: cover;
       background-position: center;
     }
 
     .logo-pp {
-      height: 110px;
+      height: 15vh;
       width: auto;
-      margin-bottom: 20px;
-      margin-top: 0px;
+      margin-bottom: 2vh;
       z-index: 1;
     }
 
     .logo {
-      height: 110px;
+      height: 15vh;
       width: auto;
-      margin-bottom: 20px;
+      margin-bottom: 2vh;
       z-index: 1;
     }
 
     .buttons {
       display: flex;
       flex-direction: column;
-      gap: 10px; /* Adjust gap to ensure proper spacing */
+      gap: 0.5vh;
       align-items: center;
       z-index: 1;
-      margin-top: 40px;
+      margin-top: 4vh;
     }
 
     .button {
@@ -91,12 +89,11 @@
       background: none;
       cursor: pointer;
       transition: transform 0.3s, box-shadow 0.3s;
-      margin-top: 0px;
     }
 
     .button img {
       width: auto;
-      height: 70px; /* Set a fixed height to ensure uniform button size */
+      height: 10vh;
       border-radius: 0px;
     }
 
@@ -107,15 +104,11 @@
 
     .icon-media {
       width: auto;
-      height: 20px; /* Set a fixed height */
-      margin-top: 20px;
+      height: 3vh;
+      margin-top: 4vh;
       z-index: 1;
     }
-    
-    /* Hide link */
-    a[href*="000webhost"] {
-      display: none!important;
-    }
+
   </style>
 </head>
 <body>

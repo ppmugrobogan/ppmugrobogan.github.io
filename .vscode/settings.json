@@ -1,0 +1,6 @@
+{
+    "livePreview.debugOnExternalPreview": true,
+    "livePreview.hostIP": "192.168.40.108",
+    "livePreview.openPreviewTarget": "External Browser",
+    "livePreview.portNumber": 5500
+}

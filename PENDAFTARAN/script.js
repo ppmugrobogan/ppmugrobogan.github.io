@@ -1,16 +1,107 @@
+// MENU
+function toggleMenu(x) {
+    x.classList.toggle("change");
+    var menuItems = document.getElementById('menuItems');
+    menuItems.classList.toggle('show');
+}
+
+// SLIDE
+const imageLinks = [
+    "../GAMBAR/BROSUR/BENDERA.jpg",
+    "../GAMBAR/BROSUR/BMK_PERUMUS.jpg",
+    "../GAMBAR/BROSUR/foto1.JPG",
+    "../GAMBAR/BROSUR/GUSE.jpg",
+    "../GAMBAR/BROSUR/PENGURUS.jpg",
+    "../GAMBAR/BROSUR/PENTASPA.jpg"
+];
+
+function populateSlides() {
+    imageLinks.forEach((link, index) => {
+        const slideWrapperId = `slide-wrapper${index + 1}`;
+        const slideWrapper = document.getElementById(slideWrapperId);
+
+        if (slideWrapper) {
+            const imgTag = document.createElement('img');
+            imgTag.src = link;
+            imgTag.alt = `Slide ${index + 1}`;
+            imgTag.classList.add('slide'); // Mempertahankan class yang sudah ada
+
+            const div = document.createElement('div');
+            div.appendChild(imgTag);
+            slideWrapper.appendChild(div);
+        }
+    });
+}
+
+populateSlides();
+
+let currentSlideIndex = 0;
+let intervalId;
+
+function showNextSlide() {
+    currentSlideIndex++;
+    showSlide(currentSlideIndex);
+}
+
+function showPrevSlide() {
+    currentSlideIndex--;
+    showSlide(currentSlideIndex);
+}
+
+function showSlide(slideIndex) {
+    const slides = document.querySelectorAll('.slide-wrapper');
+    if (slideIndex >= slides.length) {
+        currentSlideIndex = 0;
+    } else if (slideIndex < 0) {
+        currentSlideIndex = slides.length - 1;
+    }
+
+    slides.forEach((slide, index) => {
+        slide.style.display = index === currentSlideIndex ? 'block' : 'none';
+    });
+}
+
+function startAutoSlide() {
+    intervalId = setInterval(() => {
+        showNextSlide();
+    }, 5000);
+}
+
+function stopAutoSlide() {
+    clearInterval(intervalId);
+}
+
+startAutoSlide(); // Mulai otomatis geser
+
+
+// PEMANGGIL DATA
         function isArabic(text) {
           const arabicRegex = /[\u0600-\u06FF]/;
           return arabicRegex.test(text);
         }
       
         function processText(text) {
-          let processedText = text.replace(/\*(.*?)\*/g, '<span class="underline-text">$1</span>');
-          processedText = processedText.replace(/\#(.*?)\#/g, '<span class="center-text">$1</span>');
-          processedText = processedText.replace(/\^(.*?)\^/g, '<span class="quote-text">$1</span>');
-          processedText = processedText.replace(/\$(.*?)\$/g, '<span class="bold">$1</span>');
-      
-          return processedText;
+            let processedText = text.replace(/\*(.*?)\*/g, function(match, p1) {
+                return `<span class="underline-text">${p1}</span>`;
+            });
+        
+            processedText = processedText.replace(/\#(.*?)\#/g, '<span class="center-text">$1</span>');
+            processedText = processedText.replace(/\^(.*?)\^/g, '<span class="quote-text">$1</span>');
+            processedText = processedText.replace(/\$(.*?)\$/g, '<span class="bold">$1</span>');
+        
+            return processedText;
         }
+        
+        // Fungsi untuk memastikan class `underline-text` bekerja di dalam tabel
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll("td .underline-text").forEach(span => {
+                let td = span.closest("td");
+                if (td) {
+                    td.classList.add("underline-text"); // Menambahkan class ke <td>
+                }
+            });
+        });
+        
       
         function toggleRowVisibility(event) {
           const button = event.target;
@@ -99,11 +190,11 @@
           getData(SPREADSHEET_ID6, RANGE6, 'dataTable6');
       
           const SPREADSHEET_ID7 = '1lgnUGg3e-Xav7e26XauDyQ9V5-se09dqvFu4IuQ6xTY';
-          const RANGE7 = 'PERTAHUN_PA';
+          const RANGE7 = 'PSSB';
           getData(SPREADSHEET_ID7, RANGE7, 'dataTable7');
       
           const SPREADSHEET_ID8 = '1lgnUGg3e-Xav7e26XauDyQ9V5-se09dqvFu4IuQ6xTY';
-          const RANGE8 = 'PSSB';
+          const RANGE8 = 'PERTAHUN_PA';
           getData(SPREADSHEET_ID8, RANGE8, 'dataTable8');
       
           const SPREADSHEET_ID9 = '1lgnUGg3e-Xav7e26XauDyQ9V5-se09dqvFu4IuQ6xTY';
@@ -157,9 +248,33 @@
           const SPREADSHEET_ID21 = '1Xc26ggKR2amOU-2tAilSO7Ma7bTfA5XyocMUtFhsR38';
           const RANGE21 = 'SYARAT_PENDAFTARAN';
           getData(SPREADSHEET_ID21, RANGE21, 'dataTable21');
+
+          const SPREADSHEET_ID22 = '1lgnUGg3e-Xav7e26XauDyQ9V5-se09dqvFu4IuQ6xTY';
+          const RANGE22 = 'PERTAHUN_PAB';
+          getData(SPREADSHEET_ID22, RANGE22, 'dataTable22');
+
+          const SPREADSHEET_ID23 = '1lgnUGg3e-Xav7e26XauDyQ9V5-se09dqvFu4IuQ6xTY';
+          const RANGE23 = 'DAFTAR_TAHFIDZ';
+          getData(SPREADSHEET_ID23, RANGE23, 'dataTable23');
+
+          const SPREADSHEET_ID24 = '1lgnUGg3e-Xav7e26XauDyQ9V5-se09dqvFu4IuQ6xTY';
+          const RANGE24 = 'TAHUNAN_PILAMA';
+          getData(SPREADSHEET_ID24, RANGE24, 'dataTable24');
+
+          const SPREADSHEET_ID25 = '1lgnUGg3e-Xav7e26XauDyQ9V5-se09dqvFu4IuQ6xTY';
+          const RANGE25 = 'TAHUNANPI_TAHFIDZ';
+          getData(SPREADSHEET_ID25, RANGE25, 'dataTable25');
+
+          const SPREADSHEET_ID26 = '1Xc26ggKR2amOU-2tAilSO7Ma7bTfA5XyocMUtFhsR38';
+          const RANGE26 = 'PEMBAYARAN_MADINPI';
+          getData(SPREADSHEET_ID26, RANGE26, 'dataTable26');
+
+          const SPREADSHEET_ID27 = '1lgnUGg3e-Xav7e26XauDyQ9V5-se09dqvFu4IuQ6xTY';
+          const RANGE27 = 'MAKAN_PI';
+          getData(SPREADSHEET_ID27, RANGE27, 'dataTable27');
       });  
       
-
+// FORMULIR PENDAFTARAN
       const pengeluaranForm = document.forms['chattdata2'];
       const namaLengkap = document.getElementById('nama_lengkap');
       const nik = document.getElementById('nik');
@@ -176,7 +291,6 @@
   
       const pengeluaranScriptURL = 'https://script.google.com/macros/s/AKfycbwohUVAWNe8lJ4xWQycwz9jER0M8IkcWU_Df5vq72gnNzJTn3BwYBmw6RKp52U2M5kJ/exec';
       
-        // Reset form
         pengeluaranForm.reset();
       
       pengeluaranForm.addEventListener('submit', e => {

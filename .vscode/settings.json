@@ -3,7 +3,6 @@
     "livePreview.hostIP": "192.168.40.108",
     "livePreview.openPreviewTarget": "External Browser",
     "livePreview.portNumber": 5500,
-    "liveServer.settings.useLocalIp": true,
     "liveServer.settings.useWebExt": true,
     "liveServer.settings.host": "192.168.40.108",
     "liveServer.settings.proxy": {
@@ -11,5 +10,6 @@
         "baseUri": "/",
         "proxyUri": "http://192.168.40.108:8080"
     },
-    "liveServer.settings.NoBrowser": false
+    "liveServer.settings.NoBrowser": false,
+    "liveServer.settings.useLocalIp": true
 }

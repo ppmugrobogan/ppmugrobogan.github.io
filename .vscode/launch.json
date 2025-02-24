@@ -10,6 +10,18 @@
             "name": "Launch Chrome against localhost",
             "url": "http://localhost:8080",
             "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "pwa-msedge",
+            "name": "http://192.168.40.108:5500/PENDAFTARAN/home.html",
+            "request": "launch",
+            "url": "http://192.168.40.108:5500/PENDAFTARAN/home.html"
+        },
+        {
+            "type": "pwa-msedge",
+            "name": "http://192.168.40.108:5502/PENDAFTARAN/home.html",
+            "request": "launch",
+            "url": "http://192.168.40.108:5502/PENDAFTARAN/home.html"
         }
     ]
 }

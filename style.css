@@ -1,0 +1,171 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: "Montserrat", sans-serif;
+    overflow-x: hidden;
+    background-color: rgb(233, 233, 233);
+
+}
+
+.logoppmu{
+    width: 200px;
+    margin-right: 170px;
+}
+
+nav ul li{
+    padding: 5px;
+    transition: all 0.2s;
+}
+nav ul li:hover{
+    background-color: rgb(0, 115, 135);
+    padding: 5px;
+    transition: all 0.2s;
+}
+
+nav{
+    display:flex;
+    background-color: rgb(0, 115, 135);
+    justify-content: space-around;
+    color: white;
+    height: 50px;
+    align-items: center;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    width: 50%;
+    justify-content: space-between;
+    background-color: rgb(0, 68, 81);
+    border-radius: 5px;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration: none;
+    font-weight:bold;
+}
+
+nav ul li a:hover{
+    color:white;
+}
+
+/* Hanburger menu */
+.menu-toggle{
+    display: none;
+    flex-direction: column;
+    height: 20px;
+    justify-content: space-between;
+    position: relative;
+}
+
+.menu-toggle input {
+    position: absolute;
+    width: 45px;
+    height: 25px;
+    top: -3px;
+    left: -8px;
+    opacity: 0;
+    cursor:pointer;
+    z-index: 2;
+}
+
+.menu-toggle span{
+    display: block;
+    width: 28px;
+    height: 3px;
+    background-color: aliceblue;
+    border-radius: 3px;
+    transition: all 0.5s;
+}
+
+.menu-toggle span:nth-child(2){
+    transform-origin: 0 0;
+}
+
+.menu-toggle span:nth-child(4){
+    transform-origin: 0 100%;
+}
+
+.menu-toggle input:checked ~ span:nth-child(2){
+    background-color: white;
+    transform: rotate(45deg)translate(-1px, -1px);
+}
+
+.menu-toggle input:checked ~ span:nth-child(4){
+    background-color: white;
+    transform: rotate(-45deg)translate(-1px, 0);;
+}
+
+.menu-toggle input:checked ~ span:nth-child(3){
+    opacity: 0;
+    transform: scale(0);
+}
+
+/* Ukuran tablet */
+@media screen and (max-width:768px){
+    nav ul{
+        width: 55%;
+    }
+    .logoppmu{
+        width: 200px;
+        margin-right: 0px;
+    }
+    nav ul li{
+        padding: 5px;
+        transition: all 0.2s;
+    }
+    nav ul li:hover{
+        background-color: rgb(0, 115, 135);
+        padding: 5px;
+        transition: all 0.2s;
+    }
+}
+
+/* Ukuran HP */
+@media screen and (max-width:576px){
+    .menu-toggle{
+        display: flex;
+    }
+    .logoppmu{
+        width: 200px;
+        margin-right: 15px;
+    }
+    nav ul{
+        position: absolute;
+        right: 0;
+        top: 50px;
+        width: 40%;
+        height: 300px;
+        justify-content: space-evenly;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba(0, 115, 135, 0.326);
+        z-index: -1;
+        transform: translateX(100%);
+        transition: all 0.5s;
+        opacity: 0;
+        border-radius: 0 0 0 5px;
+        padding: 0 0 0 30px;
+    }
+    nav ul.slide{
+        opacity: 1;
+        transform:translateX(0)
+    }
+    nav ul li{
+        width: 100%; /* Pastikan melebar penuh */
+        background-color: rgb(0, 115, 135);
+        padding: 10px;
+        border-radius: 5px;
+    }
+    nav ul li:hover{
+        width: 120%; /* Pastikan melebar penuh */
+        background-color: rgb(0, 68, 81);
+        padding: 10px;
+        transition: all 0.2s;
+        border-radius: 5px;
+    }
+}

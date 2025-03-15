@@ -22,6 +22,18 @@
             "name": "http://192.168.40.108:5502/PENDAFTARAN/home.html",
             "request": "launch",
             "url": "http://192.168.40.108:5502/PENDAFTARAN/home.html"
+        },
+        {
+            "type": "pwa-msedge",
+            "name": "http://192.168.40.108:5502/PENDAFTARAN/JadwalPa.html",
+            "request": "launch",
+            "url": "http://192.168.40.108:5502/PENDAFTARAN/JadwalPa.html"
+        },
+        {
+            "type": "pwa-msedge",
+            "name": "http://192.168.40.108:5502/PENDAFTARAN/PembayaranPi.html",
+            "request": "launch",
+            "url": "http://192.168.40.108:5502/PENDAFTARAN/PembayaranPi.html"
         }
     ]
 }

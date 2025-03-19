@@ -126,9 +126,8 @@ nav ul li a:hover{
 /* konten 1 */
 .container-satu{
     width: 100%;
-    margin: 0px;
     background-color: #fff;
-    padding: 20px;
+    padding: 0px;
     box-sizing: border-box;
     display: flex;
     gap: 30px;
@@ -159,7 +158,6 @@ nav ul li a:hover{
     background: #fff;
     padding: 10px;
     transition: transform 0.3s ease-in-out;
-    flex-direction: row;
     margin-bottom: 10px;
 }
 
@@ -171,10 +169,6 @@ nav ul li a:hover{
     height: 150px;
     background: linear-gradient(to right, #4facfe, #00f2fe);
     border-radius: 5px;
-}
-
-.card1 .isi{
-    padding: 5px;
 }
 
 .card {
@@ -198,7 +192,7 @@ nav ul li a:hover{
     background: linear-gradient(to right, #4facfe, #00f2fe);
     border-radius: 5px;
     flex-shrink: 0;
-    margin-right: 15px;
+    margin-right: 10px;
 }
 
 .content {
@@ -275,6 +269,7 @@ nav ul li a:hover{
     padding: 20px;
     box-sizing: border-box;
     display: flex;
+    gap: 10px;
 }
 
 .konten-satu{
@@ -289,6 +284,83 @@ nav ul li a:hover{
 
 .konten-tiga{
     display: none;
+}
+
+.card1{
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    overflow: hidden;
+    width: 95%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 10px;
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 10px;
+}
+
+.card1:hover {
+    transform: scale(1.05);
+}
+
+.card1 .header{
+    height: 150px;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    border-radius: 5px;
+}
+
+.card {
+    display: flex;
+    width: 95%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 10px;
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 10px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card .header {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    border-radius: 5px;
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.content p {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.content a {
+    color: #4facfe;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.content a:hover {
+    text-decoration: underline;
+}
+
+.stats {
+    justify-content: space-between;
+    font-size: 12px;
+    color: #666;
+    margin-top: 10px;
 }
 }
 
@@ -377,6 +449,84 @@ nav ul li a:hover{
 .konten-tiga{
     display: none;
 }
+
+.card1{
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    overflow: hidden;
+    width: 95%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 10px;
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 10px;
+}
+
+.card1:hover {
+    transform: scale(1.05);
+}
+
+.card1 .header{
+    height: 150px;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    border-radius: 5px;
+}
+
+.card {
+    display: flex;
+    width: 95%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 10px;
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 10px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card .header {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    border-radius: 5px;
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.content p {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.content a {
+    color: #4facfe;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.content a:hover {
+    text-decoration: underline;
+}
+
+.stats {
+    justify-content: space-between;
+    font-size: 12px;
+    color: #666;
+    margin-top: 10px;
+}
+
 }
 
 header {

@@ -8,8 +8,8 @@ menuToggle.addEventListener('click', function(){
 
 // SLIDE
 const imageLinks = [
-    "../GAMBAR/BROSUR/BENDERA.jpg",
-    "../GAMBAR/BROSUR/BMK_PERUMUS.jpg",
+    "../GAMBAR/BROSUR/pendaftaran.jpg",
+    "../GAMBAR/BROSUR/baner2.jpg",
     
 ];
 

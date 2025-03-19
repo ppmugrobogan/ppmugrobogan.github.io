@@ -137,15 +137,18 @@ nav ul li a:hover{
     order: 2;
     flex: 3;
 }
-
+.konten-satu .card .header{
+    display: inline;
+}
 .konten-dua{
     order: 1;
-    flex: 1;
+    flex: 1.7;
 }
 
 .konten-tiga{
     order: 2;
-    flex: 1;
+    flex: 1.7;
+    margin-right: 20px;
 }
 
 .card1{
@@ -166,8 +169,31 @@ nav ul li a:hover{
 }
 
 .card1 .header{
-    height: 150px;
-    background: linear-gradient(to right, #4facfe, #00f2fe);
+    height: 200px;
+    background: #005f73;
+    border-radius: 5px;
+}
+
+.card2{
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    overflow: hidden;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 10px;
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 10px;
+}
+
+.card2:hover {
+    transform: scale(1.05);
+}
+
+.card2 .header{
+    height: 170px;
+    background: #005f73;
     border-radius: 5px;
 }
 
@@ -189,10 +215,11 @@ nav ul li a:hover{
 .card .header {
     width: 80px;
     height: 80px;
-    background: linear-gradient(to right, #4facfe, #00f2fe);
+    background: #005f73;
     border-radius: 5px;
     flex-shrink: 0;
     margin-right: 10px;
+    display: none;
 }
 
 .content {
@@ -203,17 +230,24 @@ nav ul li a:hover{
 }
 
 .content p {
-    font-size: 14px;
+    font-size: 13px;
     color: #333;
     margin-bottom: 10px;
 }
 
 .content a {
-    color: #4facfe;
+    color: #005f73;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 13px;
+
+}
+.content .judul{
+    color: #005f73;
+    font-size: 15px;
     text-decoration: none;
     font-weight: bold;
 }
-
 .content a:hover {
     text-decoration: underline;
 }
@@ -280,6 +314,7 @@ nav ul li a:hover{
 .konten-dua{
     order: 2;
     flex: 1;
+    margin-left: 0%;
 }
 
 .konten-tiga{
@@ -304,8 +339,31 @@ nav ul li a:hover{
 }
 
 .card1 .header{
+    height: 200px;
+    background: #005f73;
+    border-radius: 5px;
+}
+
+.card2{
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    overflow: hidden;
+    width: 95%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 10px;
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 10px;
+}
+
+.card2:hover {
+    transform: scale(1.05);
+}
+
+.card2 .header{
     height: 150px;
-    background: linear-gradient(to right, #4facfe, #00f2fe);
+    background: #005f73;
     border-radius: 5px;
 }
 
@@ -327,7 +385,7 @@ nav ul li a:hover{
 .card .header {
     width: 80px;
     height: 80px;
-    background: linear-gradient(to right, #4facfe, #00f2fe);
+    background: #005f73;
     border-radius: 5px;
     flex-shrink: 0;
     margin-right: 10px;
@@ -347,7 +405,7 @@ nav ul li a:hover{
 }
 
 .content a {
-    color: #4facfe;
+    color: #005f73;
     text-decoration: none;
     font-weight: bold;
 }
@@ -439,11 +497,12 @@ nav ul li a:hover{
 }
 
 .konten-satu{
-    
+    margin-left: -19px;
 }
 
 .konten-dua{
-    
+    margin-left: -19px;
+
 }
 
 .konten-tiga{
@@ -451,10 +510,10 @@ nav ul li a:hover{
 }
 
 .card1{
-    border-radius: 5px;
+    border-radius: 5px ;
     background-color: rgb(255, 255, 255);
     overflow: hidden;
-    width: 95%;
+    width: 100%;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background: #fff;
@@ -469,13 +528,37 @@ nav ul li a:hover{
 
 .card1 .header{
     height: 150px;
-    background: linear-gradient(to right, #4facfe, #00f2fe);
+    background: #005f73;
     border-radius: 5px;
+}
+
+.card2{
+    display: flex;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 10px;
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 10px;
+}
+
+.card2:hover {
+    transform: scale(1.05);
+}
+
+.card2 .header{
+    width: 80px;
+    height: 80px;
+    background: #005f73;
+    border-radius: 5px;
+    flex-shrink: 0;
+    margin-right: 10px;
 }
 
 .card {
     display: flex;
-    width: 95%;
+    width: 100%;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background: #fff;
@@ -491,10 +574,11 @@ nav ul li a:hover{
 .card .header {
     width: 80px;
     height: 80px;
-    background: linear-gradient(to right, #4facfe, #00f2fe);
+    background: #005f73;
     border-radius: 5px;
     flex-shrink: 0;
     margin-right: 10px;
+    display: inline;
 }
 
 .content {
@@ -511,7 +595,7 @@ nav ul li a:hover{
 }
 
 .content a {
-    color: #4facfe;
+    color: #005f73;
     text-decoration: none;
     font-weight: bold;
 }

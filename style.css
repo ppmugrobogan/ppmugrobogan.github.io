@@ -222,6 +222,21 @@ nav ul li a:hover{
     display: none;
 }
 
+.header {
+    width: 100%; /* Lebar penuh sesuai parent */
+    height: 300px; /* Sesuaikan tinggi div */
+    overflow: hidden; /* Agar gambar tidak keluar dari div */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header img {
+    width: 100%; /* Gambar mengisi lebar div */
+    height: 100%; /* Gambar mengisi tinggi div */
+    object-fit: cover; /* Potong gambar agar tetap proporsional */
+}
+
 .content {
     flex-grow: 1;
     display: flex;
@@ -389,6 +404,21 @@ nav ul li a:hover{
     border-radius: 5px;
     flex-shrink: 0;
     margin-right: 10px;
+}
+
+.header {
+    width: 100%; /* Lebar penuh sesuai parent */
+    height: 300px; /* Sesuaikan tinggi div */
+    overflow: hidden; /* Agar gambar tidak keluar dari div */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header img {
+    width: 100%; /* Gambar mengisi lebar div */
+    height: 100%; /* Gambar mengisi tinggi div */
+    object-fit: cover; /* Potong gambar agar tetap proporsional */
 }
 
 .content {
@@ -579,6 +609,21 @@ nav ul li a:hover{
     flex-shrink: 0;
     margin-right: 10px;
     display: inline;
+}
+
+.header {
+    width: 100%; /* Lebar penuh sesuai parent */
+    height: 300px; /* Sesuaikan tinggi div */
+    overflow: hidden; /* Agar gambar tidak keluar dari div */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header img {
+    width: 100%; /* Gambar mengisi lebar div */
+    height: 100%; /* Gambar mengisi tinggi div */
+    object-fit: cover; /* Potong gambar agar tetap proporsional */
 }
 
 .content {

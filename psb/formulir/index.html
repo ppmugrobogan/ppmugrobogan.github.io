@@ -1,89 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta property="og:image" content="https://ppmugrobogan.github.io/GAMBAR/OG.jpg">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="style.css"/>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">  
-    <title>BROSUR MANBA'UL 'ULUM</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta property="og:image" content="">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">  
+  <title>FORMULIR PUTRA</title>
+
 </head>
 <body>
-    <div class="menu">
-        <div class="container" onclick="toggleMenu(this)">
-            <div class="bar1"></div>
-            <div class="bar2"></div>
-            <div class="bar3"></div>
-        </div>
-        <div class="menu-items" id="menuItems">
-            <button class="nav-button" onclick="window.location.href='index.html'">HOME</button>
-            <button class="nav-button" onclick="window.location.href='profil-pondok.html'">PROFIL PONDOK</button>
-            <button class="nav-button" onclick="window.location.href='profil-madrasah.html'">PROFIL MADRASAH</button>
-            <button class="nav-button" onclick="window.location.href='profil-tpq.html'">PROFIL TPQ</button>
-            <button class="nav-button" onclick="window.location.href='kurikulum.html'">KURIKULUM PENDIDIKAN</button>
-            <button class="nav-button" onclick="window.location.href='pendaftaran.html'">PENDAFTARAN SANTRI</button>
-            <button class="nav-button" onclick="location.reload()">REFRESH</button>
-        </div>
-        <div class="head1">
-            <img src="../GAMBAR/BROSUR/LOGO.png" alt="" class="logoppmu">
-        </div>
-    </div>   
-<div id="halaman7" class="page active">
-    <h1 class="judul">FORMULIR PENDAFTARAN
-        <span>SANTRI PUTRA</span>
-    </h1>
-    <form name="chattdata2" id="chatForm" class="chat-form" method="post" action="">
-      <fieldset>
-          <legend>Data Pribadi</legend>
-          <label for="nama_lengkap">Nama Lengkap:</label><br>
-          <input type="text" name="nama_lengkap" id="nama_lengkap" class="chat-input" placeholder="Nama Lengkap"><br>
-  
-          <label for="nik">NIK:</label><br>
-          <input type="text" name="nik" id="nik" class="chat-input" placeholder="NIK"><br>
-  
-          <label for="tempat_tanggal_lahir">Tempat Tanggal Lahir:</label><br>
-          <input type="text" name="tempat_tanggal_lahir" id="tempat_tanggal_lahir" class="chat-input" placeholder="Tempat Tanggal Lahir"><br>
-  
-          <label for="nama_ayah">Nama Ayah:</label><br>
-          <input type="text" name="nama_ayah" id="nama_ayah" class="chat-input" placeholder="Nama Ayah"><br>
-  
-          <label for="nama_ibu">Nama Ibu:</label><br>
-          <input type="text" name="nama_ibu" id="nama_ibu" class="chat-input" placeholder="Nama Ibu"><br>
-      </fieldset>
-  
-      <fieldset>
-          <legend>Data Alamat</legend>
-          <label for="dusun_jalan">Dusun / Jalan:</label><br>
-          <input type="text" name="dusun_jalan" id="dusun_jalan" class="chat-input" placeholder="Dusun / Jalan"><br>
-  
-          <label for="rt">RT:</label><br>
-          <input type="text" name="rt" id="rt" class="chat-input" placeholder="RT"><br>
-  
-          <label for="rw">RW:</label><br>
-          <input type="text" name="rw" id="rw" class="chat-input" placeholder="RW"><br>
-  
-          <label for="desa_kelurahan">Desa / Kelurahan:</label><br>
-          <input type="text" name="desa_kelurahan" id="desa_kelurahan" class="chat-input" placeholder="Desa / Kelurahan"><br>
-  
-          <label for="kecamatan">Kecamatan:</label><br>
-          <input type="text" name="kecamatan" id="kecamatan" class="chat-input" placeholder="Kecamatan"><br>
-  
-          <label for="kabupaten_kota">Kabupaten / Kota:</label><br>
-          <input type="text" name="kabupaten_kota" id="kabupaten_kota" class="chat-input" placeholder="Kabupaten / Kota"><br>
-  
-          <label for="provinsi">Provinsi:</label><br>
-          <input type="text" name="provinsi" id="provinsi" class="chat-input" placeholder="Provinsi"><br>
-      </fieldset>
-      <input type="submit" value="KIRIM">
+    <div class="header">
+        <button class="back-button" onclick="history.back()">←</button>
+        <div class="page-title">Formulir pendaftaran santri putra 2025/2026</div>
+      </div>
+  <form name="formulir-psb" id="formulir" class="psb-form" method="post" action="">
+    <fieldset>
+      <legend>Data Pribadi</legend>
+      <label for="nama_lengkap">Nama Lengkap:</label><br>
+      <input type="text" name="nama_lengkap" id="nama_lengkap" class="psb-input" placeholder="Nama Lengkap"><br>
+
+      <label for="nik">NIK:</label><br>
+      <input type="text" name="nik" id="nik" class="psb-input" placeholder="NIK"><br>
+
+      <label for="tempat_tanggal_lahir">Tempat Tanggal Lahir:</label><br>
+      <input type="text" name="tempat_tanggal_lahir" id="tempat_tanggal_lahir" class="psb-input" placeholder="Tempat Tanggal Lahir"><br>
+
+      <label for="nama_ayah">Nama Ayah:</label><br>
+      <input type="text" name="nama_ayah" id="nama_ayah" class="psb-input" placeholder="Nama Ayah"><br>
+
+      <label for="nama_ibu">Nama Ibu:</label><br>
+      <input type="text" name="nama_ibu" id="nama_ibu" class="psb-input" placeholder="Nama Ibu"><br>
+    </fieldset>
+
+    <fieldset>
+      <legend>Data Alamat</legend>
+      <label for="dusun_jalan">Dusun / Jalan:</label><br>
+      <input type="text" name="dusun_jalan" id="dusun_jalan" class="psb-input" placeholder="Dusun / Jalan"><br>
+
+      <label for="rt">RT:</label><br>
+      <input type="text" name="rt" id="rt" class="psb-input" placeholder="RT"><br>
+
+      <label for="rw">RW:</label><br>
+      <input type="text" name="rw" id="rw" class="psb-input" placeholder="RW"><br>
+
+      <label for="desa_kelurahan">Desa / Kelurahan:</label><br>
+      <input type="text" name="desa_kelurahan" id="desa_kelurahan" class="psb-input" placeholder="Desa / Kelurahan"><br>
+
+      <label for="kecamatan">Kecamatan:</label><br>
+      <input type="text" name="kecamatan" id="kecamatan" class="psb-input" placeholder="Kecamatan"><br>
+
+      <label for="kabupaten_kota">Kabupaten / Kota:</label><br>
+      <input type="text" name="kabupaten_kota" id="kabupaten_kota" class="psb-input" placeholder="Kabupaten / Kota"><br>
+
+      <label for="provinsi">Provinsi:</label><br>
+      <input type="text" name="provinsi" id="provinsi" class="psb-input" placeholder="Provinsi"><br>
+    </fieldset>
+    
+    <input type="submit" value="SELANJUTNYA">
   </form>
-</div>
-<footer>
-    <script src="script.js"></script>
-    <div class="footer-content">
-    <img src="../GAMBAR/kontak.png" class="kontak" alt="kontak">
-    </div>
-    </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

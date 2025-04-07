@@ -20,15 +20,15 @@ form.addEventListener('submit', e => {
     })
     .then(result => {
       if (result.result === 'success') {
-        alert('✅ Data berhasil dikirim! Selanjutnya uploade dokumen anda..');
+        alert('✅ Data berhasil dikirim! Selanjutnya uploade dokumen anda!');
         form.reset(); // Kosongkan form
       } else {
-        alert('⚠️ Data berhasil dikirim! Selanjutnya uploade dokumen anda..:\n' + result.error);
+        alert('⚠️ Data berhasil dikirim! Selanjutnya uploade dokumen anda!' );
       }
     })
     .catch(error => {
       console.error('Error:', error);
-      alert('Data berhasil dikirim! Selanjutnya uploade dokumen anda..\n' + error.message);
+      alert('Data berhasil dikirim! Selanjutnya uploade dokumen anda!\n' );
     })
     .finally(() => {
       // Arahkan ke halaman sukses dalam kondisi apapun

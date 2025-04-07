@@ -1,756 +1,470 @@
-body, html {
-    height: 100%;
+*{
+    margin: 0;
+    padding: 0;
 }
-body {
-font-family: Arial, sans-serif;
-padding: 0px;
-margin: 0%;
-}
-.page {
-display: none;   
-}
-.active {
-display: block;
-}
-.menu-items {
-            visibility: hidden;
-            position: fixed;
-            top: 50px;
-            right: 10px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            width: 150px;
-            z-index: 1;     
-}
-.menu-items.show {
-            visibility: visible;
-            opacity: 1;
-}
-.menu-items button {
-            display: block;
-            width: 100%;
-            padding: 10px 20px;
-            background: none;
-            border: none;
-            text-align: left;
-            cursor: pointer;
-            color: #333;
-            border-bottom: 1px solid #ddd;
-}
-.menu-items button:hover {
-  background-color: #f0f0f0;
-}
-.container {
-    display: block;
-    cursor: pointer;
-    float: right;
-    margin-top: 13PX;
-}
-.bar1, .bar2, .bar3 {
-    width: 20px;
-    height: 3px;
-    background-color: rgb(255, 255, 255);
-    margin: 3px 0;
-    transition: 0.4s;
-    margin-right: 20PX;
-} 
-.change .bar1 {
-    transform: translate(0, 6px) rotate(-45deg);
-}
-.change .bar2 {opacity: 0;}
-.change .bar3 {
-    transform: translate(0, -6px) rotate(45deg);
-}
-body {
-    font-family: "Lato", sans-serif;
-}
-.sidepanel  {
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    height: 100%;
-    top: 0;
-    left: -20PX;
-    background-color: rgb(0, 115, 135);
+
+body{
+    font-family: "Montserrat", sans-serif;
     overflow-x: hidden;
-    transition: 0.3s;
-    padding-top: 10px;
+    background-color: rgb(233, 233, 233);
 }
-.sidepanel a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 13px;
-    color: #ffffff;
-    display: block;
-    transition: 0.3s;
-    outline: none;
-    border: 1px solid #ffffff;
-    border-radius: 30PX;
-}
-.sidepanel a:hover {
-    color: #f1f1f1;
-    font-family: sans-serif;
-    border: none;
-    padding: 10px 20px;
-    font-size: 15px;
-    outline: none;
-    background: transparent;
-    color: #f8f9f9;
-    background: rgb(0, 0, 0);
-    border: 1px solid #ffffff;
-    -webkit-transition-duration: 0,5s; /* for Safari */
-    transition-duration: 0.2s;
-    display: block;     
-}
-.sidepanel .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 20px;
-}
-.openbtn:hover {
-    background-color:rgb(255, 255, 255);
-}
-@media screen and (max-width: 600px) {
-    .search-box {
-        width: 85%;
-    }
-}
-body {
-    font-family: "Lato", sans-serif;
-}
-.openbtn:hover {
-    background-color:#444;
-}
-.search-box {
-    width: 300px;
-    display: flex;
-    margin: 0 auto;
-    position: fixed;
-    right: 50px;
-    margin-top:-22px;
-}
-input[type="text"] {
-    width: 80%;
-    padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px 0 0 4px;
-}
-.search-button {
-    width: 20%;
-    padding: 10px;
-    background-color: #3080f7;
-    color: #fff;
-    border: 1px solid #6657da;
-    border-radius: 0 4px 4px 0;
-    cursor: pointer;
-}
-button:hover {
-    background-color: #1d5bbf;
-}
-@media screen and (max-width: 600px) {
-    .search-box {
-        width: 85%;
-    }
-}
-@font-face {
-  font-family: 'CustomArabicFont';
-  src: url('arabic-font.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal; 
-}
-.head1{
-    background-color: rgb(0, 115, 135);
-    margin-top: 0px;
-    margin-bottom: 0px;
-}
+
 .logoppmu{
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: 5px;
     width: 200px;
+    margin-right: 170px;
 }
-.judul1{
-    color:  rgb(0, 115, 135);
-    font-size: 20px;
-    text-align: center;
-    margin-bottom: -15px;
-    
-}
-.judul{
-    color:  rgb(0, 115, 135);
-    font-size: 20px;
-    text-align: center;
-}
-.paragraf{
-    text-align:justify;
-    text-indent: 30px;
-    font-size: 16px;
-    font-family:sans-serif;
+
+nav ul li{
     padding: 5px;
-    margin-top: 25px;
-    margin-bottom: 15px;
+    transition: all 0.2s;
 }
-.paragraf2{
-    text-align:justify;
-    text-indent: 30px;
-    font-size: 13px;
-    font-family:sans-serif;
-    padding: 5px;
-}
-@media screen and (max-height: 450px) {
-    .overlay a {font-size: 20px}
-    .overlay .closebtn {
-    font-size: 40px;
-    top: 15px;
-    right: px;
-    }
-}
-.slider-container {
-    max-width: 400px;
-    margin: 20px auto;
-    position: relative;
-    margin-top: 0px; 
-}
-.mySlides {
-    display: none;
-}  
-.slide {
-    width: 100%;
-    height: auto;
-}  
-form {
-  max-width: 500px;
-  margin: 0 auto;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-fieldset {
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 5px;
-}
-legend {
-  font-weight: bold;
-  color: #333;
-  padding: 0 5px;
-}
-label {
-  display: block;
-  margin-bottom: 5px;
-}
-input[type="text"],
-input[type="submit"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
-input[type="submit"] {
-  background-color: rgb(0, 115, 135);
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
-input[type="submit"]:hover {
-  background-color: #0056b3;
-}
-@media (max-width: 600px) {
-  form {
-      padding: 10px;
-  }
-  input[type="text"],
-  input[type="submit"] {
-      padding: 8px;
-  }
-}
-.chat-container {
-  width: 90%;
-  height: auto;
-  max-height: 500px;
-  overflow: auto;
-  margin: 20px auto;
-  border: 1px solid #ccc;
-  padding: 10px;
-  background-color: #f0f0f0;
-  border-radius: 5px;
-}
-.chat-container1 {
-  width: 90%;
-  margin: 20px auto;
-  border: 1px solid #ccc;
-  padding: 10px;
-  background-color: #f0f0f0;
-  border-radius: 5px;
-}
-.chat-message:last-child {
-  margin-bottom: 0;
-}
-.chat-input1 {
-  border: 5;
-  outline: none;
-  resize: none;
-  padding: 8px;
-  font-size: 16px;
-  margin-bottom: 5px;
-  width: 100%;
-  height: 38px;
-  box-sizing: border-box;
-  font-family: sans-serif;
-}
-.chat-input2 {
-border: 5;
-outline: none;
-  resize: none;
-  padding: 8px;
-  font-size: 16px;
-  margin-bottom: 10px;
-  width: 100%;
-  height: 150px;
-  box-sizing: border-box;
-  font-family: sans-serif;
-}
-.kirim {
-  background-color: rgb(0, 115, 135);
-  color: #fff;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-}
-.kirim:hover {
-  background-color: red;
-}
-.container {
-display: block;
-cursor: pointer;
-float: right;
-}
-@font-face {
-font-family: 'CustomArabicFont';
-src: url('arabic-font.ttf') format('truetype');
-font-weight: normal;
-font-style: normal;
-}
-.rtl, .indonesia {
-text-align: justify;
-font-size: 20px;
-}
-.rtl {
-direction: rtl;
-font-family: 'CustomArabicFont', 'Traditional Arabic', Tahoma, sans-serif;
-}
-.chat-container {
-  width: 90%;
-  height: auto;
-  max-height: 100%;
-  overflow: auto;
-  margin: 20px auto;
-  border: 1px solid #ccc;
-  padding: 10px;
-  background-color: #f0f0f0;
-  border-radius: 5px;
-}
-.chat-message:last-child {
-  margin-bottom: 0;
-}
-#dataTable1 {
-width: 100%;
-border-collapse: collapse;
-max-width: 100%;
-margin-top: 8px;
-}
-#dataTable1 th,
-#dataTable1 td {
-display: block;
-padding: 5px;
-font-size: 16px;
-border-radius: 5px;
-margin-top: -1px;
-margin-bottom: 5px;
-color: black;
-}
-#dataTable1 th:nth-child(1),
-#dataTable1 td:nth-child(1) {
-width: auto;
-float: center;
-background-color: rgb(0, 115, 135);
-color: #ffffff;
-}
-#dataTable1 th:nth-child(2),
-#dataTable1 td:nth-child(2) {
-width: auto;
-float: center;
-background-color: #ecf8fb;
-color: #000b41;
-}
-#dataTable1 th:nth-child(3),
-#dataTable1 td:nth-child(3) {
-width: auto;
-float: center;
-background-color: #fffff0;
-color: #000b41;
-font-size: 10px;
-}
-#dataTable1 tr:last-child td {
-border-radius: 5px;
-}
-#dataTable1 tr:first-child td {
-border-radius: 5px;
-background-color: black;
-color: #ffffff;
-}
-.TABEL {
-width: 100%;
-margin: 0px;
-overflow: hidden;
-}
-#dataTable1 td.rtl {
-direction: rtl;
-}
-#dataTable1 td.indonesia {
-direction: ltr;
-}
-.underline-text {
-color:#ff1a1a;
-}
-#dataTable1 tbody tr:first-child {
-display: none;
-}
-.highlight {
-background-color: yellow;
-}
-footer{
+
+nav ul li:hover{
     background-color: rgb(0, 115, 135);
-    margin-top: 20px;
-    padding-top: 10px;
-  }
-.kontak {
-    height: 200px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 5px;
+    padding: 5px;
+    transition: all 0.2s;
 }
-ul {
-    list-style-type: none; /* Remove default list style */
-    padding: 0; /* Remove default padding */
-} 
-ul li {
-    position: relative; /* Set position to relative for icon positioning */
-    padding-left: 30px; /* Add padding for icon */
-    margin-bottom: 10px; /* Add margin between list items */
-  }
-ul li::before {
-    content: "\2713"; /* Unicode for the checkmark character */
-    font-size: 20px; /* Set size of the icon */
-    color: rgb(0, 115, 135);
-    position: absolute; /* Position icon absolutely */
-    left: 0; /* Position icon to the left of the list item */
-    top: 50%; /* Align icon vertically */
-    transform: translateY(-50%); /* Adjust vertical alignment */
-}
-#dataTable2 tbody tr:first-child td,
-#dataTable3 tbody tr:first-child td,
-#dataTable4 tbody tr:first-child td,
-#dataTable5 tbody tr:first-child td,
-#dataTable6 tbody tr:first-child td,
-#dataTable7 tbody tr:first-child td,
-#dataTable8 tbody tr:first-child td,
-#dataTable9 tbody tr:first-child td,
-#dataTable10 tbody tr:first-child td,
-#dataTable11 tbody tr:first-child td,
-#dataTable12 tbody tr:first-child td,
-#dataTable13 tbody tr:first-child td,
-#dataTable14 tbody tr:first-child td,
-#dataTable15 tbody tr:first-child td,
-#dataTable16 tbody tr:first-child td,
-#dataTable17 tbody tr:first-child td,
-#dataTable18 tbody tr:first-child td,
-#dataTable19 tbody tr:first-child td,
-#dataTable20 tbody tr:first-child td,
-#dataTable21 tbody tr:first-child td,
-#dataTable22 tbody tr:first-child td,
-#dataTable23 tbody tr:first-child td,
-#dataTable24 tbody tr:first-child td,
-#dataTable25 tbody tr:first-child td,
-#dataTable26 tbody tr:first-child td,
-#dataTable27 tbody tr:first-child td,
-#dataTable28 tbody tr:first-child td,
-#dataTable29 tbody tr:first-child td {
-  background-color: rgb(0, 115, 135);
-  color: #f1f1f1;
-  text-align: center;
-  font-weight: bold;
-}
-#dataTable2 tbody tr:last-child td,
-#dataTable3 tbody tr:last-child td,
-#dataTable4 tbody tr:last-child td,
-#dataTable5 tbody tr:last-child td,
-#dataTable6 tbody tr:last-child td,
-#dataTable7 tbody tr:last-child td,
-#dataTable8 tbody tr:last-child td,
-#dataTable9 tbody tr:last-child td,
-#dataTable11 tbody tr:last-child td,
-#dataTable12 tbody tr:last-child td,
-#dataTable13 tbody tr:last-child td,
-#dataTable21 tbody tr:last-child td,
-#dataTable22 tbody tr:last-child td,
-#dataTable23 tbody tr:last-child td,
-#dataTable24 tbody tr:last-child td,
-#dataTable25 tbody tr:last-child td,
-#dataTable26 tbody tr:last-child td,
-#dataTable28 tbody tr:last-child td,
-#dataTable29 tbody tr:last-child td {
-  background-color: rgb(0, 115, 135);
-  color: #f1f1f1;
-  text-align: center;
-  font-weight: bold;
 
-}
-#dataTable2 th,
-#dataTable2 td,
-#dataTable3 th,
-#dataTable3 td,
-#dataTable4 th,
-#dataTable4 td,
-#dataTable5 th,
-#dataTable5 td,
-#dataTable6 th,
-#dataTable6 td,
-#dataTable7 th,
-#dataTable7 td,
-#dataTable8 th,
-#dataTable8 td,
-#dataTable9 th,
-#dataTable9 td,
-#dataTable10 th,
-#dataTable10 td,
-#dataTable11 th,
-#dataTable11 td,
-#dataTable12 th,
-#dataTable12 td,
-#dataTable13 th,
-#dataTable13 td,
-#dataTable14 th,
-#dataTable14 td,
-#dataTable15 th,
-#dataTable15 td,
-#dataTable16 th,
-#dataTable16 td,
-#dataTable17 th,
-#dataTable17 td,
-#dataTable18 th,
-#dataTable18 td,
-#dataTable19 th,
-#dataTable19 td,
-#dataTable20 th,
-#dataTable20 td,
-#dataTable21 th,
-#dataTable21 td,
-#dataTable22 th,
-#dataTable22 td,
-#dataTable23 th,
-#dataTable23 td,
-#dataTable24 th,
-#dataTable24 td,
-#dataTable25 th,
-#dataTable25 td,
-#dataTable26 th,
-#dataTable26 td,
-#dataTable27 th,
-#dataTable27 td,
-#dataTable28 th,
-#dataTable28 td,
-#dataTable29 th,
-#dataTable29 td
- {
-    font-size: 10PX;
-    overflow: auto;
-}
-.colorful-table {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 10px;
-    border-collapse: collapse;
-    border: 2px solid  rgb(0, 115, 135);
-    background-color: #fff;
-    box-shadow: 0 5px 5px black;
-    overflow: auto;
-}
-.colorful-table th, .colorful-table td {
-    border: 1px solid  rgb(0, 115, 135);
-    padding: 8px;
-    text-align: center;
-}
-.colorful-table th {
-    background-color:  rgb(0, 115, 135);
-    color: #fff;
-    border-bottom: 2px solid rgb(0, 115, 135); 
-}
-.colorful-table td {
-    border-bottom: 1px solid  rgb(0, 115, 135);
-    text-align: left;
-}
-.colorful-table tr:last-child td {
-    border-bottom: none; 
-}
-.menuikon {
+nav{
     display:flex;
-    flex-wrap:wrap-reverse;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-    position: relative; 
-}
-.menuikon button {
-    display: flex;
-    width: 150px;
-    height: 100px;
-    flex-direction: column;
+    background-color: rgb(0, 115, 135);
+    justify-content: space-around;
+    color: white;
+    height: 50px;
     align-items: center;
-    gap: 5px; 
-    background: none;
-    border: 2px solid rgb(0, 115, 135); 
-    border-radius: 10px; 
-    cursor: pointer;
-    padding: 10px;
-    transition: transform 0.3s, box-shadow 0.3s; 
-    position: relative; 
 }
-.menuikon button:hover {
-    transform: scale(1.1); 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
-}
-.menuikon button img {
-    width: 50px; 
-    height: 50px; 
-}
-.menuikon button span {
-    font-size: 12px; 
-    text-align: center;
-    max-width: 70px; 
-}
-.menuikon2 {
+
+nav ul{
     display:flex;
-    flex-wrap:wrap-reverse;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
+    list-style:none;
+    width: 50%;
+    justify-content: space-between;
+    background-color: rgb(0, 68, 81);
+    border-radius: 5px;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration: none;
+    font-weight:bold;
+    font-size: 13px;
+}
+
+nav ul li a:hover{
+    color:white;
+}
+
+/* Hanburger menu */
+.menu-toggle{
+    display: none;
+    flex-direction: column;
+    height: 20px;
+    justify-content: space-between;
     position: relative;
 }
-.menuikon2 button {
-    display: flex;
-    width: 100px;
-    height: 100px;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px; 
-    background: none;
-    border: 3px solid rgb(0, 115, 135);
-    border-radius: 10px;
-    cursor: pointer;
-    padding: 10px;
-    transition: transform 0.3s, box-shadow 0.3s; 
-    position: relative; 
-}
-.menuikon2 button:hover {
-    transform: scale(1.1); 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
-}
-.menuikon2 button img {
-    width: 50px; 
-    height: 50px; 
-}
-.menuikon2 button span {
-    font-size: 12px; 
-    text-align: center;
-    max-width: 70px;
-}
-.judtab {
-    width:90%;
-    margin-left: auto;
-    margin-right: auto;
-    border-collapse: collapse;
-    border: none;
-    margin-bottom: 0px;
-    font-style: bold;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color:rgb(0, 115, 135);
-    margin-bottom: 2px;
-}
-.judtab td {
-    padding: 0px;
-    text-align: left;
-    position: relative;
-}
-.judtab td i {
-    margin-right: 5px;
-    color: rgb(0, 115, 135);
-}
-.judtab td:before {
-    content: '';
+
+.menu-toggle input {
     position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 1px;
-    background-color: #ccc;
+    width: 45px;
+    height: 25px;
+    top: -3px;
+    left: -8px;
+    opacity: 0;
+    cursor:pointer;
+    z-index: 2;
 }
 
-.social-logo {
-    height: 25px;
-    margin-left: 5px;
-    margin-bottom: 5px;
-    margin-top: 15px;
-}
-.social-links a {
-    color: inherit; /* Menggunakan warna dari parent element */
-    text-decoration: none; /* Menghilangkan garis bawah */
-}
-.social-links a:visited {
-    color: inherit; /* Menggunakan warna dari parent element */
-}
-.social-links a:hover, a:active {
-    text-decoration: underline; /* Menambah garis bawah pada hover dan active */
-}
-         .share-buttons button {
-            background-color: #25D366; /* WhatsApp color */
-        }
-        .share-buttons button:last-child {
-            background-color: #3080f7; /* Default color for share button */
-        }
-        .share-buttons button img {
-            margin-right: 8px;
-            width: 20px;
-            height: 20px;
-        }
-.kontak {
-    height: 200px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 5px;
-}
-.copyright {
+.menu-toggle span{
     display: block;
-    height: 10px;
-    margin-bottom: 30px;
-    margin-top: -25px;
-    margin-left: 150px;
+    width: 25px;
+    height: 4px;
+    background-color: aliceblue;
+    border-radius: 0px;
+    transition: all 0.5s;
+}
+
+.menu-toggle span:nth-child(2){
+    transform-origin: 0 0;
+}
+
+.menu-toggle span:nth-child(4){
+    transform-origin: 0 100%;
+}
+
+.menu-toggle input:checked ~ span:nth-child(2){
+    background-color: white;
+    transform: rotate(45deg)translate(-0.5px, -0.5px);
+}
+
+.menu-toggle input:checked ~ span:nth-child(4){
+    background-color: white;
+    transform: rotate(-45deg)translate(-0.5px, 0);;
+}
+
+.menu-toggle input:checked ~ span:nth-child(3){
+    opacity: 0;
+    transform: scale(0);
+}
+
+.slider-container {
+    width: 100%;
+    overflow: hidden; /* Supaya gambar tidak keluar layar */
+    position: relative;
+    display: block;
+}
+
+.slider {
+    display: flex; /* Menyusun gambar dalam satu baris horizontal */
+    transition: transform 1s ease-in-out; /* Efek geser halus */
+}
+
+.slide {
+    width: 100%; /* Setiap gambar menyesuaikan lebar container */
+    flex-shrink: 0; /* Agar gambar tidak mengecil */
+}
+
+/* konten 1 */
+.section-header {
+    display: table;
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    white-space: nowrap;
+}
+
+.title {
+    display: table-cell;
+    vertical-align: middle;
+    white-space: nowrap;
+   
+}
+
+.separator {
+    display: table-cell;
+    vertical-align: middle;
+    border-bottom: 2px solid #005f73;
+    width: 100%;
+}
+
+.lihat-semua {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 16px;
+    color: #005f73;
+    text-decoration: none;
+    padding-left: 5px;
+    white-space: nowrap;
+}
+
+.lihat-semua:hover {
+    text-decoration: underline;
+}
+ /* konten 1 */
+ .container-satu{
+    width: 100%;
+    margin: 0px;
+    background-color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+    display: block;
+}
+
+.button-container {
+    display: grid;
+    gap: 50px;
+    justify-content: center;
+    grid-template-columns: repeat(3, auto); /* Default untuk mobile */
+}
+button {
+    all: unset;
+    cursor: pointer;
+}
+p{
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(0, 115, 135);
+}
+.fitur {
+    width: 170px;
+    height: 190px;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column; /* Atur layout ke atas-bawah */
+    justify-content: center; /* Tengah vertikal */
+    text-align: center;
+}
+.fitur img{
+    width: 80%;
+}
+/* konten 2 */
+.container-dua{
+    width: 100%;
+    margin: 0px;
+    background-color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+    display: block;
+}
+.img-container {
+    display: grid;
+    gap: 10px;
+    justify-content: center;
+    grid-template-columns: repeat(1, auto); /* Default untuk mobile */
 }
 .prosedur{
-    width: 90%;
-    margin-top: 30px;
+    width: 700px;
+}
+/* Ukuran tablet */
+@media screen and (max-width:768px){
+    nav ul{
+        width: 55%;
+    }
+    .logoppmu{
+        width: 200px;
+        margin-right: 0px;
+    }
+    nav ul li{
+        padding: 5px;
+        transition: all 0.2s;
+    }
+    nav ul li:hover{
+        background-color: rgb(0, 115, 135);
+        padding: 5px;
+        transition: all 0.2s;
+    }
     
+    .slider-container {
+        width: 100%;
+        overflow: hidden; /* Supaya gambar tidak keluar layar */
+        position: relative;
+        display: block;
+    }
+    
+    .slider {
+        display: flex; /* Menyusun gambar dalam satu baris horizontal */
+        transition: transform 1s ease-in-out; /* Efek geser halus */
+    }
+    
+    .slide {
+        width: 100%; /* Setiap gambar menyesuaikan lebar container */
+        flex-shrink: 0; /* Agar gambar tidak mengecil */
+    }
+    
+    /* konten 1 */
+    .container-satu{
+        width: 100%;
+        margin: 0px;
+        background-color: #fff;
+        padding: 20px;
+        box-sizing: border-box;
+        display: block;
+    }
+
+    .button-container {
+        display: grid;
+        gap: 25px;
+        justify-content: center;
+        grid-template-columns: repeat(3, auto); /* Default untuk mobile */
+    }
+    button {
+        all: unset;
+        cursor: pointer;
+    }
+    p{
+        font-size: 14px;
+        font-weight: bold;
+        color: rgb(0, 115, 135);
+    }
+    .fitur {
+        width: 150px;
+        height: 170px;
+        border: none;
+        background-color: rgb(255, 255, 255);
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column; /* Atur layout ke atas-bawah */
+        justify-content: center; /* Tengah vertikal */
+        text-align: center;
+    }
+    .fitur img{
+        width: 80%;
+    }
+    /* konten 2 */
+    .container-dua{
+        width: 100%;
+        margin: 0px;
+        background-color: #fff;
+        padding: 20px;
+        box-sizing: border-box;
+        display: block;
+    }
+    .img-container {
+        display: grid;
+        gap: 10px;
+        justify-content: center;
+        grid-template-columns: repeat(1, auto); /* Default untuk mobile */
+    }
+    .prosedur{
+        width: 500px;
+    }
 }
-.wProsedur{
-    align-items: center;
-}
+
+/* Ukuran HP */
+@media screen and (max-width:576px){
+    .menu-toggle{
+        display: flex;
+    }
+    .logoppmu{
+        width: 200px;
+        margin-right: 130px;
+    }
+    nav ul{
+        position: absolute;
+        right: 0;
+        top: 50px;
+        width: 40%;
+        height: 300px;
+        justify-content: space-evenly;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba(0, 115, 135, 0.758);
+        z-index: -1;
+        transform: translateX(100%);
+        transition: all 0.5s;
+        opacity: 0;
+        border-radius: 0 0 0 5px;
+        padding: 0 0 0 30px;
+        z-index: 10;
+
+    }
+    nav ul.navigasi{
+        opacity: 1;
+        transform:translateX(0)
+        
+    }
+    nav ul li{
+        width: 100%; 
+        background-color: rgb(0, 115, 135);
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 10px;
+    }
+    nav ul li:hover{
+        width: 120%; 
+        background-color: rgb(0, 68, 81);
+        padding: 10px;
+        transition: all 0.2s;
+        border-radius: 5px;
+    }
+        /* STYLE SLIDE */
+        .slider-container {
+            width: 100%;
+            overflow: hidden; /* Supaya gambar tidak keluar layar */
+            position: relative;
+            display: block;
+        }
+        
+        .slider {
+            display: flex; /* Menyusun gambar dalam satu baris horizontal */
+            transition: transform 1s ease-in-out; /* Efek geser halus */
+        }
+        
+        .slide {
+            width: 100%; /* Setiap gambar menyesuaikan lebar container */
+            flex-shrink: 0; /* Agar gambar tidak mengecil */
+        }
+         /* konten 1 */
+        .container-satu{
+            width: 100%;
+            margin: 0px;
+            background-color: #fff;
+            padding: 20px;
+            box-sizing: border-box;
+            display: block;
+        }
+
+        .button-container {
+            display: grid;
+            gap: 10px;
+            justify-content: center;
+            grid-template-columns: repeat(3, auto); /* Default untuk mobile */
+        }
+        button {
+            all: unset;
+            cursor: pointer;
+        }
+        p{
+            font-size: 14px;
+            font-weight: bold;
+            color: rgb(0, 115, 135);
+        }
+        .fitur {
+            width: 100px;
+            height: 120px;
+            border: none;
+            background-color: rgb(255, 255, 255);
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column; /* Atur layout ke atas-bawah */
+            justify-content: center; /* Tengah vertikal */
+            text-align: center;
+        }
+        .fitur img{
+            width: 80%;
+        }
+        /* konten 2 */
+        .container-dua{
+            width: 100%;
+            margin: 0px;
+            background-color: #fff;
+            padding: 20px;
+            box-sizing: border-box;
+            display: block;
+        }
+        .img-container {
+            display: grid;
+            gap: 10px;
+            justify-content: center;
+            grid-template-columns: repeat(1, auto); /* Default untuk mobile */
+        }
+        .prosedur{
+            width: 350px;
+        }
+        }
+        footer{
+            background-color: rgb(0, 115, 135);
+        }
+        .social-logo {
+            height: 25px;
+            margin-left: 5px;
+            margin-bottom: 5px;
+            margin-top: 15px;
+        }
+        .social-links a {
+            color: inherit; /* Menggunakan warna dari parent element */
+            text-decoration: none; /* Menghilangkan garis bawah */
+        }
+        .social-links a:visited {
+            color: inherit; /* Menggunakan warna dari parent element */
+        }
+        .social-links a:hover, a:active {
+            text-decoration: underline; /* Menambah garis bawah pada hover dan active */
+        }
+
+        .kontak {
+            height: 200px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-left: 5px;
+        }
+        .copyright {
+            display: block;
+            height: 10px;
+            margin-bottom: 30px;
+            margin-top: -25px;
+            margin-left: 150px;
+        }

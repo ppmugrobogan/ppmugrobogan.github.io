@@ -20,20 +20,20 @@ form.addEventListener('submit', e => {
     })
     .then(result => {
       if (result.result === 'success') {
-        alert('✅ Data berhasil dikirim! Terima kasih.');
+        alert('✅ Data berhasil dikirim! Selanjutnya uploade dokumen anda..');
         form.reset(); // Kosongkan form
       } else {
-        alert('⚠️ Data berhasil dikirim! Terima kasih.:\n' + result.error);
+        alert('⚠️ Data berhasil dikirim! Selanjutnya uploade dokumen anda..:\n' + result.error);
       }
     })
     .catch(error => {
       console.error('Error:', error);
-      alert('Data berhasil dikirim! Terima kasih..\n' + error.message);
+      alert('Data berhasil dikirim! Selanjutnya uploade dokumen anda..\n' + error.message);
     })
     .finally(() => {
       // Arahkan ke halaman sukses dalam kondisi apapun
       setTimeout(() => {
-        window.location.href = 'sukses.html'; // Ganti jika nama file berbeda
+        window.location.href = 'img.html'; // Ganti jika nama file berbeda
       }, 1000);
     });
 });

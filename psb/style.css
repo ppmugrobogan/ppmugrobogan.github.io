@@ -122,6 +122,23 @@ nav ul li a:hover{
     width: 100%; /* Setiap gambar menyesuaikan lebar container */
     flex-shrink: 0; /* Agar gambar tidak mengecil */
 }
+.judul {
+    background-color: #ffffff;
+    padding: 10px 10px;
+    border-bottom: 2px solid #007387;
+    margin: 2px auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border-radius: 5px 5px 0px 0px;
+}
+
+.judul h1 {
+    font-size: 16px;
+    color: rgb(0, 115, 135);
+    text-align: center;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
 
 /* konten 1 */
 .section-header {
@@ -169,6 +186,7 @@ nav ul li a:hover{
     padding: 20px;
     box-sizing: border-box;
     display: block;
+    border-radius: 0px 0px 5px 5px;
 }
 
 .button-container {
@@ -207,6 +225,7 @@ p{
     background-color: #fff;
     padding: 20px;
     box-sizing: border-box;
+    border-radius: 0px 0px 5px 5px;
     display: block;
 }
 .img-container {
@@ -217,6 +236,48 @@ p{
 }
 .prosedur{
     width: 700px;
+}
+/* konten 3 */
+.container-tiga{
+    width: 100%;
+    margin: 0px;
+    background-color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+    display: block;
+    border-radius: 0px 0px 5px 5px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.info{
+    font-size: 14px;
+    font-weight:200;
+    color: rgb(0, 115, 135);
+}
+.container-empat{
+    width: 100%;
+    margin: 0px;
+    background-color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+    display: block;
+    border-radius: 0px 0px 5px 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+ul {
+    padding: 0px 10px;
+    margin: 0px auto;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    list-style-type: disc;
+    list-style-type: none;
+    padding-left: 0; /* agar tidak ada jarak kosong di kiri */
+      
+}
+
+ul li {
+    color: rgb(0, 115, 135);
 }
 /* Ukuran tablet */
 @media screen and (max-width:768px){
@@ -261,6 +322,7 @@ p{
         background-color: #fff;
         padding: 20px;
         box-sizing: border-box;
+        border-radius: 0px 0px 5px 5px;
         display: block;
     }
 
@@ -300,6 +362,7 @@ p{
         background-color: #fff;
         padding: 20px;
         box-sizing: border-box;
+        border-radius: 0px 0px 5px 5px;
         display: block;
     }
     .img-container {
@@ -310,6 +373,48 @@ p{
     }
     .prosedur{
         width: 500px;
+    }
+    /* konten 3 */
+    .container-tiga{
+        width: 100%;
+        margin: 0px;
+        background-color: #fff;
+        padding: 20px;
+        box-sizing: border-box;
+        display: block;
+        border-radius: 0px 0px 5px 5px;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    .info{
+        font-size: 14px;
+        font-weight:200;
+        color: rgb(0, 115, 135);
+    }
+    .container-empat{
+        width: 100%;
+        margin: 0px;
+        background-color: #fff;
+        padding: 20px;
+        box-sizing: border-box;
+        display: block;
+        border-radius: 0px 0px 5px 5px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    ul {
+        padding: 0px 10px;
+        margin: 0px auto;
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+        line-height: 1.8;
+        list-style-type: disc;
+        list-style-type: none;
+        padding-left: 0; /* agar tidak ada jarak kosong di kiri */
+          
+    }
+    
+    ul li {
+        color: rgb(0, 115, 135);
     }
 }
 
@@ -385,6 +490,8 @@ p{
             padding: 20px;
             box-sizing: border-box;
             display: block;
+            border-radius: 0px 0px 5px 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
         .button-container {
@@ -424,6 +531,8 @@ p{
             padding: 20px;
             box-sizing: border-box;
             display: block;
+            border-radius: 0px 0px 5px 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
         .img-container {
             display: grid;
@@ -434,6 +543,50 @@ p{
         .prosedur{
             width: 350px;
         }
+        /* konten 3 */
+        .container-tiga{
+            width: 100%;
+            margin: 0px;
+            background-color: #fff;
+            padding: 20px;
+            box-sizing: border-box;
+            display: block;
+            border-radius: 0px 0px 5px 5px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        .info{
+            font-size: 14px;
+            font-weight:200;
+            color: rgb(0, 115, 135);
+        }
+        .container-empat{
+            width: 100%;
+            margin: 0px;
+            background-color: #fff;
+            padding: 20px;
+            box-sizing: border-box;
+            display: block;
+            border-radius: 0px 0px 5px 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        ul {
+            padding: 0px 10px;
+            margin: 0px auto;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            line-height: 1.8;
+            list-style-type: disc;
+            list-style-type: none;
+            padding-left: 0; /* agar tidak ada jarak kosong di kiri */
+              
+        }
+        
+        ul li {
+            margin-bottom: 10px;
+            color: rgb(0, 115, 135);
+        }
+        
         }
         footer{
             background-color: rgb(0, 115, 135);

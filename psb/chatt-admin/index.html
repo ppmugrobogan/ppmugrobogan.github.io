@@ -358,20 +358,6 @@
             hideContextMenu();
         }
     </script>
-    <script>
-        function setRealHeight() {
-            const vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--real-vh', `${vh}px`);
-        }
-        window.addEventListener('resize', setRealHeight);
-        setRealHeight();
-    </script>
-    
-    <style>
-        .chat-container {
-            height: calc(var(--real-vh, 1vh) * 100);
-        }
-    </style>
     
 </body>
 </html>

@@ -229,5 +229,177 @@
       <img src="../../GAMBAR/copyright.png" alt="TikTok Logo" class="copyright">
   </a>
     <script src="script.js"></script>
+
+<head>
+    <style>
+        /* Popup Styles */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s;
+        }
+
+        .popup-content {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+        }
+
+        .popup-overlay.show .popup-content {
+            transform: translateY(0);
+        }
+
+        .popup-content h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .popup-content p {
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .popup-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .popup-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            min-width: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-daftar {
+            background: #27ae60;
+            color: white;
+        }
+
+        .btn-daftar:hover {
+            background: #219a52;
+            transform: translateY(-2px);
+        }
+
+        .btn-tidak {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-tidak:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Icon Style */
+        .fa-circle-info {
+            color: #3498db;
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 480px) {
+            .popup-content {
+                padding: 1.5rem;
+            }
+            
+            .popup-btn {
+                width: 100%;
+                padding: 0.8rem;
+            }
+        }
+    </style>
+    <!-- Untuk ikon (opsional) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Konten halaman Anda yang sudah ada -->
+    
+    <!-- Popup HTML -->
+    <div class="popup-overlay" id="popup">
+        <div class="popup-content">
+            <h2>
+                <i class="fas fa-circle-info"></i>
+                PSB 2025
+            </h2>
+            <p>"Pendaftaran Santri Baru Pondok Pesantren Manba'ul 'Ulum 2025 kini telah dibuka! Klik tombol 'Daftar Sekarang' untuk menuju halaman pendaftaran."</p>
+            <div class="popup-buttons">
+                <a href="https://ppmugrobogan.com/psb/" class="popup-btn btn-daftar">
+                    <i class="fas fa-edit"></i>
+                    Daftar Sekarang
+                </a>
+                <button class="popup-btn btn-tidak" onclick="tutupPopup()">
+                    <i class="fas fa-times"></i>
+                    Nanti Saja
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tampilkan popup saat halaman dimuat
+        window.addEventListener('DOMContentLoaded', () => {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'flex';
+            setTimeout(() => popup.classList.add('show'), 10);
+        });
+
+        // Fungsi tutup popup
+        function tutupPopup() {
+            const popup = document.getElementById('popup');
+            popup.classList.remove('show');
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 300);
+        }
+
+        // Tutup saat klik di luar popup
+        document.addEventListener('click', (e) => {
+            if(e.target.closest('.popup-overlay')) {
+                tutupPopup();
+            }
+        });
+
+        // Tutup dengan tombol ESC
+        document.addEventListener('keydown', (e) => {
+            if(e.key === 'Escape') tutupPopup();
+        });
+    </script>
+</body>
+
 </body>
 </html>

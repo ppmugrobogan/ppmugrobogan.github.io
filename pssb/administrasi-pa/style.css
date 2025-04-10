@@ -1,0 +1,191 @@
+body, html {
+    height: 100%;
+}
+body {
+font-family: Arial, sans-serif;
+padding: 0px;
+margin: 0%;
+}
+.judtab {
+    width:90%;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    border: none;
+    margin-bottom: 0px;
+    font-style: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:rgb(0, 115, 135);
+    margin-bottom: 2px;
+}
+.judtab td {
+    padding: 0px;
+    text-align: left;
+    position: relative;
+}
+.judtab td i {
+    margin-right: 5px;
+    color: rgb(0, 115, 135);
+}
+.judtab td:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+}
+.chat-container {
+  width: 90%;
+  height: auto;
+  max-height: 100%;
+  overflow: auto;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
+.TABEL {
+width: 100%;
+margin: 0px;
+overflow: hidden;
+}
+
+#dataTable1 tbody tr:first-child td,
+#dataTable2 tbody tr:first-child td,
+#dataTable3 tbody tr:first-child td,
+#dataTable4 tbody tr:first-child td,
+#dataTable5 tbody tr:first-child td,
+#dataTable6 tbody tr:first-child td,
+#dataTable7 tbody tr:first-child td {
+  background-color: rgb(0, 115, 135);
+  color: #f1f1f1;
+  text-align: center;
+  font-weight: bold;
+}
+#dataTable1 tbody tr:last-child td,
+#dataTable2 tbody tr:last-child td,
+#dataTable3 tbody tr:last-child td,
+#dataTable4 tbody tr:last-child td,
+#dataTable5 tbody tr:last-child td,
+#dataTable6 tbody tr:last-child td {
+  background-color: rgb(0, 115, 135);
+  color: #f1f1f1;
+  text-align: center;
+  font-weight: bold;
+
+}
+#dataTable1 th,
+#dataTable1 td,
+#dataTable2 th,
+#dataTable2 td,
+#dataTable3 th,
+#dataTable3 td,
+#dataTable4 th,
+#dataTable4 td,
+#dataTable5 th,
+#dataTable5 td,
+#dataTable6 th,
+#dataTable6 td,
+#dataTable7 th,
+#dataTable7 td
+ {
+    font-size: 10PX;
+    overflow: auto;
+}
+.colorful-table {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    border-collapse: collapse;
+    border: 2px solid  rgb(0, 115, 135);
+    background-color: #fff;
+    box-shadow: 0 5px 5px black;
+    overflow: auto;
+}
+.colorful-table th, .colorful-table td {
+    border: 1px solid  rgb(0, 115, 135);
+    padding: 8px;
+    text-align: center;
+}
+.colorful-table th {
+    background-color:  rgb(0, 115, 135);
+    color: #fff;
+    border-bottom: 2px solid rgb(0, 115, 135); 
+}
+.colorful-table td {
+    border-bottom: 1px solid  rgb(0, 115, 135);
+    text-align: left;
+}
+.colorful-table tr:last-child td {
+    border-bottom: none; 
+}
+
+footer{
+    background-color: rgb(0, 115, 135);
+}
+.social-logo {
+    height: 25px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    margin-top: 15px;
+}
+.social-links a {
+    color: inherit; /* Menggunakan warna dari parent element */
+    text-decoration: none; /* Menghilangkan garis bawah */
+}
+.social-links a:visited {
+    color: inherit; /* Menggunakan warna dari parent element */
+}
+.social-links a:hover, a:active {
+    text-decoration: underline; /* Menambah garis bawah pada hover dan active */
+}
+
+.kontak {
+    height: 200px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+.copyright {
+    display: block;
+    height: 10px;
+    margin-bottom: 30px;
+    margin-top: -25px;
+    margin-left: 150px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    background-color: rgb(0, 115, 135);
+    color: white;
+    padding: 10px;
+    font-family: sans-serif;
+    margin-bottom: 20px;
+  }
+
+  .back-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    margin-right: 12px;
+    cursor: pointer;
+    
+  }
+
+  .page-title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .back-button:hover {
+    color: rgb(0, 132, 156);
+  }
+  
+  

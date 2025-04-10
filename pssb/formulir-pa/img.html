@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Dokumen Pendaftaran</title>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">  
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .form-container {
+      background-color: white;
+      padding: 40px 30px;
+      width: 100%;
+      max-width: 550px;
+      border-radius: 16px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #007378;
+      margin-bottom: 20px;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .custom-button,
+    .submit-button {
+      flex: 1;
+      padding: 12px 20px;
+      background-color: #007378;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .custom-button:hover,
+    .submit-button:hover {
+      background-color: #005e5f;
+    }
+
+    #fileName {
+      display: block;
+      margin: 10px 0;
+      font-size: 14px;
+      font-style: italic;
+      color: #555;
+      text-align: center;
+    }
+
+    .preview {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+      justify-content: center;
+    }
+
+    .preview img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 2px solid #ddd;
+    }
+
+    p {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #333;
+      padding: 12px;
+      background-color: #f1f1f1;
+      border-left: 4px solid #007378;
+      border-radius: 8px;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    @media (max-width: 480px) {
+      .custom-button,
+      .submit-button {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Upload Dokumen Pendaftaran</h2>
+
+    <input type="file" id="foto" multiple accept="image/png, image/jpeg">
+    
+    <span id="fileName">Belum ada gambar yang dipilih</span>
+    <div class="preview" id="preview"></div>
+
+    <div class="button-group">
+      <button type="button" class="custom-button" onclick="document.getElementById('foto').click()">
+        <i class="fas fa-folder-open"></i> Pilih Gambar
+      </button>
+      <button class="submit-button" onclick="uploadFiles()">
+        <i class="fas fa-paper-plane"></i> Upload
+      </button>
+    </div>
+
+    <p>*Silakan unggah foto mengenakan baju putih dengan kopiah hitam, dokumen Kartu Keluarga, dan KTP wali santri.</p>
+  </div>
+
+  <script>
+    const inputFoto = document.getElementById('foto');
+    const preview = document.getElementById('preview');
+    const fileName = document.getElementById('fileName');
+    const UPLOAD_URL = 'https://script.google.com/macros/s/AKfycbz5H5pBvocn3bIaJQxVqZnkZtCRXV5Lcawk_jFJ_2vFg-aoWW5-xKv5yFvFV0cau8w/exec';
+    const REDIRECT_URL = 'closing.html';
+
+    inputFoto.addEventListener('change', function () {
+      preview.innerHTML = '';
+      const files = [...this.files];
+
+      fileName.textContent = files.length
+        ? files.map(f => f.name).join(', ')
+        : 'Belum ada file yang dipilih';
+
+      files.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = e => {
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          preview.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+      });
+    });
+
+    function uploadFiles() {
+      const files = inputFoto.files;
+      if (!files.length) return;
+
+      const uploadPromises = [...files].map(file => {
+        return new Promise(resolve => {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            const data = e.target.result.split(',')[1];
+            const form = new FormData();
+            form.append('filedata', data);
+            form.append('filename', file.name);
+            form.append('mimetype', file.type);
+
+            fetch(UPLOAD_URL, {
+              method: 'POST',
+              body: form
+            })
+            .then(() => resolve())
+            .catch(() => resolve());
+          };
+          reader.readAsDataURL(file);
+        });
+      });
+
+      Promise.all(uploadPromises).then(() => {
+        window.location.href = REDIRECT_URL;
+      });
+    }
+  </script>
+</body>
+</html>

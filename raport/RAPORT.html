@@ -33,6 +33,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Edu+TAS+Beginner:wght@400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
 
 <style>
     /* Sembunyikan tautan */
@@ -57,8 +58,6 @@ body {
     margin: 0 auto; /* Center the container */
     padding: 20px;
 }
-
-/* Container for each content */
 
 
 /* Container for the search box */
@@ -729,6 +728,18 @@ background-color: #ecf8fb;
 color: #000b41;
 font-size: 12PX;
 }
+#dataTable th:nth-child(166),
+#dataTable td:nth-child(166) {
+    width: 353px;
+    background-color: #ecf8fb;
+    color: #000b41;
+    font-size: 12px;
+
+    /* Tambahan agar efek seperti <pre> */
+      font-family: 'Fira Code', monospace;
+      white-space: pre-wrap; /* agar spasi/tab/newline dipertahankan */
+}
+
 #dataTable th:nth-child(100),
 #dataTable td:nth-child(100),
 #dataTable th:nth-child(102),

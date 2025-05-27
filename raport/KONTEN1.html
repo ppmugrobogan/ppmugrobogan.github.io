@@ -205,13 +205,7 @@ body {
   display: none;
 }
 
-#dataTable1 tr:first-child td,
-#dataTable2 tr:first-child td,
-#dataTable0 tr:first-child td {
-  border-radius: 0px;
-  background-color: black;
-  color: #ffffff;
-}
+
 .TABEL {
   margin: 0px;
   border-collapse: collapse;
@@ -255,11 +249,12 @@ color:#ff1a1a;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-#dataTable1 tbody tr:first-child,
-#dataTable2 tbody tr:first-child,
-#dataTable0 tbody tr:first-child {
+#dataTable1 tr:last-child td,
+#dataTable2 tr:last-child td,
+#dataTable0 tr:last-child td {
   display: none;
 }
+
 .search-box {
     width: 98%;
     display: flex;
@@ -286,70 +281,38 @@ button {
 button:hover {
     background-color: #1a371f;
 }
-.konten {
-    width: auto;
-    font-weight: bold;
-    display: flex;
-    position: relative;
-    margin-top: 45px;
-    margin-bottom: 2px;
-    color: #fff;
-    background-color: #21958b;
-    border-left: 5px solid #00625a;
-    padding: 5px 8px;
-    border-radius: 3px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    font-family: "Josefin Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: weight;
-    font-style: normal;
-    font-size: 20px;
-    z-index: 1000;
-    justify-content: space-between; /* Untuk menempatkan konten di ujung kanan */
-    align-items: center; /* Untuk memastikan konten dan ikon berada di tengah vertikal */
-    text-decoration: none;
-}
-.konten .fa-chevron-right {
-  font-size: 12px;
-}
-.konten span {
-  flex: 1; /* Menggunakan flex untuk mengisi sisa ruang di sebelah kiri */
-}
-.konten .fas {
-  margin-left: 10px; /* Jarak antara teks dan ikon */
-}
-.konten1 {
-  width: auto;
-  font-weight: bold;
+.nav-bar {
+  position: fixed;
+  bottom: 0;
+  z-index: 2000;
+  width: 100%;
+  height: 25px;
+  background-color: #fff;
   display: flex;
-  color: #fff;
-  position: relative;
-  margin-bottom: 2px;
-  background-color: #21958b;
-  border-left: 5px solid #00625a;
-  padding: 5px 8px;
-  border-radius: 3px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  font-family: "Josefin Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: weight;
-  font-style: normal;
-  font-size: 20px;
-  z-index: 1000;
-  justify-content: space-between; /* Untuk menempatkan konten di ujung kanan */
+  justify-content: space-around;
   align-items: center;
-  text-decoration: none;
-  margin-top: 10px;
+  padding: 10px 0;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
-.konten1 .fa-chevron-right {
-  font-size: 12px;
+
+.nav-bar button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
-.konten1 span {
-  flex: 1; /* Menggunakan flex untuk mengisi sisa ruang di sebelah kiri */
+
+.nav-bar button:hover {
+  color: #21958b;
 }
-.konten1 .fas {
-  margin-left: 10px; /* Jarak antara teks dan ikon */
+
+.nav-bar button.active {
+  color: #21958b;
+  font-weight: bold;
 }
+
     </style>
 </head>
     <body> 
@@ -446,9 +409,7 @@ document.querySelector('.search-box').addEventListener('submit', function(event)
     searchTables(); // Memanggil fungsi pencarian
 });
 </script>
-<a href="KONTEN1.html" class="konten">
-  <span>Galeri foto</span>
-</a>   
+<br><br>
 <div id="image-container"></div>
     <!-- Second table -->
     <div class="chat-container">
@@ -465,7 +426,6 @@ document.querySelector('.search-box').addEventListener('submit', function(event)
         </div>
       </div>
     </div>
-
     
     <script>
       function isArabic(text) {
@@ -494,7 +454,7 @@ document.querySelector('.search-box').addEventListener('submit', function(event)
       }
     
       function processDataAndPopulateTable(data, tableId) {
-        const values = data.values;
+        const values = data.values.reverse();
         const tableBody = document.querySelector(`#${tableId} tbody`);
         tableBody.innerHTML = ''; // Clear the table content before populating it
         const imageContainer = document.getElementById('image-container');
@@ -575,6 +535,26 @@ document.querySelector('.search-box').addEventListener('submit', function(event)
       getData(SPREADSHEET_ID_1, RANGE_1, 'dataTable1');
       getData(SPREADSHEET_ID_2, RANGE_2, 'dataTable2');
     </script>
+    <div class="nav-bar">
+      <button id="btn-home" class="active" onclick="navigateTo(0)">
+        <i class="fas fa-image"></i> Galeri
+      </button>
+      <button id="btn-library" onclick="navigateTo(1)">
+        <i class="fas fa-video"></i> Video
+      </button>
+      <button id="btn-dashboard" onclick="navigateTo(2)">
+        <i class="fas fa-th-large"></i> Konten
+      </button>
+      
+    </div>
+    <script>
+    function navigateTo(pageIndex) {
+    const pages = ["kkfapp.html", "pustaka.html", "dashboard.html"];
     
+    if (pageIndex >= 0 && pageIndex < pages.length) {
+        window.location.href = pages[pageIndex];
+    }
+    }
+    </script>
   </body>
   </html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Halaman Kosong</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .empty-message {
+      max-width: 400px;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .empty-message h1 {
+      font-size: 24px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .empty-message p {
+      font-size: 16px;
+      color: #999;
+    }
+
+    .empty-message i {
+      font-size: 50px;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .nav-bar {
+        position: fixed;
+        bottom: 0;
+        z-index: 2000;
+        width: 100%;
+        height: 70px;
+        background-color: #ffffff;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0;
+        box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+        border-top: 1px solid #eee;
+        font-family: 'Segoe UI', sans-serif;
+      }
+      
+      .nav-bar button {
+        background: none;
+        border: none;
+        color: #888;
+        cursor: pointer;
+        font-size: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: all 0.3s ease;
+        flex: 1;
+        padding: 8px 0;
+      }
+      
+      .nav-bar button i {
+        font-size: 20px;
+        margin-bottom: 3px;
+        transition: color 0.3s ease;
+      }
+      
+      .nav-bar button:hover,
+      .nav-bar button.active {
+        color: #21958b;
+      }
+      
+      .nav-bar button.active i {
+        color: #21958b;
+      }
+      
+      .nav-bar button.active {
+        font-weight: 600;
+        position: relative;
+      }
+      
+      .nav-bar button.active::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        height: 3px;
+        width: 100%;
+        background-color: #21958b;
+        border-radius: 2px 2px 0 0;
+      }
+      
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="empty-message">
+    <i class="fas fa-lightbulb"></i>
+    <h1>Halaman masih kosong</h1>
+    <p>Admin masih mencari inspirasi... 🌱</p>
+  </div>
+  <div class="nav-bar">
+    <button id="btn-home"  onclick="navigateTo(0)">
+      <i class="fas fa-image"></i> Galeri
+    </button>
+    <button id="btn-library" onclick="navigateTo(1)">
+      <i class="fas fa-video"></i> Video
+    </button>
+    <button id="btn-dashboard" class="active" onclick="navigateTo(2)">
+      <i class="fas fa-th-large"></i> Konten
+    </button>
+    
+  </div>
+  <script>
+  function navigateTo(pageIndex) {
+  const pages = ["foto.html", "video.html", "konten.html"];
+  
+  if (pageIndex >= 0 && pageIndex < pages.length) {
+      window.location.href = pages[pageIndex];
+  }
+  }
+  </script>
+</body>
+</html>

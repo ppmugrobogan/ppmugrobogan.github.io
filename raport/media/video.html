@@ -594,5 +594,12 @@ document.querySelector('.search-box').addEventListener('submit', function(event)
     }
     }
     </script>
+    <script>
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+          window.location.href = "../SantriTanggung.html";
+        };
+      </script>
+      
   </body>
   </html>

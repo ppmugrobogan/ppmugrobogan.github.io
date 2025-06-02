@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&family=Bebas+Neue&display=swap" rel="stylesheet">   
+    <title>BERANDA</title>
+<style>
+body, html {
+  height: 100%;
+  
+}
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    flex-direction: column; /* Susun elemen secara vertikal */
+    align-items: center; /* Pusatkan elemen secara horizontal */
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat-y;
+    height: 100vh;
+    display: block;
+}
+.container {
+    display: block; /* Atur sebagai flex container */
+}
+
+        .button-container button {
+            background-color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 0px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            justify-content: center;
+            align-items: center;
+            width: 100px; /* Fixed width */
+            height: 90px; /* Fixed height */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+        .button-container button:hover {
+            background-color: #3080f7;
+            color: #fff;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.08);
+            transform: translateY(-3px);
+        }
+        .button-container img {
+            width: 60%; /* Consistent image size */
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        .button-container button:hover img {
+            transform: scale(1.1);
+        }
+        .button-container p {
+            margin: 5px 0 0 0;
+            padding: 5px;
+            background: linear-gradient(45deg, #3080f7, #56ccf2);
+            color: white;
+            font-size: 12px; /* Slightly smaller font size for better fit */
+            text-align: center;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            width: 90px; /* Consistent width */
+            box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.1), inset 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+        .button-container p:hover {
+            background: linear-gradient(45deg, #256bbd, #4a90e2);
+        }
+        .nav-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 25px;
+            background-color: #fff;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px 0;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-bar button {
+            background: none;
+            border: none;
+            font-size: 16px;
+            color: #666;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .nav-bar button:hover {
+            color: #3080f7;
+        }
+
+        .nav-bar button.active {
+            color: #3080f7;
+            font-weight: bold;
+        }
+        
+  
+.container {
+    display: block; /* Atur sebagai flex container */
+
+}
+
+@font-face {
+  font-family: 'CustomArabicFont';
+  src: url('arabic-font.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal; 
+}
+td button{
+    width: 100%;
+    padding: 8px 12px;
+    background: linear-gradient(45deg, #256bbd, #4a90e2);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    text-align: left;
+}
+  
+td button:hover {
+    background-color: #000000; 
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+td button:active {
+    background-color: #164c9c; 
+    transform: translateY(1px);
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+.TABEL {
+  width: 95%;
+  margin: 0px;
+}
+#dataTable1 tbody tr:first-child,
+#dataTable2 tbody tr:first-child,
+#dataTable3 tbody tr:first-child,
+#dataTable4 tbody tr:first-child,
+#dataTable5 tbody tr:first-child,
+#dataTable6 tbody tr:first-child,
+#dataTable7 tbody tr:first-child,
+#dataTable8 tbody tr:first-child,
+#dataTable9 tbody tr:first-child,
+#dataTable10 tbody tr:first-child,
+#dataTable11 tbody tr:first-child,
+#dataTable12 tbody tr:first-child,
+#dataTable13 tbody tr:first-child,
+#dataTable14 tbody tr:first-child,
+#dataTable15 tbody tr:first-child,
+#dataTable16 tbody tr:first-child,
+#dataTable17 tbody tr:first-child,
+#dataTable18 tbody tr:first-child,
+#dataTable19 tbody tr:first-child,
+#dataTable20 tbody tr:first-child,
+#dataTable21 tbody tr:first-child,
+#dataTable22 tbody tr:first-child,
+#dataTable23 tbody tr:first-child,
+#dataTable24 tbody tr:first-child 
+ {
+  display: none; 
+}
+#dataTable1,
+#dataTable2,
+#dataTable3,
+#dataTable4,
+#dataTable5,
+#dataTable6,
+#dataTable7,
+#dataTable8,
+#dataTable9,
+#dataTable10,
+#dataTable11,
+#dataTable12,
+#dataTable13,
+#dataTable14,
+#dataTable15,
+#dataTable16,
+#dataTable17,
+#dataTable18,
+#dataTable19,
+#dataTable20,
+#dataTable21,
+#dataTable22,
+#dataTable23,
+#dataTable24
+ {
+  width: 100%;
+  border-collapse: collapse;
+  max-width: 100%;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+#dataTable1 tr:last-child td, 
+#dataTable2 tr:last-child td, 
+#dataTable3 tr:last-child td, 
+#dataTable4 tr:last-child td, 
+#dataTable5 tr:last-child td, 
+#dataTable6 tr:last-child td, 
+#dataTable7 tr:last-child td, 
+#dataTable8 tr:last-child td, 
+#dataTable9 tr:last-child td, 
+#dataTable10 tr:last-child td, 
+#dataTable11 tr:last-child td, 
+#dataTable12 tr:last-child td,
+#dataTable13 tr:last-child td,
+#dataTable14 tr:last-child td,
+#dataTable15 tr:last-child td,
+#dataTable16 tr:last-child td,
+#dataTable17 tr:last-child td,
+#dataTable18 tr:last-child td,
+#dataTable19 tr:last-child td,
+#dataTable20 tr:last-child td,
+#dataTable21 tr:last-child td,
+#dataTable22 tr:last-child td,
+#dataTable23 tr:last-child td,
+#dataTable24 tr:last-child td 
+ {
+  border-radius: 5px;
+}
+#dataTable1 tr:first-child td, 
+#dataTable2 tr:first-child td, 
+#dataTable3 tr:first-child td, 
+#dataTable4 tr:first-child td, 
+#dataTable5 tr:first-child td, 
+#dataTable6 tr:first-child td, 
+#dataTable7 tr:first-child td, 
+#dataTable8 tr:first-child td, 
+#dataTable9 tr:first-child td, 
+#dataTable10 tr:first-child td, 
+#dataTable11 tr:first-child td, 
+#dataTable12 tr:first-child td,
+#dataTable13 tr:first-child td,
+#dataTable14 tr:first-child td,
+#dataTable15 tr:first-child td,
+#dataTable16 tr:first-child td,
+#dataTable17 tr:first-child td,
+#dataTable18 tr:first-child td,
+#dataTable19 tr:first-child td,
+#dataTable20 tr:first-child td,
+#dataTable21 tr:first-child td,
+#dataTable22 tr:first-child td,
+#dataTable23 tr:first-child td,
+#dataTable24 tr:first-child td
+ {
+  border-radius: 5px;
+  background-color: black;
+  color: #ffffff;
+}
+#dataTable1 th, #dataTable1 td, 
+#dataTable2 th, #dataTable2 td, 
+#dataTable3 th, #dataTable3 td, 
+#dataTable4 th, #dataTable4 td, 
+#dataTable5 th, #dataTable5 td, 
+#dataTable6 th, #dataTable6 td, 
+#dataTable7 th, #dataTable7 td, 
+#dataTable8 th, #dataTable8 td, 
+#dataTable9 th, #dataTable9 td, 
+#dataTable10 th, #dataTable10 td, 
+#dataTable11 th, #dataTable11 td, 
+#dataTable12 th, #dataTable12 td,
+#dataTable13 th, #dataTable13 td,
+#dataTable14 th, #dataTable14 td,
+#dataTable15 th, #dataTable15 td,
+#dataTable16 th, #dataTable16 td,
+#dataTable17 th, #dataTable17 td,
+#dataTable18 th, #dataTable18 td,
+#dataTable19 th, #dataTable19 td,
+#dataTable20 th, #dataTable20 td,
+#dataTable21 th, #dataTable21 td,
+#dataTable22 th, #dataTable22 td,
+#dataTable23 th, #dataTable23 td,
+#dataTable24 th, #dataTable24 td
+ {
+  display: block;
+  width: auto;
+  padding: 2px;
+  font-size: 16px;
+  border-radius: 2px;
+  color: black;
+}
+#dataTable1 th:nth-child(1), #dataTable1 td:nth-child(1), 
+#dataTable2 th:nth-child(1), #dataTable2 td:nth-child(1), 
+#dataTable3 th:nth-child(1), #dataTable3 td:nth-child(1), 
+#dataTable4 th:nth-child(1), #dataTable4 td:nth-child(1), 
+#dataTable5 th:nth-child(1), #dataTable5 td:nth-child(1), 
+#dataTable6 th:nth-child(1), #dataTable6 td:nth-child(1), 
+#dataTable7 th:nth-child(1), #dataTable7 td:nth-child(1), 
+#dataTable8 th:nth-child(1), #dataTable8 td:nth-child(1), 
+#dataTable9 th:nth-child(1), #dataTable9 td:nth-child(1), 
+#dataTable10 th:nth-child(1), #dataTable10 td:nth-child(1), 
+#dataTable11 th:nth-child(1), #dataTable11 td:nth-child(1), 
+#dataTable12 th:nth-child(1), #dataTable12 td:nth-child(1), 
+#dataTable13 th:nth-child(1), #dataTable13 td:nth-child(1), 
+#dataTable14 th:nth-child(1), #dataTable14 td:nth-child(1), 
+#dataTable15 th:nth-child(1), #dataTable15 td:nth-child(1), 
+#dataTable16 th:nth-child(1), #dataTable16 td:nth-child(1), 
+#dataTable17 th:nth-child(1), #dataTable17 td:nth-child(1), 
+#dataTable18 th:nth-child(1), #dataTable18 td:nth-child(1), 
+#dataTable19 th:nth-child(1), #dataTable19 td:nth-child(1), 
+#dataTable20 th:nth-child(1), #dataTable20 td:nth-child(1), 
+#dataTable21 th:nth-child(1), #dataTable21 td:nth-child(1), 
+#dataTable22 th:nth-child(1), #dataTable22 td:nth-child(1), 
+#dataTable23 th:nth-child(1), #dataTable23 td:nth-child(1), 
+#dataTable24 th:nth-child(1), #dataTable24 td:nth-child(1) {
+  width: 100%;
+  float: center;
+  background-color: #ecf8fb;
+  color: #000b41;
+}
+#dataTable1 th:nth-child(2), #dataTable1 td:nth-child(2), 
+#dataTable2 th:nth-child(2), #dataTable2 td:nth-child(2), 
+#dataTable3 th:nth-child(2), #dataTable3 td:nth-child(2), 
+#dataTable4 th:nth-child(2), #dataTable4 td:nth-child(2), 
+#dataTable5 th:nth-child(2), #dataTable5 td:nth-child(2), 
+#dataTable6 th:nth-child(2), #dataTable6 td:nth-child(2), 
+#dataTable7 th:nth-child(2), #dataTable7 td:nth-child(2), 
+#dataTable8 th:nth-child(2), #dataTable8 td:nth-child(2), 
+#dataTable9 th:nth-child(2), #dataTable9 td:nth-child(2), 
+#dataTable10 th:nth-child(2), #dataTable10 td:nth-child(2), 
+#dataTable11 th:nth-child(2), #dataTable11 td:nth-child(2), 
+#dataTable12 th:nth-child(2), #dataTable12 td:nth-child(2),
+#dataTable13 th:nth-child(2), #dataTable13 td:nth-child(2),
+#dataTable14 th:nth-child(2), #dataTable14 td:nth-child(2),
+#dataTable15 th:nth-child(2), #dataTable15 td:nth-child(2),
+#dataTable16 th:nth-child(2), #dataTable16 td:nth-child(2),
+#dataTable17 th:nth-child(2), #dataTable17 td:nth-child(2),
+#dataTable18 th:nth-child(2), #dataTable18 td:nth-child(2),
+#dataTable19 th:nth-child(2), #dataTable19 td:nth-child(2),
+#dataTable20 th:nth-child(2), #dataTable20 td:nth-child(2),
+#dataTable21 th:nth-child(2), #dataTable21 td:nth-child(2),
+#dataTable22 th:nth-child(2), #dataTable22 td:nth-child(2),
+#dataTable23 th:nth-child(2), #dataTable23 td:nth-child(2),
+#dataTable24 th:nth-child(2), #dataTable24 td:nth-child(2) 
+{
+  width: auto;
+  float: center;
+  background-color: #ecf8fb;
+  color: #000b41;
+  padding: 2px;
+}
+#dataTable1 th:nth-child(3), #dataTable1 td:nth-child(3), 
+#dataTable2 th:nth-child(3), #dataTable2 td:nth-child(3), 
+#dataTable3 th:nth-child(3), #dataTable3 td:nth-child(3), 
+#dataTable4 th:nth-child(3), #dataTable4 td:nth-child(3), 
+#dataTable5 th:nth-child(3), #dataTable5 td:nth-child(3), 
+#dataTable6 th:nth-child(3), #dataTable6 td:nth-child(3), 
+#dataTable7 th:nth-child(3), #dataTable7 td:nth-child(3), 
+#dataTable8 th:nth-child(3), #dataTable8 td:nth-child(3), 
+#dataTable9 th:nth-child(3), #dataTable9 td:nth-child(3), 
+#dataTable10 th:nth-child(3), #dataTable10 td:nth-child(3), 
+#dataTable11 th:nth-child(3), #dataTable11 td:nth-child(3), 
+#dataTable12 th:nth-child(3), #dataTable12 td:nth-child(3),
+#dataTable13 th:nth-child(3), #dataTable13 td:nth-child(3),
+#dataTable14 th:nth-child(3), #dataTable14 td:nth-child(3),
+#dataTable15 th:nth-child(3), #dataTable15 td:nth-child(3),
+#dataTable16 th:nth-child(3), #dataTable16 td:nth-child(3),
+#dataTable17 th:nth-child(3), #dataTable17 td:nth-child(3),
+#dataTable18 th:nth-child(3), #dataTable18 td:nth-child(3),
+#dataTable19 th:nth-child(3), #dataTable19 td:nth-child(3),
+#dataTable20 th:nth-child(3), #dataTable20 td:nth-child(3),
+#dataTable21 th:nth-child(3), #dataTable21 td:nth-child(3),
+#dataTable22 th:nth-child(3), #dataTable22 td:nth-child(3),
+#dataTable23 th:nth-child(3), #dataTable23 td:nth-child(3),
+#dataTable24 th:nth-child(3), #dataTable24 td:nth-child(3) 
+ {
+  width: auto;
+  float: center;
+  background-color: #fffff0;
+  color: #000b41;
+}
+#dataTable1 td.rtl, 
+#dataTable2 td.rtl, 
+#dataTable3 td.rtl, 
+#dataTable4 td.rtl, 
+#dataTable5 td.rtl, 
+#dataTable6 td.rtl, 
+#dataTable7 td.rtl, 
+#dataTable8 td.rtl, 
+#dataTable9 td.rtl, 
+#dataTable10 td.rtl, 
+#dataTable11 td.rtl, 
+#dataTable12 td.rtl,
+#dataTable13 td.rtl,
+#dataTable14 td.rtl,
+#dataTable15 td.rtl,
+#dataTable16 td.rtl,
+#dataTable17 td.rtl,
+#dataTable18 td.rtl,
+#dataTable19 td.rtl,
+#dataTable20 td.rtl,
+#dataTable21 td.rtl,
+#dataTable22 td.rtl,
+#dataTable23 td.rtl,
+#dataTable24 td.rtl
+ {
+  direction: rtl;
+}
+#dataTable1 td.indonesia, 
+#dataTable2 td.indonesia, 
+#dataTable3 td.indonesia, 
+#dataTable4 td.indonesia, 
+#dataTable5 td.indonesia, 
+#dataTable6 td.indonesia, 
+#dataTable7 td.indonesia, 
+#dataTable8 td.indonesia, 
+#dataTable9 td.indonesia, 
+#dataTable10 td.indonesia, 
+#dataTable11 td.indonesia, 
+#dataTable12 td.indonesia,
+#dataTable13 td.indonesia,
+#dataTable14 td.indonesia,
+#dataTable15 td.indonesia,
+#dataTable16 td.indonesia,
+#dataTable17 td.indonesia,
+#dataTable18 td.indonesia,
+#dataTable19 td.indonesia,
+#dataTable20 td.indonesia,
+#dataTable21 td.indonesia,
+#dataTable22 td.indonesia,
+#dataTable23 td.indonesia,
+#dataTable24 td.indonesia
+ {
+  direction: ltr;
+}
+.arabic-paragraph {
+  direction: rtl; /* Teks Arab ditulis dari kanan ke kiri */
+  font-family: 'Scheherazade New', 'Traditional Arabic', Tahoma, sans-serif;
+  color: black; /* Sesuaikan warna teks Arab */
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+.latin-paragraph {
+  direction: ltr; /* Teks Latin ditulis dari kiri ke kanan */
+  font-family: 'LatinFont', sans-serif;
+  color: black; /* Sesuaikan warna teks Latin */
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+.underline-text {
+  color: red;
+}
+
+.center-text {
+  text-align: center;
+}
+.quote-text {
+  font-style: italic;
+}
+.bold {
+  font-weight: bold;
+}
+.konten {
+    width: 90%;
+    height: 25px;
+    font-weight: bold;
+    display: flex;
+    position: relative;
+    margin-bottom: 2px;
+    color: #fff;
+    background-color: #21958b;
+    border-left: 5px solid #00625a;
+    padding: 5px 8px;
+    border-radius: 3px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    font-size: 20px;
+    z-index: 1000;
+    justify-content: space-between; /* Untuk menempatkan konten di ujung kanan */
+    align-items: center; /* Untuk memastikan konten dan ikon berada di tengah vertikal */
+    text-decoration: none;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.konten .fa-chevron-right {
+  font-size: 12px;
+}
+.konten span {
+  flex: 1; /* Menggunakan flex untuk mengisi sisa ruang di sebelah kiri */
+}
+.konten .fas {
+  margin-left: 10px; /* Jarak antara teks dan ikon */
+}
+.search-box {
+    width: auto;
+    display: flex;
+    z-index: 10000;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+.nav-bar {
+    position: fixed;
+    bottom: 0;
+    z-index: 2000;
+    width: 100%;
+    height: 70px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid #eee;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .nav-bar button {
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+    flex: 1;
+    padding: 8px 0;
+  }
+  
+  .nav-bar button i {
+    font-size: 20px;
+    margin-bottom: 3px;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-bar button:hover,
+  .nav-bar button.active {
+    color: #21958b;
+  }
+  
+  .nav-bar button.active i {
+    color: #21958b;
+  }
+  
+  .nav-bar button.active {
+    font-weight: 600;
+    position: relative;
+  }
+  
+  .nav-bar button.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background-color: #21958b;
+    border-radius: 2px 2px 0 0;
+  }
+  
+        .tomboG {
+            all: unset;
+            width: 90%;
+            height: 25px;
+            font-weight: bold;
+            display: flex;
+            position: relative;
+            margin-bottom: 2px;
+            color: #fff;
+            background-color: #21958b;
+            border-left: 5px solid rgb(0, 55, 142);
+            padding: 5px 8px;
+            border-radius: 3px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-family: "Josefin Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: bold;
+            font-style: normal;
+            font-size: 20px;
+            z-index: 1000;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .tomboG .fa-chevron-right {
+        font-size: 12px;
+}
+
+.tomboG .fas {
+  margin-left: 10px; /* Jarak antara teks dan ikon */
+}
+.hidden-buttons {
+  display: none;
+}
+</style>
+</head>
+<body>
+<div class="search-container">
+  <form action="#" method="GET" class="search-box">
+    <input type="text" id="searchInput" placeholder="Cari ..." required>
+  </form>
+</div>
+<span id="searchResult"></span>
+<button class="tomboG" id="hideButton1" onclick="toggleTombol('group1')">BAHTSUL MASAIL 1 ALIYAH<i class="fas fa-chevron-right"></i></button>    
+<!-- 1 ALIYAH -->
+<div id="group1" class="hidden-buttons">
+<a class="konten" id="myButton3" >PERDANA <i class="fas fa-chevron-right"></i>
+</a>
+<div class="chat-body" id="chatBody3">
+    <div class="TABEL">
+      <table id="dataTable3" style="display:none;">
+        <tbody>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+<a class="konten" id="myButton4">KEDUA <i class="fas fa-chevron-right"></i>
+</a>
+<div class="chat-body" id="chatBody4">
+    <div class="TABEL">
+      <table id="dataTable4" style="display:none;">
+        <tbody>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+<a class="konten" id="myButton5">PAMUNGKAS <i class="fas fa-chevron-right"></i>
+</a>
+  <div class="chat-body" id="chatBody5">
+    <div class="TABEL">
+      <table id="dataTable5" style="display:none;">
+        <tbody>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- 2 ALIYAH -->
+<button class="tomboG" id="hideButton2" onclick="toggleTombol('group2')">BAHTSUL MASAIL 2 ALIYAH <i class="fas fa-chevron-right"></i></button>
+<div id="group2" class="hidden-buttons">
+<a class="konten" id="myButton6" >PERDANA <i class="fas fa-chevron-right"></i>
+</a>
+  <div class="chat-body" id="chatBody6">
+    <div class="TABEL">
+      <table id="dataTable6" style="display:none;">
+        <tbody>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <a class="konten" id="myButton7">KEDUA <i class="fas fa-chevron-right"></i>
+</a>
+  <div class="chat-body" id="chatBody7">
+    <div class="TABEL">
+      <table id="dataTable7" style="display:none;">
+        <tbody>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+<a class="konten" id="myButton8"> PAMUNGKAS <i class="fas fa-chevron-right"></i>
+</a>
+  <div class="chat-body" id="chatBody8">
+    <div class="TABEL">
+      <table id="dataTable8" style="display:none;">
+        <tbody>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- 3 ALIYAH -->
+<button class="tomboG" id="hideButton3" onclick="toggleTombol('group3')">BAHTSUL MASAIL 3 ALIYAH <i class="fas fa-chevron-right"></i> </button>
+<div id="group3" class="hidden-buttons">
+<a class="konten" id="myButton9" > PERDANA <i class="fas fa-chevron-right"></i>
+</a>
+  <div class="chat-body" id="chatBody9">
+    <div class="TABEL">
+      <table id="dataTable9" style="display:none;">
+        <tbody>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <a class="konten" id="myButton10" >KEDUA <i class="fas fa-chevron-right"></i>
+</a>
+  <div class="chat-body" id="chatBody10">
+    <div class="TABEL">
+      <table id="dataTable10" style="display:none;">
+        <tbody>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <a class="konten" id="myButton11">PAMUNGKAS<i class="fas fa-chevron-right"></i>
+</a>
+  <div class="chat-body" id="chatBody11">
+    <div class="TABEL">
+      <table id="dataTable11" style="display:none;">
+        <tbody>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- HIDDEN GROUB -->
+<script>
+  function toggleTombol(groupId) {
+      let group = document.getElementById(groupId);
+      let isHidden = group.style.display === 'none' || group.style.display === '';
+      group.style.display = isHidden ? 'block' : 'none';
+  }
+</script>
+<a class="konten" id="myButton12">BMP <i class="fas fa-chevron-right"></i>
+</a>
+  <div class="chat-body" id="chatBody12">
+    <div class="TABEL">
+      <table id="dataTable12" style="display:none;">
+        <tbody>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<!-- Lain-lain -->
+<a class="konten" id="myButton13">FMPP <i class="fas fa-chevron-right"></i>
+</a>
+  <div class="chat-body" id="chatBody13">
+    <div class="TABEL">
+      <table id="dataTable13" style="display:none;">
+        <tbody>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<!-- Amalan & Doa-->
+<a class="konten" id="myButton14">BAHTSUL MASAIL UNIT <i class="fas fa-chevron-right"></i>
+</a>
+  <div class="chat-body" id="chatBody14">
+    <div class="TABEL">
+      <table id="dataTable14" style="display:none;">
+        <tbody>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+<script>
+function getData(spreadsheetId, range, tableId) {
+    const API_KEY = 'AIzaSyA8x0yI8zCPUgZktmGNvQVTzhm1fdZ0K74';
+    fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${API_KEY}`)
+      .then(response => response.json())
+      .then(data => processDataAndPopulateTable(data, tableId))
+      .catch(error => console.error('Error fetching data:', error));
+  }
+  // Ambil data untuk tabel kedua
+  const SPREADSHEET_ID2 = '1G2r0wRQD8GTe6Nz0TCbRP07zwFjrUarDzZOR0d_Sk-4';
+  const RANGE2 = 'sheet0';
+  getData(SPREADSHEET_ID2, RANGE2, 'dataTable2');
+  document.addEventListener('DOMContentLoaded', () => {
+  const SPREADSHEET_ID2 = '1ZTQHiiHfh1h_3m4sbGJNX7CyqTzQcZMvAc2tezciEck';
+  const RANGE2 = 'Sheet1';
+  getData(SPREADSHEET_ID2, RANGE2, 'dataTable3');
+  });
+const SPREADSHEET_ID3 = '1X5bs8LbxumLvcwttTeJIJouRPrMbNq7IdyRzYH1rLvc';
+  const RANGE3 = 'Sheet1';
+  getData(SPREADSHEET_ID3, RANGE3, 'dataTable4');
+  ;
+  const SPREADSHEET_ID4 = '1LyRfQBj4zl0YuRqiQRrLf_TmIE7-i9dB73Blc3TJgBc';
+  const RANGE4 = 'Sheet1';
+  getData(SPREADSHEET_ID4, RANGE4, 'dataTable5');
+  ;
+  const SPREADSHEET_ID5 = '1qtlg95KZEblPpHZPpJ21YZF7NSB8L4M5w-1fTi1yKDo';
+  const RANGE5 = 'Sheet1';
+  getData(SPREADSHEET_ID5, RANGE5, 'dataTable6');
+  ;
+  const SPREADSHEET_ID6 = '18y0CJooPiU6G75sNZ0XUilNWnGrf1eyh5M6MBpX1HXk';
+  const RANGE6 = 'Sheet1';
+  getData(SPREADSHEET_ID6, RANGE6, 'dataTable7');
+  ;
+  const SPREADSHEET_ID7 = '1HkCdAAE8OmXxt2LxzwLATHGr275UqGovMDG6bulzfvc';
+  const RANGE7 = 'Sheet1';
+  getData(SPREADSHEET_ID7, RANGE7, 'dataTable8');
+  ;
+  const SPREADSHEET_ID8 = '11uj7H6VMZiHiN2rcKk0paOb5KYFY31xTgyf-5nFKky0';
+  const RANGE8 = 'Sheet1';
+  getData(SPREADSHEET_ID8, RANGE8, 'dataTable9');
+  ;
+  const SPREADSHEET_ID9 = '1zx6MHfZZxeQ2v9ds3THIT5PjbcEBQnuHebo7no_GiIU';
+  const RANGE9 = 'Sheet1';
+  getData(SPREADSHEET_ID9, RANGE9, 'dataTable10');
+  ;
+  const SPREADSHEET_ID10 = '1smwcLRIpgHYzVmxCOkHs33bs0zUAi_XCx0Sm9ZQwIh8';
+  const RANGE10 = 'Sheet1';
+  getData(SPREADSHEET_ID10, RANGE10, 'dataTable11');
+  ;
+  const SPREADSHEET_ID11 = '1DDgabsUuFkQSOcz2DZLTT0ReeDI3EGL2fBQSOKIbKiE';
+  const RANGE11 = 'Sheet1';
+  getData(SPREADSHEET_ID11, RANGE11, 'dataTable12');
+  ;
+  const SPREADSHEET_ID12 = '1mNDYgBAeZHt_6huFa1cucWMo7Ytb5n9F2tzGJsRY34Q';
+  const RANGE12 = 'Sheet1';
+  getData(SPREADSHEET_ID12, RANGE12, 'dataTable13');
+  ;
+  const SPREADSHEET_ID13 = '1d79giKOSnFc4TJOrmog4JumhpM-RW3r3dS0W5NMJwBs';
+  const RANGE13 = 'Sheet1';
+  getData(SPREADSHEET_ID13, RANGE13, 'dataTable14');
+  ;
+  const SPREADSHEET_ID14 = '';
+  const RANGE14 = 'Sheet1';
+  getData(SPREADSHEET_ID14, RANGE14, 'dataTable15');
+  ;
+  function processDataAndPopulateTable(data, tableId) {
+  const values = data.values;
+  const tableBody = document.querySelector(`#${tableId} tbody`);
+  tableBody.innerHTML = ''; // Bersihkan tabel sebelum diisi ulang
+
+  values.forEach(row => {
+    const newRow = tableBody.insertRow(); // Tambahkan baris baru
+    row.forEach((cellValue, index) => {
+      const newCell = newRow.insertCell(); // Tambahkan sel baru
+      const isArabicText = isArabic(cellValue); // Cek apakah teks Arab
+
+      if (cellValue.trim() === '-') {
+        newCell.style.backgroundColor = 'transparent'; // Kosongkan jika "-"
+      } else {
+        // Tentukan kelas berdasarkan apakah teks Arab atau Latin
+        if (isArabicText) {
+          newCell.classList.add('rtl');
+        } else {
+          newCell.classList.add('indonesia');
+        }
+
+        const newText = document.createElement('div');
+        newText.innerHTML = processText(cellValue).replace(/\n/g, '<br>'); // Proses dan tambahkan <br> untuk paragraf
+
+        if (index === 0) {
+          // Untuk kolom pertama, tambahkan tombol untuk ekspansi
+          const button = document.createElement('button');
+          button.textContent = newText.textContent;
+          button.addEventListener('click', toggleRowVisibility);
+          newCell.appendChild(button);
+        } else if (index === 1) {
+          // Untuk kolom kedua, tambahkan tombol Copy
+          newCell.appendChild(newText);
+          newCell.style.display = 'none';  // Menyembunyikan seluruh kolom kedua
+        } else {
+          newCell.appendChild(newText);
+          newCell.style.display = 'none'; // Sembunyikan kolom selain yang pertama
+        }
+      }
+    });
+  });
+}
+function processText(text) {
+  // Mengganti semua jenis baris baru dengan format standar
+  text = text.replace(/\r\n|\r|\n/g, '\n');
+
+  // Pisahkan teks yang mengandung tanda '+' untuk referensi Arab, dengan dukungan baris baru
+  let processedText = text.replace(/\+(.*?)\+/gs, function(match, p1) {
+    return '<span class="arabic-text">' + p1.replace(/\n/g, '<br>') + '</span>';
+  });
+
+  // Pisahkan deskripsi (teks Latin) dan referensi (Arab) berdasarkan dua baris baru berturut-turut untuk paragraf
+  const paragraphs = processedText.split(/\n+/);
+
+  let result = '';
+
+  paragraphs.forEach(paragraph => {
+    if (paragraph.includes('<span class="arabic-text">')) {
+      result += `<div class="arabic-paragraph">${paragraph.trim()}</div>`;
+    } else {
+      result += `<div class="latin-paragraph">${paragraph.trim()}</div>`;
+    }
+  });
+
+  // Tambahkan pemrosesan lainnya untuk format seperti *underline*, #center#, ^quote^, dan $bold$
+  result = result.replace(/\*(.*?)\*/g, '<span class="underline-text">$1</span>');
+  result = result.replace(/\#(.*?)\#/g, '<span class="center-text">$1</span>');
+  result = result.replace(/\^(.*?)\^/g, '<span class="quote-text">$1</span>');
+  result = result.replace(/\$(.*?)\$/g, '<span class="bold">$1</span>');
+
+  return result;
+}
+
+function toggleRowVisibility(event) {
+  const button = event.target;
+  const row = button.closest('tr');
+  const contentRow = row.nextElementSibling;
+
+  if (contentRow && contentRow.classList.contains('expanded-row')) {
+    contentRow.remove(); // Hapus baris ekspansi jika sudah ada
+  } else {
+    const newRow = row.parentNode.insertRow(row.rowIndex + 1); // Tambah baris baru
+    newRow.classList.add('expanded-row');
+
+    const newCell = newRow.insertCell(0);
+    newCell.colSpan = row.cells.length; // Menyatukan sel
+
+    const contentDiv = document.createElement('div');
+    newRow.appendChild(newCell);
+    newCell.appendChild(contentDiv);
+
+    row.querySelectorAll('td').forEach((cell, index) => {
+      if (index !== 0) {
+        const cellContent = cell.cloneNode(true);
+        cellContent.style.display = 'block';
+        contentDiv.appendChild(cellContent);
+      }
+    });
+  }
+}
+</script>
+<script>
+  function isArabic(text) {
+const arabicRegex = /[\u0600-\u06FF]/;
+return arabicRegex.test(text);
+}
+
+function toggleRowVisibility(event) {
+const button = event.target;
+const row = button.closest('tr');
+const contentRow = row.nextElementSibling;
+
+if (contentRow && contentRow.classList.contains('expanded-row')) {
+  contentRow.remove(); 
+} else {
+  const newRow = row.parentNode.insertRow(row.rowIndex + 1);
+  newRow.classList.add('expanded-row');
+
+  const newCell = newRow.insertCell(0);
+  newCell.colSpan = row.cells.length;
+
+  const contentDiv = document.createElement('div');
+  newRow.appendChild(newCell);
+  newCell.appendChild(contentDiv);
+
+  row.querySelectorAll('td').forEach((cell, index) => {
+    if (index !== 0) {
+      const cellContent = cell.cloneNode(true);
+      cellContent.style.display = 'block';
+      contentDiv.appendChild(cellContent);
+    }
+  });
+}
+}
+
+document.querySelectorAll('.search-box').forEach(searchBox => {
+searchBox.addEventListener('submit', function(event) {
+  event.preventDefault(); 
+  const input = searchBox.querySelector('input[type="text"]');
+  const searchText = input.value.trim().toUpperCase(); 
+
+  const tableId = searchBox.id.replace('searchBox', 'dataTable');
+  const table = document.getElementById(tableId);
+  const buttons = table.querySelectorAll('button');
+
+  buttons.forEach(button => {
+    const buttonText = button.textContent.trim().toUpperCase(); 
+    const row = button.closest('tr');
+
+    if (searchText === '') {
+      row.style.display = ''; 
+    } else if (buttonText.includes(searchText)) { 
+      row.style.display = ''; 
+    } else {
+      row.style.display = 'none'; 
+    }
+  });
+});
+});
+
+document.querySelectorAll('.search-box input[type="text"]').forEach(input => {
+input.addEventListener('input', function() {
+  const searchText = input.value.trim().toUpperCase(); 
+
+  const tableId = input.closest('.search-box').id.replace('searchBox', 'dataTable');
+  const table = document.getElementById(tableId);
+  const buttons = table.querySelectorAll('button');
+
+  buttons.forEach(button => {
+    const buttonText = button.textContent.trim().toUpperCase(); 
+    const row = button.closest('tr');
+
+    if (searchText === '') {
+      row.style.display = ''; 
+    } else if (buttonText.includes(searchText)) { 
+      row.style.display = ''; 
+    } else {
+      row.style.display = 'none'; 
+    }
+  });
+});
+});
+</script>
+<!-- UNTUK MENAMPILKAN REFRENSI DARI GOOGLE SHEET -->
+<script>
+// Ambil semua tombol dengan class "konten"
+const buttons = document.querySelectorAll('.konten');
+
+// Tambahkan event listener untuk setiap tombol
+buttons.forEach(button => {
+    button.addEventListener('click', function () {
+        // Ambil ID tombol yang diklik
+        const buttonId = this.id;
+
+        // Tentukan ID tabel yang terkait berdasarkan ID tombol
+        const tableId = buttonId.replace('myButton', 'dataTable'); // Ganti 'myButton' dengan 'dataTable'
+        const dataTable = document.getElementById(tableId);
+
+        // Toggle display tabel
+        if (dataTable.style.display === 'none' || dataTable.style.display === '') {
+            dataTable.style.display = 'block'; // Tampilkan tabel
+        } else {
+            dataTable.style.display = 'none'; // Sembunyikan tabel
+        }
+    });
+});
+</script>
+<!-- UNTUK MENAMPILKAN REFRENSI DARI GOOGLE SHEET -->
+<script>
+  function searchTables() {
+    const input = document.getElementById('searchInput');
+    const filter = input.value.toUpperCase();
+
+    // Fungsi untuk mencari hanya di kolom pertama yang berisi tombol
+    function searchInTable(tableId) {
+      const table = document.getElementById(tableId);
+      const rows = table.getElementsByTagName('tr');
+      let searchResultFound = false;
+
+      // Mulai pencarian dari baris pertama (melewatkan header)
+      for (let i = 1; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName('td');
+        const cell = cells[0]; // Hanya memeriksa kolom pertama
+
+        if (cell) {
+          const button = cell.querySelector('button'); // Ambil tombol dalam kolom pertama
+          if (button) {
+            const buttonText = button.textContent || button.innerText;
+            const buttonTextUpper = buttonText.toUpperCase();
+            const index = buttonTextUpper.indexOf(filter);
+
+            if (index > -1) {
+              searchResultFound = true;
+
+              // Highlight teks yang cocok pada tombol
+              const matchedText = buttonText.substring(index, index + filter.length);
+              const highlightedText = `<span class="highlight">${matchedText}</span>`;
+              const finalText = buttonText.substring(0, index) + highlightedText + buttonText.substring(index + filter.length);
+
+              button.innerHTML = finalText; // Tambahkan highlight pada tombol
+              rows[i].style.display = ''; // Tampilkan baris
+            } else {
+              rows[i].style.display = 'none'; // Sembunyikan baris jika tidak cocok
+            }
+          }
+        }
+      }
+
+      // Atur tampilan tabel berdasarkan hasil pencarian
+      table.style.display = searchResultFound ? 'block' : 'none';
+
+      return searchResultFound;
+    }
+
+    // Cari di beberapa tabel yang diinginkan
+    const tables = ['dataTable3', 'dataTable4', 'dataTable5']; // Daftar tabel yang akan dicari
+    let searchResultFound = false;
+
+    tables.forEach(function (tableId) {
+      if (searchInTable(tableId)) {
+        searchResultFound = true;
+      }
+    });
+
+    // Tampilkan pesan jika tidak ada hasil ditemukan
+    const searchResult = document.getElementById('searchResult');
+    if (searchResult) {
+      searchResult.className = 'no-results'; // Tambahkan class untuk styling
+      if (!searchResultFound) {
+        searchResult.innerHTML = 'Tidak ada hasil ditemukan.';
+        searchResult.style.display = 'block';
+      } else {
+        searchResult.innerHTML = '';
+        searchResult.style.display = 'none';
+      }
+    }
+
+    // Tampilkan semua baris jika kolom pencarian kosong dan sembunyikan tabel
+    if (filter === '') {
+      tables.forEach(function (tableId) {
+        const table = document.getElementById(tableId);
+        const rows = table.getElementsByTagName('tr');
+
+        table.style.display = 'none'; // Sembunyikan tabel
+        for (let i = 0; i < rows.length; i++) {
+          rows[i].style.display = ''; // Reset tampilan semua baris
+        }
+      });
+
+      // Reset pesan hasil pencarian
+      if (searchResult) {
+        searchResult.innerHTML = '';
+        searchResult.style.display = 'none';
+      }
+    }
+  }
+
+  // Event listener untuk input pencarian
+  document.getElementById('searchInput').addEventListener('input', searchTables);
+
+  // Event listener untuk submit pencarian
+  document.querySelector('.search-box').addEventListener('submit', function (event) {
+    event.preventDefault(); // Mencegah pengiriman formulir secara default
+    searchTables(); // Memanggil fungsi pencarian
+  });
+
+  // Fungsi untuk ekspansi baris (berdasarkan tombol)
+  function toggleRowVisibility(event) {
+    const button = event.target;
+    const row = button.closest('tr');
+    const contentRow = row.nextElementSibling;
+
+    if (contentRow && contentRow.classList.contains('expanded-row')) {
+      contentRow.remove();
+    } else {
+      const newRow = row.parentNode.insertRow(row.rowIndex + 1);
+      newRow.classList.add('expanded-row');
+
+      const newCell = newRow.insertCell(0);
+      newCell.colSpan = row.cells.length;
+
+      const contentDiv = document.createElement('div');
+      newRow.appendChild(newCell);
+      newCell.appendChild(contentDiv);
+
+      row.querySelectorAll('td').forEach((cell, index) => {
+        if (index !== 0) {
+          const cellContent = cell.cloneNode(true);
+          cellContent.style.display = 'block';
+          contentDiv.appendChild(cellContent);
+        }
+      });
+    }
+  }
+</script>
+
+<div class="nav-bar">
+    <button id="btn-home" class="active" onclick="navigateTo(0)">
+      <i class="fas fa-home"></i> Refrensi
+    </button>
+    <button id="btn-library" onclick="navigateTo(1)">
+      <i class="fas fa-book"></i> Rumusan
+    </button>
+    <button id="btn-dashboard" onclick="navigateTo(2)">
+      <i class="fas fa-th-large"></i> Dashboard
+    </button>
+    
+  </div>
+  <script>
+  function navigateTo(pageIndex) {
+  const pages = ["foto.html", "video.html", "konten.html"];
+  
+  if (pageIndex >= 0 && pageIndex < pages.length) {
+      window.location.href = pages[pageIndex];
+  }
+  }
+  </script>
+  
+</body>
+</html>

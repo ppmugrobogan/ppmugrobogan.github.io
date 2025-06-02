@@ -8,14 +8,20 @@
 </head>
 <body>
   <div class="hero">
-    <audio autoplay loop>
-      <source src="/ziarah/data/gamelan.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
+    
+    <audio id="backsound" loop>
+        <source src="/ziarah/data/gamelan.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      
     <div class="overlay">
+        <div class="logo-container">
+            <img src="/ziarah/data/LOGO.png" alt="Logo 1">
+          </div>
+          
       <h1 class="title">Ziarah Santri Tamatan 2025</h1>
       <p class="subtitle">Pondok Pesantren Manba'ul 'Ulum</p>
-      <button id="enterBtn">Masuk ke Panduan</button>
+      <button id="enterBtn">Biografi Shohibul Maqom</button>
     </div>
     <div class="background-image">
       <!-- Ganti src dengan foto wali yang ikonik -->
@@ -24,29 +30,21 @@
   </div>
 
   <div class="content hidden">
-    <h2>Rute Ziarah</h2>
-    <ol>
-      <li>Raden Said (Sunan Kalijaga)</li>
-      <li>Raden Ja’far Shadiq (Sunan Kudus)</li>
-      <li>Raden Maulana Makhdum Ibrahim</li>
-      <li>Syekh Ibrahim Asmoroqondi</li>
-      <li>Raden Qasim (Sunan Drajat)</li>
-      <li>Syekh Maulana Ishaq</li>
-      <li>Syaikhuna Khalil Bangkalan</li>
-      <li>Raden Rahmat (Sunan Ampel)</li>
-      <li>Syekh Basyaruddin Tulungagung</li>
-      <li>Muasis Pesantren Lirboyo Kediri</li>
-    </ol>
-
-    <h2>Fasilitas</h2>
-    <ul>
-      <li>Bus pariwisata ber-AC empat unit</li>
-      <li>Makan satu kali saat berangkat</li>
-      <li>Buku panduan Ziarah (versi web)</li>
-      <li>Stiker Ziarah Tamatan 2025</li>
-    </ul>
+    <h2>Daftar Shohibul Maqom</h2>
+    <div class="menu-list">
+      <a href="kalijaga.html" class="menu-btn">Raden Said (Sunan Kalijaga)</a>
+      <a href="kudus.html" class="menu-btn">Raden Ja’far Shadiq (Sunan Kudus)</a>
+      <a href="makhdum-ibrahim.html" class="menu-btn">Raden Maulana Makhdum Ibrahim</a>
+      <a href="asmoroqondi.html" class="menu-btn">Syekh Ibrahim Asmoroqondi</a>
+      <a href="drajat.html" class="menu-btn">Raden Qasim (Sunan Drajat)</a>
+      <a href="maulana-ishaq.html" class="menu-btn">Syekh Maulana Ishaq</a>
+      <a href="khalil-bangkalan.html" class="menu-btn">Syaikhuna Khalil Bangkalan</a>
+      <a href="ampel.html" class="menu-btn">Raden Rahmat (Sunan Ampel)</a>
+      <a href="basyaruddin.html" class="menu-btn">Syekh Basyaruddin Tulungagung</a>
+      <a href="lirboyo.html" class="menu-btn">Muasis Pesantren Lirboyo Kediri</a>
+    </div>
   </div>
-
+  
   <script src="script.js"></script>
 </body>
 </html>

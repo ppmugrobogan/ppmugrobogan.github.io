@@ -5,7 +5,6 @@ body {
     padding: 5px;
     background: #f0f2f5;
     color: #333;
-    text-align: center; /* Ini yang membuat elemen inline (termasuk <img>) berada di tengah */
   }
   
   .container {
@@ -24,7 +23,7 @@ body {
   
   .img-wrapper {
     width: 100%;
-    min-height: 300px;
+    min-height: 100px;
     position: relative;
     border-radius: 12px;
     background-color: #f0f0f0;

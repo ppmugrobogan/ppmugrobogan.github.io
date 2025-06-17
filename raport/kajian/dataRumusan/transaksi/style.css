@@ -1,0 +1,321 @@
+/* Reset & Base */
+body {
+    font-family: 'Calibri', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: #f0f2f5;
+    color: #333;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: auto;
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .container:hover {
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  }
+  
+  .banner {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+  
+  /* Judul */
+  h1.title {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 20px 0;
+    font-size: 24px;
+    color: #2c3e50;
+  }
+  
+  /* Konten Utama */
+  .content {
+    margin-top: 20px;
+    line-height: 1.8;
+    text-align: justify;
+    font-size: 16px;
+    color: #444;
+  }
+  
+  .content .arab {
+    font-family: 'Scheherazade', serif;
+    direction: rtl;
+    text-align: justify;
+    font-size: 20px;
+    line-height: 2;
+    color: #111;
+  }
+  
+  /* Judul bagian */
+  .section-title {
+    font-weight: bold;
+    margin: 25px 0 10px;
+    color: #2c3e50;
+    font-size: 17px;
+    border-left: 4px solid #3498db;
+    padding-left: 10px;
+  }
+  
+  /* Penanda */
+  .kitab {
+    font-weight: bold;
+    background-color: #ecf0f1;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  
+  .syahid {
+    color: #e74c3c;
+  }
+  
+  /* List */
+  ul, ol {
+    margin: 10px 0 10px 25px;
+    padding-left: 20px;
+  }
+  
+  /* Tabel lama disembunyikan */
+  table {
+    display: none;
+  }
+  
+  /* Tim Vertikal */
+  .team-vertical {
+    margin-top: 30px;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    line-height: 1.7;
+  }
+  
+  .team-vertical .role {
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #2d3436;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 5px;
+  }
+  
+  .team-vertical .name {
+    margin-left: 15px;
+    color: #34495e;
+    font-size: 15px;
+    margin-top: 5px;
+  }
+  
+  /* Tombol */
+  .buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.btn {
+  flex: 1;
+  min-width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.like-btn {
+  background-color: #e74c3c;
+}
+
+.share-btn {
+  background-color: #2980b9;
+}
+
+.btn.liked {
+  background-color: #c0392b;
+}
+
+.btn i {
+  font-size: 16px;
+}
+
+.counts {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 18px;
+  font-size: 15px;
+  color: #555;
+}
+
+.count-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* KOMENTAR */
+/* === KOMENTAR SECTION YANG SERASI DAN PROFESIONAL === */
+.komentar-section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 24px;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    font-family: 'Segoe UI', sans-serif;
+    border-top: 5px solid #3498db;
+  }
+  
+  /* Judul Komentar */
+  .komentar-heading {
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-bottom: 24px;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .komentar-heading::before {
+    content: "💬";
+    font-size: 1.4em;
+  }
+  
+  /* Daftar Komentar */
+  .komentar-list {
+    margin-bottom: 30px;
+  }
+  
+  .komentar-item {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #cfdbe7;
+  }
+  
+  /* Avatar Bulat */
+  .komentar-avatar {
+    flex-shrink: 0;
+  }
+  
+  .avatar-bulat {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    border-radius: 50%;
+    font-size: 20px;
+    color: #fff;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+  
+  /* Isi Komentar */
+  .komentar-content {
+    flex: 1;
+  }
+  
+  .komentar-content .nama {
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 1.05em;
+  }
+  
+  .komentar-content .waktu {
+    font-size: 0.8em;
+    color: #7f8c8d;
+    margin-bottom: 6px;
+  }
+  
+  .komentar-content .isi {
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: #34495e;
+  }
+  
+  .komentar-content .kontak {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9em;
+    color: #2980b9;
+    margin-top: 6px;
+  }
+  
+  .komentar-content .kontak svg {
+    width: 16px;
+    height: 16px;
+    fill: #2980b9;
+  }
+  
+  /* Formulir Komentar */
+  #komentarForm {
+    border-top: 1px dashed #bcd;
+    padding-top: 24px;
+  }
+  
+  #komentarForm input[type="text"],
+  #komentarForm textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+    box-sizing: border-box;
+    font-family: inherit;
+    background: #fff;
+    transition: border-color 0.3s ease;
+  }
+  
+  #komentarForm input[type="text"]:focus,
+  #komentarForm textarea:focus {
+    border-color: #3498db;
+    outline: none;
+  }
+  
+  /* Tombol Kirim */
+  #komentarForm button {
+    background: linear-gradient(to right, #3498db, #2980b9);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: background 0.3s ease, transform 0.2s;
+  }
+  
+  #komentarForm button:hover {
+    background: linear-gradient(to right, #2980b9, #2471a3);
+    transform: scale(1.03);
+  }
+  

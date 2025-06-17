@@ -2,9 +2,10 @@
 body {
     font-family: 'Calibri', sans-serif;
     margin: 0;
-    padding: 20px;
+    padding: 5px;
     background: #f0f2f5;
     color: #333;
+    text-align: center; /* Ini yang membuat elemen inline (termasuk <img>) berada di tengah */
   }
   
   .container {
@@ -21,11 +22,59 @@ body {
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
   }
   
+  .img-wrapper {
+    width: 100%;
+    min-height: 300px;
+    position: relative;
+    border-radius: 12px;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    display: inline-block;
+  }
+  
+  /* Loading Spinner */
+  .img-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 32px;
+    height: 32px;
+    margin: -16px 0 0 -16px;
+    border: 4px solid #ccc;
+    border-top-color: #333;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 2;
+  }
+  
+  /* Gambar */
   .banner {
     width: 100%;
-    border-radius: 12px;
+    height: 100%;
     object-fit: cover;
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    
   }
+  
+  /* Gambar selesai dimuat */
+  .banner.loaded {
+    opacity: 1;
+  }
+  
+  /* Sembunyikan spinner jika sudah loaded */
+  .img-wrapper.loaded::after {
+    display: none;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
   
   /* Judul */
   h1.title {

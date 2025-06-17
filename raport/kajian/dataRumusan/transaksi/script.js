@@ -130,7 +130,7 @@ function shareArtikel() {
   if (window.AppInventor) {
     window.AppInventor.setWebViewString(text);
   } else if (navigator.share) {
-    navigator.share({ title, text, url });
+    navigator.share({ title, text });
   } else {
     alert("Link disalin ke clipboard");
     navigator.clipboard.writeText(text);
@@ -212,3 +212,11 @@ window.addEventListener('DOMContentLoaded', () => {
   fetchData();
   loadKomentar();
 });
+
+// LOADING IMG
+const img = document.getElementById("banner");
+  const wrapper = img.parentElement;
+  img.onload = () => {
+    img.classList.add("loaded");
+    wrapper.classList.add("loaded");
+  };

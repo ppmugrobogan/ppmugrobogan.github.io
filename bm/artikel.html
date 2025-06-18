@@ -293,17 +293,26 @@ body {
   }
 
   /* Loader wrapper */
-.loader-wrapper {
+  .loader-wrapper {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-color: #fff;
-    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity 0.3s ease;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+    opacity: 1;
   }
+  
+  .loader-wrapper.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+  
   
   /* Spinner yang muter */
   .spinner {
@@ -480,8 +489,8 @@ body {
     loadKomentar();
   
     // ✅ Sembunyikan loader setelah semua konten selesai dimuat
-    document.getElementById('loader').style.display = 'none';
-  }
+    document.getElementById('loader').classList.add('hidden');
+}
   
   function loadKomentar() {
     fetch(`${KOMENTAR_API}?id=${id}`)

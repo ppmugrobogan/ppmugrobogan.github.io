@@ -154,7 +154,6 @@
         console.log("Respon login:", result);
   
         if (result.success) {
-          localStorage.setItem("loggedin", "true");
           window.location.href = "upload.html";
         } else {
           alert("Login gagal. Cek kembali nama dan password Anda.");

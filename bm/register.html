@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Register</title>
+
+    <!-- Tambahkan tautan ke Font Awesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/kTc+gq6r6bMTK9fz2N1bQlfKXl5N5VzDo9ZsGVBlAEfHyKO1Bc9gGyTCaB+LV1cKGNu1pg2LxVxPA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          
+          .form-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 900px;
+            width: 100%;
+          }
+          
+          .login-note {
+            font-size: 13px;
+            color: #777;
+            margin-top: 15px;
+            font-style: italic;
+            line-height: 1.4;
+            width: 85%;
+            max-width: 900px;
+            text-align: justify;
+
+          }
+        form {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 75%;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+            
+        }
+        input[type="text"], input[type="password"], input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus {
+            border-color: #3080f7;
+        }
+        input[type="submit"] {
+            background: linear-gradient(135deg, #2980b9, #356eca);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background: linear-gradient(135deg, #356eca, #2980b9);
+        }
+        .password-wrapper {
+            position: relative;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 35%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+        .toggle-password i {
+            font-size: 1.2em;
+            color: #888;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 90%) {
+            form {
+                padding: 15px;
+            }
+        }
+        legend {
+            font-weight: bold;
+        }
+        fieldset {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="form-wrapper">
+    <form name="register" id="register" method="post">
+        <fieldset>
+          <legend>REGISTER</legend>
+      
+          <label for="nama_lengkap">Nama Lengkap:</label>
+          <input type="text" name="nama_lengkap" id="nama_lengkap" placeholder="Nama Lengkap" required>
+      
+          <label for="pesantren">Pondok Pesantren:</label>
+          <input type="text" name="pesantren" id="pesantren" placeholder="Nama dan Alamat Pondok" required>
+      
+          <label for="kontak">Kontak:</label>
+          <input type="text" name="kontak" id="kontak" placeholder="Email atau Nomor WA" required>
+      
+          <label for="password">Password:</label>
+          <div class="password-wrapper">
+            <input type="password" name="password" id="password" placeholder="Password" required>
+            <span class="toggle-password" onclick="togglePassword()">
+              <i id="eyeIcon" class="fas fa-eye"></i>
+            </span>
+          </div>
+        </fieldset>
+      
+        <input type="submit" value="DAFTAR">
+      </form>
+
+      <p class="login-note">
+        Catatan: Fitur Login dan Register pada aplikasi ini dibuat sebagai bentuk pertanggungjawaban terhadap setiap rumusan jawaban fikih yang diunggah. Dengan mencatat identitas pengguna seperti nama lengkap, asal pondok pesantren, dan kontak yang dapat dihubungi, setiap kontribusi dapat dipertanggungjawabkan keilmuannya, serta menjaga kredibilitas dan keaslian isi dari rumusan yang dipublikasikan.
+      </p>
+    </div>
+
+      <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzh7ZarS5p4uKukXxgXp4qQZ1sQkxclAzReKxpxfHDcGqX8AMsZn5xfbCjXQvv8Y_PYSA/exec';
+        const form = document.forms['register'];
+        const submitBtn = form.querySelector('input[type="submit"]');
+      
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+      
+          const nama = form.nama_lengkap.value.trim();
+          const pesantren = form.pesantren.value.trim();
+          const kontak = form.kontak.value.trim();
+          const password = form.password.value.trim();
+      
+          if (!nama || !pesantren || !kontak || !password) {
+            alert('Mohon lengkapi semua kolom sebelum mendaftar.');
+            return;
+          }
+      
+          submitBtn.disabled = true;
+          submitBtn.value = 'Mengirim...';
+      
+          const formData = new FormData();
+          formData.append('nama_lengkap', nama);
+          formData.append('pesantren', pesantren);
+          formData.append('kontak', kontak);
+          formData.append('password', password);
+      
+          try {
+            const response = await fetch(scriptURL, {
+              method: 'POST',
+              body: formData
+            });
+      
+            if (response.ok) {
+              alert('✅ Pendaftaran berhasil!');
+              form.reset();
+            } else {
+              alert('❌ Terjadi kesalahan saat mendaftar.');
+            }
+          } catch (error) {
+            console.error('Error!', error.message);
+            alert('❌ Gagal mengirim data. Coba lagi nanti.');
+          }
+      
+          submitBtn.disabled = false;
+          submitBtn.value = 'DAFTAR';
+        });
+      </script>
+      
+      <!-- Font Awesome -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+      
+      <script>
+        function togglePassword() {
+          const passwordField = document.getElementById("password");
+          const eyeIcon = document.getElementById("eyeIcon");
+      
+          if (passwordField.type === "password") {
+            passwordField.type = "text";
+            eyeIcon.classList.remove("fa-eye");
+            eyeIcon.classList.add("fa-eye-slash");
+          } else {
+            passwordField.type = "password";
+            eyeIcon.classList.remove("fa-eye-slash");
+            eyeIcon.classList.add("fa-eye");
+          }
+        }
+      </script>
+      
+</body>
+</html>

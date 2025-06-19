@@ -58,7 +58,7 @@
       border-color: #3080f7;
     }
 
-    input[type="submit"],
+    button,
     .register-btn {
       background: linear-gradient(135deg, #2980b9, #356eca);
       color: white;
@@ -72,7 +72,7 @@
       text-align: center;
     }
 
-    input[type="submit"]:hover,
+    button:hover,
     .register-btn:hover {
       background: linear-gradient(135deg, #356eca, #2980b9);
     }
@@ -110,6 +110,22 @@
       font-size: 1.2em;
       color: #888;
     }
+
+    .spinner {
+      width: 16px;
+      height: 16px;
+      border: 2px solid #ffffff99;
+      border-top: 2px solid #fff;
+      border-radius: 50%;
+      margin-left: 8px;
+      animation: spin 0.8s linear infinite;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
   </style>
 </head>
 <body>
@@ -123,47 +139,64 @@
         </span>
       </div>
       <div class="button-group">
-        <input type="submit" value="Login" class="login-btn" />
+        <button type="submit" class="login-btn" id="loginBtn">Login</button>
         <a href="register.html" class="register-btn" style="text-align: center; display: inline-block; text-decoration: none;">Register</a>
-    </div>
+      </div>
     </form>
     <p class="login-note">
       Catatan: Fitur Login dan Register digunakan untuk pertanggungjawaban atas rumusan jawaban yang Anda unggah di aplikasi ini.
     </p>
   </div>
 
-  
   <script>
+    function togglePassword() {
+      const passwordField = document.getElementById("password");
+      const eyeIcon = document.getElementById("eyeIcon");
+
+      if (passwordField.type === "password") {
+        passwordField.type = "text";
+        eyeIcon.classList.replace("fa-eye", "fa-eye-slash");
+      } else {
+        passwordField.type = "password";
+        eyeIcon.classList.replace("fa-eye-slash", "fa-eye");
+      }
+    }
+
     document.getElementById("loginForm").addEventListener("submit", async function (e) {
       e.preventDefault();
-  
+
       const nama = document.getElementById("nama").value.trim();
       const password = document.getElementById("password").value.trim();
-  
+      const loginBtn = document.getElementById("loginBtn");
+
       if (!nama || !password) {
         alert("Nama dan password wajib diisi.");
         return;
       }
-  
+
+      loginBtn.disabled = true;
+      loginBtn.innerHTML = 'Loading <span class="spinner"></span>';
+
       const url = `https://script.google.com/macros/s/AKfycbxskvLuQFxsJ0GATVo0blv6i1RjV_CF4PtZep1GP_rwuqcZtCbcfEyAGfMtb0vKMT6Cag/exec?nama=${encodeURIComponent(nama)}&password=${encodeURIComponent(password)}`;
-  
+
       try {
         const response = await fetch(url);
         const result = await response.json();
-  
+
         console.log("Respon login:", result);
-  
+
         if (result.success) {
           window.location.href = "upload.html";
         } else {
           alert("Login gagal. Cek kembali nama dan password Anda.");
         }
-  
       } catch (err) {
         console.error("Kesalahan koneksi:", err);
       }
+
+      loginBtn.disabled = false;
+      loginBtn.innerHTML = "Login";
     });
-  </script>  
-      
+  </script>
 </body>
 </html>

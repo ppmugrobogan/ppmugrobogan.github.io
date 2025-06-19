@@ -108,6 +108,35 @@
     .hidden {
       display: none;
     }
+    .container {
+      max-width: 720px;
+      width: 100%;
+    }
+    @media (max-width: 600px) {
+      .container {
+        width: 90%;
+        padding: 20px 10px;
+      }
+    
+      input, select, textarea {
+        font-size: 14px;
+        padding: 10px;
+      }
+    
+      button {
+        font-size: 14px;
+        padding: 12px;
+      }
+    
+      h1 {
+        font-size: 22px;
+      }
+    
+      textarea {
+        min-height: 150px;
+      }
+    }
+    
   </style>
 </head>
 <body>

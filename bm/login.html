@@ -124,8 +124,8 @@
       </div>
       <div class="button-group">
         <input type="submit" value="Login" class="login-btn" />
-        <button type="button" class="register-btn" onclick="goToRegister()">Register</button>
-      </div>
+        <a href="register.html" class="register-btn" style="text-align: center; display: inline-block; text-decoration: none;">Register</a>
+    </div>
     </form>
     <p class="login-note">
       Catatan: Fitur Login dan Register digunakan untuk pertanggungjawaban atas rumusan jawaban yang Anda unggah di aplikasi ini.
@@ -161,7 +161,6 @@
   
       } catch (err) {
         console.error("Kesalahan koneksi:", err);
-        alert("Terjadi kesalahan koneksi. Silakan coba lagi.");
       }
     });
   </script>  

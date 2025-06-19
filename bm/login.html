@@ -45,6 +45,7 @@
     input[type="text"],
     input[type="password"] {
       width: 100%;
+      height: 50px;
       padding: 10px;
       margin-bottom: 20px;
       border: 1px solid #ddd;
@@ -57,40 +58,41 @@
     input[type="password"]:focus {
       border-color: #3080f7;
     }
-
-    button,
-    .register-btn {
-      background: linear-gradient(135deg, #2980b9, #356eca);
-      color: white;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      width: 100%;
-      font-size: 16px;
-      transition: background-color 0.3s;
-      text-align: center;
-    }
-
-    button:hover,
-    .register-btn:hover {
-      background: linear-gradient(135deg, #356eca, #2980b9);
-    }
-
-    .button-group {
-      display: flex;
-      gap: 10px;
-    }
-
-    .register-btn {
-      background-color: #fb1919;
-      flex: 1;
-    }
-
-    .login-btn {
-      flex: 1;
-    }
-
+    .button-group-vertical {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 0px;
+      }
+      
+      .login-btn,
+      .register-btn {
+        padding: 12px 15px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+      }
+      
+      .login-btn {
+        background: linear-gradient(135deg, #2980b9, #356eca);
+      }
+      
+      .login-btn:hover {
+        background: linear-gradient(135deg, #356eca, #2980b9);
+      }
+      
+      .register-btn {
+        background: linear-gradient(135deg, #e74c3c, #c0392b);
+      }
+      
+      .register-btn:hover {
+        background: linear-gradient(135deg, #c0392b, #e74c3c);
+      }
+      
     .password-wrapper {
       position: relative;
     }
@@ -98,7 +100,7 @@
     .toggle-password {
       position: absolute;
       right: 12px;
-      top: 50%;
+      top: 55%;
       transform: translateY(-65%);
       cursor: pointer;
       height: 100%;
@@ -139,8 +141,11 @@
         </span>
       </div>
       <div class="button-group">
-        <button type="submit" class="login-btn" id="loginBtn">Login</button>
-        <a href="register.html" class="register-btn" style="text-align: center; display: inline-block; text-decoration: none;">Register</a>
+        <div class="button-group-vertical">
+            <button type="submit" class="login-btn" id="loginBtn">Login</button>
+            <a href="register.html" class="register-btn">Register</a>
+          </div>
+          
       </div>
     </form>
     <p class="login-note">

@@ -40,11 +40,11 @@
           }
         form {
             background-color: #fff;
-            padding: 25px;
+            padding: 10px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             max-width: 400px;
-            width: 75%;
+            width: 85%;
         }
         label {
             display: block;
@@ -61,6 +61,7 @@
             border-radius: 5px;
             box-sizing: border-box;
             transition: border-color 0.3s;
+            height: 50px;
         }
         input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus {
             border-color: #3080f7;
@@ -102,24 +103,32 @@
         }
         legend {
             font-weight: bold;
+            text-align: center;
         }
         fieldset {
             border: 1px solid #ccc;
             border-radius: 10px;
-            padding: 20px;
             margin-bottom: 20px;
+            padding-top: 20px;
+            padding-bottom: 20px;
             background-color: #ffffff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
         }
-        
+        .logo {
+            display: block;
+            margin: 0 auto 20px;
+            width: 50%;
+            height: auto;
+        }
     </style>
 </head>
 <body>
     <div class="form-wrapper">
     <form name="register" id="register" method="post">
         <fieldset>
+            <img src="/bm/img/lbm300.jpg" alt="Logo" class="logo"> <!-- Replace with your logo path -->
           <legend>REGISTER</legend>
-      
+
           <label for="nama_lengkap">Nama Lengkap:</label>
           <input type="text" name="nama_lengkap" id="nama_lengkap" placeholder="Nama Lengkap" required>
       

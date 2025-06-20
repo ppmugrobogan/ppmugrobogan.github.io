@@ -274,19 +274,7 @@
       });
     }
 
-    
-    // Cek apakah pengguna sudah login
-    if (localStorage.getItem('loggedin') !== 'true') {
-      window.location.href = 'login.html';
-  } else {
-      // Menyembunyikan URL setelah berhasil login
-      history.replaceState(null, null, ' ');
-  }
-
-  function logout() {
-      localStorage.removeItem('loggedin');
-      window.location.href = 'login.html';
-  }
+  
   </script>
 
 </body>

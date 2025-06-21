@@ -297,7 +297,7 @@
         arr.forEach(a => {
           const b = document.createElement('button');
           b.textContent = a.judul;
-          b.onclick = () => window.location = `artikel.html?id=${a.id}`;
+          b.onclick = () => window.location = `https://bahtsulmasail.github.io/bm/artikel.html?id=${a.id}`;
           divArt.appendChild(b);
         });
 
@@ -367,7 +367,7 @@
 
           frag.innerHTML = `
             <div class="kategori-label">Kategori: ${item.kategori}</div>
-            <a href="artikel.html?id=${item.id}"><b>${item.judul}</b></a>
+            <a href="https://bahtsulmasail.github.io/bm/artikel.html?id=${item.id}"><b>${item.judul}</b></a>
             <div>${preview}...</div>
           `;
           result.appendChild(frag);

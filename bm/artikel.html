@@ -54,14 +54,28 @@ body {
   
   .content .arab {
     font-family: 'Scheherazade', serif;
+    font-size: 22px;
     direction: rtl;
     text-align: justify;
-    font-size: 20px;
-    line-height: 2;
     color: rgb(31, 31, 31);
   }
   
-    
+  .content .latin {
+    font-family: 'Calibri', sans-serif;
+    font-size: 18px;
+    direction: ltr;
+    text-align: justify;
+    color: rgb(31, 31, 31);
+  }
+  
+  .content .campuran {
+    font-family: 'Calibri', sans-serif;
+    font-size: 18px;
+    direction: ltr;
+    text-align: justify;
+    color: rgb(31, 31, 31);
+  }  
+  
   /* Judul bagian */
   .section-title {
     font-weight: bold;
@@ -387,48 +401,68 @@ body {
     throw '';
   }
 
-  function parseIsi(text) {
-    const lines = text.split('\n');
-    let html = '', listOpen = false, listType, listStyle;
-  
-    lines.forEach(line => {
-      const t = line.trim();
-      const isArabic = /[\u0600-\u06FF]/.test(t);
-      const m = t.match(/^([a-z]\.|\d+\.)\s+/i);
-  
-      if (m) {
-        const marker = m[1];
-        let tag = 'ul', style = 'disc';
-        if (/^[a-z]\./i.test(marker)) { tag = 'ol'; style = 'lower-alpha'; }
-        else if (/^\d+\./.test(marker)) { tag = 'ol'; style = 'decimal'; }
-  
-        if (!listOpen || listType !== tag || listStyle !== style) {
-          if (listOpen) html += `</${listType}>`;
-          html += `<${tag} style="list-style-type:${style};margin-left:1.5em">`;
-          listOpen = true; listType = tag; listStyle = style;
-        }
-        html += `<li>${t.replace(/^[a-z]\.|\d+\.\s+/i, '')}</li>`;
-      } else {
-        if (listOpen) { html += `</${listType}>`; listOpen = false; }
-  
-        let text = t
-          .replace(/\b(Deskripsi\s*masalah|Pertanyaan|Jawab(?:an)?|Refr?ensi)\s*:?\s*/gi, (m, p1) => {
-            const label = p1.replace(/\s+/g, ' ')
-                            .replace(/jawab$/i, 'Jawaban')
-                            .replace(/refrensi/i, 'Referensi');
-            return `<div class="section-title">${label}:</div>`;
-          })
-          .replace(/#(.*?)#/g, '<span class="kitab">$1</span>')
-          .replace(/\*(.*?)\*/g, '<span class="syahid">$1</span>');
-  
-        html += `<p class="${isArabic ? 'arab' : ''}">${text}</p>`;
+ function parseIsi(text) {
+  const lines = text.split('\n');
+  let html = '', listOpen = false, listType, listStyle;
+
+  lines.forEach(line => {
+    const t = line.trim();
+
+    const hasArabic = /[\u0600-\u06FF]/.test(t);
+    const hasLatin = /[a-zA-Z]/.test(t);
+
+    let fontClass = '';
+let dirAttr = '';
+
+if (hasArabic && hasLatin) {
+  fontClass = 'campuran';
+  dirAttr = 'dir="ltr"';
+} else if (hasArabic) {
+  fontClass = 'arab';
+  dirAttr = 'dir="rtl"';
+} else {
+  fontClass = 'latin';
+  dirAttr = 'dir="ltr"';
+}
+
+
+    const m = t.match(/^([a-z]\.|\d+\.)\s+/i);
+
+    if (m) {
+      const marker = m[1];
+      let tag = 'ul', style = 'disc';
+      if (/^[a-z]\./i.test(marker)) { tag = 'ol'; style = 'lower-alpha'; }
+      else if (/^\d+\./.test(marker)) { tag = 'ol'; style = 'decimal'; }
+
+      if (!listOpen || listType !== tag || listStyle !== style) {
+        if (listOpen) html += `</${listType}>`;
+        html += `<${tag} style="list-style-type:${style};margin-left:1.5em">`;
+        listOpen = true; listType = tag; listStyle = style;
       }
-    });
-  
-    if (listOpen) html += `</${listType}>`;
-    return html;
-  }
-  
+
+      const textItem = t.replace(/^([a-z]|\d+)\.\s+/i, '');
+      html += `<li ${dirAttr} class="${fontClass}">${textItem}</li>`;
+    } else {
+      if (listOpen) { html += `</${listType}>`; listOpen = false; }
+
+      let textContent = t
+        .replace(/\b(Deskripsi\s*masalah|Pertanyaan|Jawab(?:an)?|Refr?ensi)\s*:?\s*/gi, (m, p1) => {
+          const label = p1.replace(/\s+/g, ' ')
+                          .replace(/jawab$/i, 'Jawaban')
+                          .replace(/refrensi/i, 'Referensi');
+          return `<div class="section-title">${label}:</div>`;
+        })
+        .replace(/#(.*?)#/g, '<span class="kitab">$1</span>')
+        .replace(/\*(.*?)\*/g, '<span class="syahid">$1</span>'); // ✅ Diperbaiki di sini
+
+      html += `<p ${dirAttr} class="${fontClass}">${textContent}</p>`;
+    }
+  });
+
+  if (listOpen) html += `</${listType}>`;
+  return html;
+}
+
   function updateCounts(action) {
     return fetch(API, {
       method: 'POST',

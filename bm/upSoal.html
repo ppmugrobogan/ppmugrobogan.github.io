@@ -230,7 +230,30 @@
 
     <p id="statusPesan"></p>
   </div>
-
+  <script>
+    const textarea = document.getElementById('isi');
+  
+    function mengandungArab(teks) {
+      return /[\u0600-\u06FF]/.test(teks);
+    }
+  
+    function arahTulisBaris(baris) {
+      const hanyaArab = /^[\u0600-\u06FF\s.,،؛؟]+$/;
+      const hanyaLatin = /^[A-Za-z0-9\s.,'"()\-]+$/;
+  
+      if (hanyaArab.test(baris)) return 'rtl';
+      if (hanyaLatin.test(baris)) return 'ltr';
+      return 'ltr'; // campuran default ke kiri
+    }
+  
+    textarea.addEventListener('input', () => {
+      const isi = textarea.value;
+      const barisTerakhir = isi.split('\n').pop().trim();
+      const arah = arahTulisBaris(barisTerakhir);
+      textarea.style.direction = arah;
+    });
+  </script>
+  
   <script>
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwJib3_v4g2pu1Jx-TWdFcFDbWol0lnYgjbAK21Oq0wseJLFd8hg3fRS9bSSQnylkrB/exec';
 

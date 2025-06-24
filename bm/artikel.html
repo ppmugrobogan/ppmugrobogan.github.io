@@ -352,6 +352,14 @@ body {
     pointer-events: none;
   }
   
+  .sumber {
+    font-style: italic;
+    font-size: 0.9em;
+    color: #555;
+    margin-top: -10px;
+    margin-bottom: 10px;
+  }
+  
   </style>
 </head>
 <body>
@@ -361,7 +369,8 @@ body {
 
 <div class="container">
   <h1 id="judul" class="judul"></h1>
-  <div id="content" class="content"></div>
+  
+    <div id="content" class="content"></div>
   
   <div class="buttons">
     <button id="likeBtn" class="btn like-btn">
@@ -513,6 +522,7 @@ if (hasArabic && hasLatin) {
     if (data.error) return document.body.textContent = data.error;
   
     document.getElementById('judul').textContent = data.judul;
+    document.getElementById('sumberArtikel').textContent = data.sumber || '-';
     document.getElementById('content').innerHTML = parseIsi(data.isi);
     document.getElementById('likeCount').textContent = data.likes;
     document.getElementById('viewCount').textContent = data.views;
@@ -530,9 +540,9 @@ if (hasArabic && hasLatin) {
     setupShare();
     loadKomentar();
   
-    // ✅ Sembunyikan loader setelah semua konten selesai dimuat
     document.getElementById('loader').classList.add('hidden');
-}
+  }
+  
   
   function loadKomentar() {
     fetch(`${KOMENTAR_API}?id=${id}`)

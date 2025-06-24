@@ -223,6 +223,9 @@
       <label for="isi">Rumusan</label>
       <textarea id="isi" placeholder="Tulis isi lengkap, mulai dari deskripsi masalah, pertanyaan dan ibaroh..." required></textarea>
 
+      <label for="sumber">Sumber Rumusan</label>
+      <input type="text" id="sumber" placeholder="Nama Pondok Pesantren atau Lembaga" required>
+
       <button type="submit" id="btnSubmit">
         UPLOADE RUMUSAN
       </button>
@@ -255,25 +258,26 @@
   </script>
   
   <script>
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzOCYPJYozr9-9Svv7tOl83tJMZ3cUBqJLfUl5he1dOts-VAE6kzdoDuyXZIw1IcIgv/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwHN_50J2O5jOW-9xiFRzCK1r-M05_QD6Cmt_U4SMxJzOaLCo75izmx9KwsshkFL3I9/exec';
 
     function kirimData(e) {
       e.preventDefault();
       const form = document.getElementById('formArtikel');
       const status = document.getElementById('statusPesan');
       const button = document.getElementById('btnSubmit');
-
+    
       const originalHTML = button.innerHTML;
       button.disabled = true;
       button.innerHTML = `Menyimpan <div class="spinner"></div>`;
       status.textContent = '';
-
+    
       const data = new URLSearchParams();
       data.append('action', 'tambah');
       data.append('kategori', form.kategori.value.trim());
       data.append('judul', form.judul.value.trim());
       data.append('isi', form.isi.value.trim());
-
+      data.append('sumber', form.sumber.value.trim()); // ✅ ini sudah benar sekarang
+    
       fetch(SCRIPT_URL, {
         method: 'POST',
         body: data
@@ -296,7 +300,7 @@
         console.error(err);
       });
     }
-
+    
   
   </script>
 

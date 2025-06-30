@@ -125,106 +125,107 @@
     </style>
 </head>
 <body>
-    <div class="form-wrapper">
+  <div class="form-wrapper">
     <form name="register" id="register" method="post">
-        <fieldset>
-            <img src="/bm/img/lbm300.jpg" alt="Logo" class="logo"> <!-- Replace with your logo path -->
-          <legend>REGISTER</legend>
+      <fieldset>
+        <img src="/bm/img/lbm300.jpg" alt="Logo" class="logo">
+        <legend>REGISTER</legend>
 
-          <label for="nama_lengkap">Nama Lengkap:</label>
-          <input type="text" name="nama_lengkap" id="nama_lengkap" placeholder="Nama Lengkap" required>
-      
-          <label for="pesantren">Pondok Pesantren:</label>
-          <input type="text" name="pesantren" id="pesantren" placeholder="Nama dan Alamat Pondok" required>
-      
-          <label for="kontak">Kontak:</label>
-          <input type="text" name="kontak" id="kontak" placeholder="Email atau Nomor WA" required>
-      
-          <label for="password">Password:</label>
-          <div class="password-wrapper">
-            <input type="password" name="password" id="password" placeholder="Password" required>
-            <span class="toggle-password" onclick="togglePassword()">
-              <i id="eyeIcon" class="fas fa-eye"></i>
-            </span>
-          </div>
-        </fieldset>
-      
-        <input type="submit" value="DAFTAR">
-      </form>
+        <label for="nama_lengkap">Nama Lengkap:</label>
+        <input type="text" name="nama_lengkap" id="nama_lengkap" placeholder="Nama Lengkap" required>
 
-      <p class="login-note">
-        Catatan: Fitur Login dan Register pada aplikasi ini dibuat sebagai bentuk pertanggungjawaban terhadap setiap rumusan jawaban fikih yang diunggah. Dengan mencatat identitas pengguna seperti nama lengkap, asal pondok pesantren, dan kontak yang dapat dihubungi, setiap kontribusi dapat dipertanggungjawabkan keilmuannya, serta menjaga kredibilitas dan keaslian isi dari rumusan yang dipublikasikan.
-      </p>
-    </div>
+        <label for="pesantren">Pondok Pesantren:</label>
+        <input type="text" name="pesantren" id="pesantren" placeholder="Nama dan Alamat Pondok" required>
 
-      <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzh7ZarS5p4uKukXxgXp4qQZ1sQkxclAzReKxpxfHDcGqX8AMsZn5xfbCjXQvv8Y_PYSA/exec';
-        const form = document.forms['register'];
-        const submitBtn = form.querySelector('input[type="submit"]');
-      
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault();
-      
-          const nama = form.nama_lengkap.value.trim();
-          const pesantren = form.pesantren.value.trim();
-          const kontak = form.kontak.value.trim();
-          const password = form.password.value.trim();
-      
-          if (!nama || !pesantren || !kontak || !password) {
-            alert('Mohon lengkapi semua kolom sebelum mendaftar.');
-            return;
-          }
-      
-          submitBtn.disabled = true;
-          submitBtn.value = 'Mengirim...';
-      
-          const formData = new FormData();
-          formData.append('nama_lengkap', nama);
-          formData.append('pesantren', pesantren);
-          formData.append('kontak', kontak);
-          formData.append('password', password);
-      
-          try {
-            const response = await fetch(scriptURL, {
-              method: 'POST',
-              body: formData
-            });
-      
-            if (response.ok) {
-              alert('✅ Pendaftaran berhasil!');
-              form.reset();
-            } else {
-              alert('❌ Terjadi kesalahan saat mendaftar.');
-            }
-          } catch (error) {
-            console.error('Error!', error.message);
-            alert('❌ Gagal mengirim data. Coba lagi nanti.');
-          }
-      
-          submitBtn.disabled = false;
-          submitBtn.value = 'DAFTAR';
+        <label for="kontak">Kontak:</label>
+        <input type="text" name="kontak" id="kontak" placeholder="Email atau Nomor WA" required>
+
+        <label for="password">Password:</label>
+        <div class="password-wrapper">
+          <input type="password" name="password" id="password" placeholder="Password" required>
+          <span class="toggle-password" onclick="togglePassword()">
+            <i id="eyeIcon" class="fas fa-eye"></i>
+          </span>
+        </div>
+      </fieldset>
+
+      <input type="submit" value="DAFTAR">
+    </form>
+
+    <p class="login-note">
+      Catatan: Fitur Login dan Register pada aplikasi ini dibuat sebagai bentuk pertanggungjawaban terhadap setiap rumusan jawaban fikih...
+    </p>
+  </div>
+
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzkhiRZ4jH1wbeqbBEDW1on6ex4wUQEqHthQSrvJqHcvWFJLdOYbikPZsa-ZQMYDCHz3A/exec';
+    const form = document.forms['register'];
+    const submitBtn = form.querySelector('input[type="submit"]');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const nama = form.nama_lengkap.value.trim();
+      const pesantren = form.pesantren.value.trim();
+      const kontak = form.kontak.value.trim();
+      const password = form.password.value.trim();
+
+      if (!nama || !pesantren || !kontak || !password) {
+        alert('Mohon lengkapi semua kolom sebelum mendaftar.');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.value = 'Mengirim...';
+
+      const formData = new FormData();
+      formData.append('nama_lengkap', nama);
+      formData.append('pesantren', pesantren);
+      formData.append('kontak', kontak);
+      formData.append('password', password);
+
+      try {
+        const response = await fetch(scriptURL, {
+          method: 'POST',
+          body: formData
         });
-      </script>
-      
-      <!-- Font Awesome -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
-      
-      <script>
-        function togglePassword() {
-          const passwordField = document.getElementById("password");
-          const eyeIcon = document.getElementById("eyeIcon");
-      
-          if (passwordField.type === "password") {
-            passwordField.type = "text";
-            eyeIcon.classList.remove("fa-eye");
-            eyeIcon.classList.add("fa-eye-slash");
-          } else {
-            passwordField.type = "password";
-            eyeIcon.classList.remove("fa-eye-slash");
-            eyeIcon.classList.add("fa-eye");
-          }
+
+        const result = await response.json();
+        if (result.success) {
+          alert('✅ Pendaftaran berhasil! ID Anda:\n' + result.id);
+          console.log('ID Pengguna:', result.id); // tampilkan di log
+          form.reset();
+        } else {
+          alert('❌ ' + (result.error || 'Terjadi kesalahan saat mendaftar.'));
         }
-      </script>
-      
+      } catch (error) {
+        console.error('Error!', error.message);
+        alert('❌ Gagal mengirim data. Coba lagi nanti.');
+      }
+
+      submitBtn.disabled = false;
+      submitBtn.value = 'DAFTAR';
+    });
+
+    // Toggle eye icon
+    function togglePassword() {
+      const passwordField = document.getElementById("password");
+      const eyeIcon = document.getElementById("eyeIcon");
+
+      if (passwordField.type === "password") {
+        passwordField.type = "text";
+        eyeIcon.classList.remove("fa-eye");
+        eyeIcon.classList.add("fa-eye-slash");
+      } else {
+        passwordField.type = "password";
+        eyeIcon.classList.remove("fa-eye-slash");
+        eyeIcon.classList.add("fa-eye");
+      }
+    }
+  </script>
+
+  <!-- Font Awesome untuk icon mata -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 </body>
+
 </html>

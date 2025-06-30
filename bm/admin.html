@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Data Pengguna</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f9fc;
+    }
+
+    header {
+      background: #3f51b5;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    th, td {
+      padding: 12px 16px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background: #e3eaf4;
+    }
+
+    td[contenteditable="true"] {
+      background: #fffaf0;
+      outline: none;
+    }
+
+    .btn {
+      padding: 6px 12px;
+      margin: 0 2px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .btn-edit {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .btn-delete {
+      background-color: #f44336;
+      color: white;
+    }
+
+    .alert {
+      margin-bottom: 15px;
+      padding: 10px;
+      background-color: #2196F3;
+      color: white;
+      border-radius: 4px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Halaman Admin Data Pengguna</h1>
+  </header>
+
+  <main>
+    <div class="alert" id="alertBox"></div>
+    <table id="userTable">
+      <thead>
+        <tr>
+          <th>Nama Lengkap</th>
+          <th>Pondok Pesantren</th>
+          <th>Kontak</th>
+          <th>Password</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </main>
+
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzkhiRZ4jH1wbeqbBEDW1on6ex4wUQEqHthQSrvJqHcvWFJLdOYbikPZsa-ZQMYDCHz3A/exec'; // Ganti dengan URL Web Apps kamu
+
+    function showAlert(message, timeout = 3000) {
+      const alertBox = document.getElementById('alertBox');
+      alertBox.textContent = message;
+      alertBox.style.display = 'block';
+      setTimeout(() => alertBox.style.display = 'none', timeout);
+    }
+
+    async function loadData() {
+      const res = await fetch(scriptURL + '?nama=admin&password=admin');
+      const data = await res.json();
+
+      if (!Array.isArray(data)) return;
+      const tbody = document.querySelector('#userTable tbody');
+      tbody.innerHTML = '';
+      data.slice(1).forEach(row => {
+        const [nama, pesantren, kontak, password, id] = row;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td contenteditable="true">${nama}</td>
+          <td contenteditable="true">${pesantren}</td>
+          <td contenteditable="true">${kontak}</td>
+          <td contenteditable="true">${password}</td>
+          <td>
+            <button class="btn btn-edit" onclick="editRow(this, '${id}')">Edit</button>
+            <button class="btn btn-delete" onclick="deleteRow('${id}')">Hapus</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    async function editRow(btn, id) {
+      const row = btn.closest('tr');
+      const nama = row.cells[0].textContent.trim();
+      const pesantren = row.cells[1].textContent.trim();
+      const kontak = row.cells[2].textContent.trim();
+      const password = row.cells[3].textContent.trim();
+
+      const res = await fetch(scriptURL, {
+        method: 'POST',
+        body: new URLSearchParams({
+          action: 'edit', id, nama, pesantren, kontak, password
+        })
+      });
+
+      const result = await res.json();
+      showAlert(result.message || 'Berhasil diperbarui.');
+    }
+
+    async function deleteRow(id) {
+      if (!confirm('Yakin ingin menghapus data ini?')) return;
+
+      const res = await fetch(scriptURL, {
+        method: 'POST',
+        body: new URLSearchParams({ action: 'delete', id })
+      });
+
+      const result = await res.json();
+      showAlert(result.message || 'Data dihapus.');
+      loadData();
+    }
+
+    loadData();
+  </script>
+</body>
+</html>

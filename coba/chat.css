@@ -1,0 +1,128 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f0f2f5;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .chat-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: #1976d2;
+    color: white;
+  }
+  
+  .avatar {
+    background: white;
+    color: #1976d2;
+    font-weight: bold;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    margin-right: 10px;
+  }
+  
+  .user-info {
+    line-height: 1.2;
+  }
+  
+  .chat-box {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .chat-message {
+    max-width: 75%;
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: #e4e6eb;
+    position: relative;
+  }
+  
+  .chat-left {
+    align-self: flex-start;
+    background: #ffffff;
+  }
+  
+  .chat-right {
+    align-self: flex-end;
+    background: #dcf8c6;
+  }
+  
+  .chat-meta {
+    font-size: 0.75em;
+    color: gray;
+    margin-top: 5px;
+  }
+  
+  .reply-preview {
+    background: #cfd8dc;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9em;
+  }
+  
+  .chat-footer {
+    display: flex;
+    padding: 10px;
+    background: white;
+    border-top: 1px solid #ccc;
+  }
+  
+  #chat-input {
+    flex-grow: 1;
+    min-height: 36px;
+    max-height: 120px;
+    overflow-y: auto;
+    padding: 6px 10px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    resize: none;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    line-height: 1.4;
+  }
+  
+  
+  #chat-input:focus {
+    border-color: #1976d2;
+    box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+  }
+  
+  .send-btn {
+    background: #1976d2;
+    color: white;
+    border: none;
+    padding: 10px 16px; /* lebar horizontal lebih besar */
+    margin-left: 10px;
+    font-size: 16px;
+    border-radius: 8px;  /* sudut agak membulat, tapi tidak oval */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .chat-reply-box {
+    background: #f0f0f0;
+    border-left: 3px solid #1976d2;
+    padding: 5px 10px;
+    font-size: 0.85em;
+    color: #555;
+    margin-bottom: 5px;
+  }
+  
+  

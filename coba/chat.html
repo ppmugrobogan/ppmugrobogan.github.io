@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Umum</title>
+  <link rel="stylesheet" href="chat.css">
+  <script src="chat.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <header class="chat-header">
+    <div class="avatar" id="avatar">A</div>
+    <div class="user-info">
+      <div id="nama-user">Nama</div>
+      <div id="pondok-user">Pondok Pesantren</div>
+    </div>
+  </header>
+
+  <main id="chat-box" class="chat-box"></main>
+
+  <div id="reply-preview" class="reply-preview" style="display:none;">
+    <span id="reply-text"></span>
+    <button onclick="cancelReply()">×</button>
+  </div>
+
+  <footer class="chat-footer">
+    <textarea id="chat-input" placeholder="Ketik pesan..." oninput="autoResize(this)"></textarea>
+    <button onclick="sendMessage()" class="send-btn">
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
+        </footer>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard Santri</title>
+  <link rel="stylesheet" href="style-dashboard.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+</head>
+<body>
+  <header class="topbar">Menu</header>
+
+  <section class="profile-section">
+    <div class="profile-info">
+      <div class="profile-avatar" id="avatar">A</div>
+      <div>
+        <div id="nama-user" class="profile-name">Nama Santri</div>
+        <div id="pondok-user" class="profile-pondok">Pondok Pesantren</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-grid">
+    <button class="menu-item" onclick="goTo('rumusan')"><i class="fa-solid fa-book"></i><p>Rumusan Masuk</p></button>
+    <button class="menu-item" onclick="goTo('statistik')"><i class="fa-solid fa-file-lines"></i><p>Soal Masuk</p></button>
+    <button class="menu-item" onclick="goTo('chat')"><i class="fa-solid fa-envelope"></i><p>Pesan Admin</p></button>
+    <button class="menu-item" onclick="goTo('upload')"><i class="fa-solid fa-book-open"></i><p>Upload Rumusan</p></button>
+    <button class="menu-item" onclick="goTo('video')"><i class="fa-solid fa-book-quran"></i><p>Upload Kitab</p></button>
+    <button class="menu-item" onclick="goTo('video')"><i class="fa-solid fa-note-sticky"></i><p>Catatan Ibaroh</p></button>
+  </section>
+
+  <section class="extra-section">
+    <button onclick="goTo('Pengaturan')" class="extra-btn"><i class="fa-solid fa-cog"></i> Pengaturan & Database</button>
+    <button onclick="goTo('Bantuan')" class="extra-btn"><i class="fa-solid fa-question-circle"></i> Bantuan & Dukungan</button>
+    <button onclick="logout()" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Keluar</button>
+  </section>
+
+  <script src="script-dashboard.js"></script>
+</body>
+</html>

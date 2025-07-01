@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Catatan Ibaroh</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f4f6f8;
+      color: #333;
+    }
+
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    .pencarian {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 600px;
+      margin: 0 auto 20px auto;
+      gap: 8px;
+    }
+
+    .pencarian input {
+      flex: 1;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 15px;
+      outline: none;
+      background: white;
+      height: 50px;
+    }
+
+    .pencarian button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      height: 50px;
+    }
+
+    .pencarian button:hover {
+      background-color: #2980b9;
+    }
+
+    .catatan-box {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background: white;
+      padding: 5px;
+      margin-bottom: 2px;
+    }
+
+    .judul {
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .isi {
+      margin-top: 8px;
+      font-family: 'Scheherazade New', 'Segoe UI', sans-serif;
+      font-size: 1.1em;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+
+    .isi[dir="rtl"] {
+      direction: rtl;
+      text-align: right;
+    }
+
+    #spinner {
+      display: none;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .spinner-border {
+      width: 2rem;
+      height: 2rem;
+      border: 4px solid #3498db;
+      border-top: 4px solid transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      display: inline-block;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    #tambahBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      border-radius: 50%;
+      font-size: 28px;
+      width: 50px;
+      height: 50px;
+      padding: 0;
+      background: #3498db;
+      color: white;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    #formPopup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(2px);
+      z-index: 99;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #formContainer {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      position: relative;
+    }
+
+    #formContainer button.close {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: 20px;
+      background: none;
+      border: none;
+      color: #888;
+      cursor: pointer;
+    }
+
+    .input-arabic {
+      direction: rtl;
+      unicode-bidi: plaintext;
+      font-family: 'Scheherazade New', serif;
+      font-size: 15px;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      width: 100%;
+      box-sizing: border-box;
+      background: #fffdf4;
+      color: #2c3e50;
+      line-height: 1.6;
+    }
+  
+    .input-arabic::placeholder {
+      font-size: 0.9em;
+      color: #aaa;
+    }
+  
+    label {
+      font-weight: bold;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+      box-sizing: border-box;
+    }
+
+    button[type="submit"], #formContainer button:not(.close) {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+
+    button:hover {
+      background: #2980b9;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="pencarian">
+    <input type="text" id="searchInput" placeholder="Cari catatan...">
+    <button onclick="cariCatatan()" title="Cari"><i class="fas fa-search"></i></button>
+  </div>
+
+  <div id="spinner"><div class="spinner-border"></div></div>
+  <div id="daftarCatatan"></div>
+
+  <button id="tambahBtn" onclick="toggleForm()">+</button>
+
+  <div id="formPopup">
+    <div id="formContainer">
+      <button class="close" onclick="toggleForm()">×</button>
+      <h3>Tambah Catatan Ibaroh</h3>
+      <input type="text" id="judulInput" placeholder="Judul Catatan"><br><br>
+      <div style="margin-top: 20px;">
+        <label for="teksArab">Teks Ibaroh:</label>
+        <textarea id="teksArab" class="input-arabic" rows="5" placeholder="اكتب هنا..."></textarea>
+      </div>      
+      <button onclick="kirimCatatan()">Kirim Catatan</button>
+    </div>
+  </div>
+
+  <script>
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxeSMPBa_hkfcdqQp5QXSayyYz9ugDXefWOCc5m-fZfKyb70JJPWe3PSMy4GACAVr7Q/exec';
+    const params = new URLSearchParams(window.location.search);
+    const userId = params.get("id")?.toUpperCase();
+
+    const daftarDiv = document.getElementById("daftarCatatan");
+    const formPopup = document.getElementById("formPopup");
+    const spinner = document.getElementById("spinner");
+
+    function toggleForm() {
+      formPopup.style.display = formPopup.style.display === "flex" ? "none" : "flex";
+      formPopup.style.justifyContent = 'center';
+      formPopup.style.alignItems = 'center';
+    }
+
+    function kirimCatatan() {
+      const judul = document.getElementById("judulInput").value.trim();
+      const isi = document.getElementById("isiInput").value.trim();
+
+      if (!judul || !isi || !userId) {
+        alert("Lengkapi semua isian!");
+        return;
+      }
+
+      const formData = new URLSearchParams();
+      formData.append("aksi", "tambah");
+      formData.append("idUser", userId);
+      formData.append("judul", judul);
+      formData.append("isi", isi);
+
+      spinner.style.display = 'block';
+
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        body: formData
+      })
+      .then(res => res.json())
+      .then(res => {
+        spinner.style.display = 'none';
+        if (res.success) {
+          document.getElementById("judulInput").value = '';
+          document.getElementById("isiInput").value = '';
+          toggleForm();
+          loadCatatan();
+        } else {
+          alert("Gagal menyimpan catatan: " + res.error);
+        }
+      })
+      .catch(err => {
+        spinner.style.display = 'none';
+        alert("Error: " + err);
+      });
+    }
+
+    function loadCatatan() {
+      if (!userId) {
+        daftarDiv.innerHTML = '<p style="color:red;">ID User tidak ditemukan di URL</p>';
+        return;
+      }
+
+      spinner.style.display = 'block';
+      fetch(`${SCRIPT_URL}?idUser=${userId}&ts=${Date.now()}`)
+        .then(res => res.json())
+        .then(data => {
+          spinner.style.display = 'none';
+          tampilkanCatatan(data.reverse()); // Terbaru di atas
+        })
+        .catch(err => {
+          spinner.style.display = 'none';
+          daftarDiv.innerHTML = '<p style="color:red;">Gagal mengambil data</p>';
+        });
+    }
+
+    function tampilkanCatatan(data) {
+      daftarDiv.innerHTML = '';
+      if (data.length === 0) {
+        daftarDiv.innerHTML = '<p>Belum ada catatan</p>';
+        return;
+      }
+
+      data.forEach(item => {
+        const kotak = document.createElement("div");
+        kotak.className = 'catatan-box';
+
+        const tombol = document.createElement("div");
+        tombol.className = 'judul';
+        tombol.innerText = item.judul;
+
+        const isi = document.createElement("div");
+        isi.className = 'isi';
+        isi.style.display = "none";
+
+        // Deteksi karakter Arab
+        const isArabic = /[\u0600-\u06FF]/.test(item.isi);
+        if (isArabic) isi.setAttribute('dir', 'rtl');
+
+        isi.innerText = item.isi;
+
+        tombol.onclick = () => {
+          isi.style.display = isi.style.display === "none" ? "block" : "none";
+        };
+
+        kotak.appendChild(tombol);
+        kotak.appendChild(isi);
+        daftarDiv.appendChild(kotak);
+      });
+    }
+
+    function cariCatatan() {
+      const keyword = document.getElementById("searchInput").value.toLowerCase().trim();
+
+      spinner.style.display = 'block';
+
+      if (keyword === "") {
+        loadCatatan();
+        return;
+      }
+
+      fetch(`${SCRIPT_URL}?idUser=${userId}&ts=${Date.now()}`)
+        .then(res => res.json())
+        .then(data => {
+          spinner.style.display = 'none';
+          const hasil = data.filter(item =>
+            item.judul.toLowerCase().includes(keyword) ||
+            item.isi.toLowerCase().includes(keyword)
+          );
+          tampilkanCatatan(hasil.reverse());
+        })
+        .catch(err => {
+          spinner.style.display = 'none';
+          daftarDiv.innerHTML = '<p style="color:red;">Gagal mengambil data</p>';
+        });
+    }
+
+    window.onload = () => {
+      loadCatatan();
+      document.getElementById("searchInput").addEventListener("input", function () {
+        if (this.value.trim() === "") {
+          loadCatatan();
+        }
+      });
+    };
+  </script>
+</body>
+</html>

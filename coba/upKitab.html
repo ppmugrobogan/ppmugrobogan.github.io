@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulir Pustaka</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+    .container {
+      background: #fff;
+      margin-top: 50px;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      margin-top: 0;
+      color: #333;
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+      color: #555;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+    textarea {
+        resize: vertical;
+        min-height: 120px;
+        font-family: 'Segoe UI', 'Roboto', sans-serif;
+        font-size: 15px;
+        line-height: 1.5;
+        background-color: #fdfdfd;
+        border: 1px solid #ccc;
+        padding: 12px;
+        color: #333;
+        border-radius: 8px;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+      
+      textarea:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+        outline: none;
+      }
+      
+    button {
+      margin-top: 25px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .alert {
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .success { color: green; }
+    .error { color: red; }
+
+    .note {
+      background: #fff3cd;
+      color: #856404;
+      border: 1px solid #ffeeba;
+      border-radius: 6px;
+      padding: 10px;
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+        margin: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>UPLOAD KITAB PDF</h2>
+    <form id="pustakaForm">
+      <label for="thumbnail">Link Kitab Google Drive</label>
+      <input type="url" id="thumbnail" required placeholder="https://drive.google.com/file/d/...." />
+      <div class="note">
+        ⚠️ <strong>Catatan:</strong> Pastikan file kitab di Google Drive Anda sudah dibagikan untuk <em>Siapa saja yang memiliki link</em> agar bisa ditampilkan publik.
+      </div>
+
+      <label for="judul">Judul</label>
+      <input type="text" id="judul" required placeholder="Judul Kitab" />
+
+      <label for="keterangan">Keterangan</label>
+      <textarea id="keterangan" required placeholder="Deskripsi atau ringkasan..."></textarea>
+
+      <label for="tgl">Tanggal</label>
+      <input type="date" id="tgl" required />
+
+      <button type="submit">Kirim</button>
+      <div class="alert" id="alertBox"></div>
+    </form>
+  </div>
+
+  <script>
+    // Isi tanggal otomatis hari ini
+    window.onload = function () {
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('tgl').value = today;
+    };
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzZ5nMyL3wpuX6Mvely_s1neTc2fbUKnG-sVQCHNBPPJPfxuk2MJQFuDVn5Zm9fod2fzQ/exec';
+
+    document.getElementById("pustakaForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const data = new URLSearchParams();
+      data.append("action", "tambah");
+      data.append("thumbnail", document.getElementById("thumbnail").value);
+      data.append("judul", document.getElementById("judul").value);
+      data.append("keterangan", document.getElementById("keterangan").value);
+      data.append("tgl", document.getElementById("tgl").value);
+
+      const alertBox = document.getElementById("alertBox");
+      alertBox.textContent = "⏳ Mengirim data...";
+      alertBox.className = "alert";
+
+      fetch(scriptURL, {
+        method: 'POST',
+        body: data
+      })
+        .then(res => res.json())
+        .then(response => {
+          if (response.success) {
+            alertBox.textContent = "✅ Data berhasil dikirim!";
+            alertBox.className = "alert success";
+            document.getElementById("pustakaForm").reset();
+            document.getElementById("tgl").value = new Date().toISOString().split('T')[0];
+          } else {
+            alertBox.textContent = "❌ Gagal: " + response.error;
+            alertBox.className = "alert error";
+          }
+        })
+        .catch(() => {
+          alertBox.textContent = "⚠️ Gagal terhubung ke server.";
+          alertBox.className = "alert error";
+        });
+    });
+  </script>
+</body>
+</html>

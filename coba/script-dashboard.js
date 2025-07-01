@@ -49,3 +49,20 @@ function goTo(pageName) {
 function logout() {
   window.location.href = "login.html";
 }
+
+  const params = new URLSearchParams(window.location.search);
+  const userId = params.get("id");
+
+  function goTo(page) {
+    if (!userId) {
+      alert("ID user tidak ditemukan!");
+      return;
+    }
+
+    if (page === 'catatan') {
+      window.location.href = `catatan.html?id=${userId}`;
+    }
+
+    // Jika nanti ada menu lain:
+    // if (page === 'profil') window.location.href = `profil.html?id=${userId}`;
+  }

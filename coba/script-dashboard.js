@@ -30,7 +30,6 @@ window.onload = () => {
     })
     .catch(err => {
       console.error("Gagal ambil data:", err);
-      alert("Terjadi kesalahan. Silakan coba lagi.");
       window.location.href = "login.html";
     });
 };

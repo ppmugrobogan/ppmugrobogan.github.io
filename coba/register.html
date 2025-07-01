@@ -2,10 +2,138 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Registrasi Santri</title>
-  <link rel="stylesheet" href="style.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Registrasi Santri</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 900px;
+      width: 100%;
+    }
+
+    .form {
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 85%;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-sizing: border-box;
+      transition: border-color 0.3s;
+      height: 50px;
+    }
+
+    input:focus {
+      border-color: #3080f7;
+    }
+
+    .password-wrapper {
+      position: relative;
+    }
+
+    .password-wrapper input {
+      padding-right: 40px;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+
+    .toggle-password i {
+      font-size: 1.2em;
+      color: #888;
+    }
+
+    button {
+      background: linear-gradient(135deg, rgb(47, 103, 99), #2e6f6bff);
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      height: 50px;
+      font-size: 18px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+      position: relative;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #2e6f6bff, rgb(47, 103, 99));
+    }
+
+    button.loading {
+      color: transparent;
+      pointer-events: none;
+    }
+
+    button.loading::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 18px;
+      height: 18px;
+      margin: -9px 0 0 -9px;
+      border: 2px solid #ffffff99;
+      border-top: 2px solid #fff;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    p {
+      font-size: 13px;
+      color: #777;
+      margin-top: 15px;
+      font-style: italic;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    @media (max-width: 480px) {
+      .form {
+        padding: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
   <div id="container">
@@ -14,11 +142,77 @@
       <input type="text" id="reg-nama" placeholder="Nama Lengkap" required />
       <input type="email" id="reg-email" placeholder="Email" required />
       <input type="text" id="reg-pondok" placeholder="Pondok Pesantren" required />
-      <input type="password" id="reg-password" placeholder="Password" required />
+      <div class="password-wrapper">
+        <input type="password" id="reg-password" placeholder="Password" required />
+        <span class="toggle-password" onclick="togglePassword()">
+          <i id="eyeIcon" class="fas fa-eye"></i>
+        </span>
+      </div>
       <button onclick="register()">Daftar</button>
       <p>Sudah punya akun? <a href="login.html">Login di sini</a></p>
     </div>
   </div>
-  <script src="script-register.js"></script>
+
+  <script>
+    const API_URL = "https://script.google.com/macros/s/AKfycbzIQyUVTp8rbfNCgIj2QVn6zI85vSwfHNVQXln3wt2VKVal-mw7ghsnDmiIHF6nrtB-CA/exec";
+  
+    function register() {
+      const nama = document.getElementById("reg-nama").value.trim();
+      const email = document.getElementById("reg-email").value.trim();
+      const pondok = document.getElementById("reg-pondok").value.trim();
+      const password = document.getElementById("reg-password").value.trim();
+      const btn = document.querySelector("button");
+  
+      // Validasi dasar
+      if (!nama || !email || !pondok || !password) {
+        alert("Semua kolom harus diisi.");
+        return;
+      }
+  
+      btn.classList.add("loading");
+  
+      const formData = new FormData();
+      formData.append("nama", nama);
+      formData.append("email", email);
+      formData.append("pondok", pondok);
+      formData.append("password", password);
+  
+      fetch(API_URL, {
+        method: "POST",
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        btn.classList.remove("loading");
+  
+        if (data.status === "exists") {
+          alert("Email sudah terdaftar!");
+        } else if (data.status === "success") {
+          alert("Registrasi berhasil! ID Anda: " + data.id);
+          window.location.href = `dashboard.html?id=${data.id}`;
+        } else {
+          alert("Gagal registrasi. Coba lagi nanti.");
+        }
+      })
+      .catch(() => {
+        alert("Terjadi kesalahan jaringan.");
+        btn.classList.remove("loading");
+      });
+    }
+  
+    function togglePassword() {
+      const input = document.getElementById("reg-password");
+      const icon = document.getElementById("eyeIcon");
+      if (input.type === "password") {
+        input.type = "text";
+        icon.classList.replace("fa-eye", "fa-eye-slash");
+      } else {
+        input.type = "password";
+        icon.classList.replace("fa-eye-slash", "fa-eye");
+      }
+    }
+  </script>
+  
 </body>
+
 </html>

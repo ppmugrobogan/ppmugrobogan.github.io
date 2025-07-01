@@ -36,14 +36,18 @@ window.onload = () => {
 };
 
 // Navigasi ke halaman lain dengan tetap membawa id
-function goTo(pageName) {
-  const id = new URLSearchParams(window.location.search).get("id");
-  if (!id) {
+function goTo(page) {
+  const userId = new URLSearchParams(window.location.search).get("id");
+  if (!userId) {
+    alert("ID user tidak ditemukan!");
     window.location.href = "login.html";
     return;
   }
-  window.location.href = `${pageName}.html?id=${id}`;
+
+  // Redirect ke halaman sesuai parameter 'page'
+  window.location.href = `${page}.html?id=${userId}`;
 }
+
 
 // Logout
 function logout() {
@@ -52,17 +56,3 @@ function logout() {
 
   const params = new URLSearchParams(window.location.search);
   const userId = params.get("id");
-
-  function goTo(page) {
-    if (!userId) {
-      alert("ID user tidak ditemukan!");
-      return;
-    }
-
-    if (page === 'catatan') {
-      window.location.href = `catatan.html?id=${userId}`;
-    }
-
-    // Jika nanti ada menu lain:
-    // if (page === 'profil') window.location.href = `profil.html?id=${userId}`;
-  }

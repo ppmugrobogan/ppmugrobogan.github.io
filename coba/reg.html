@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Pendaftaran Santri</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      padding: 20px;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 15px;
+      background: #3080f7;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1d5edb;
+    }
+    #status {
+      margin-top: 15px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<form id="regForm">
+  <h3>Pendaftaran Santri</h3>
+  <label for="nama">Nama Lengkap</label>
+  <input type="text" id="nama" required>
+
+  <label for="email">Email</label>
+  <input type="email" id="email" required>
+
+  <label for="pondok">Pondok Pesantren</label>
+  <input type="text" id="pondok" required>
+
+  <label for="password">Password</label>
+  <input type="password" id="password" required>
+
+  <button type="submit">Kirim</button>
+  <div id="status"></div>
+</form>
+
+<script>
+  const form = document.getElementById("regForm");
+  const statusDiv = document.getElementById("status");
+
+  function generateID() {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let id = 'USR';
+    for (let i = 0; i < 9; i++) {
+      id += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return id;
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const id = generateID();
+    const nama = document.getElementById("nama").value;
+    const email = document.getElementById("email").value;
+    const pondok = document.getElementById("pondok").value;
+    const password = document.getElementById("password").value;
+
+    const data = { id, nama, email, pondok, password };
+
+    try {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbzF-FHMpLlHniwnCnJsSkVRbG-NURoIaCu9CQ1Cs7-6SFxCaebjSPWtT3lqYk2OrjTHEg/exec", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+
+      const result = await response.json();
+      if (result.status === "success") {
+        statusDiv.innerHTML = "✅ Data berhasil dikirim!";
+        form.reset();
+      } else {
+        statusDiv.innerHTML = "❌ Gagal mengirim data!";
+      }
+    } catch (error) {
+      console.error(error);
+      statusDiv.innerHTML = "❌ Terjadi kesalahan.";
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -148,71 +148,93 @@
           <i id="eyeIcon" class="fas fa-eye"></i>
         </span>
       </div>
-      <button onclick="register()">Daftar</button>
+      <button onclick="register(event)">Daftar</button>
       <p>Sudah punya akun? <a href="login.html">Login di sini</a></p>
     </div>
   </div>
 
   <script>
-    const API_URL = "https://script.google.com/macros/s/AKfycbzIQyUVTp8rbfNCgIj2QVn6zI85vSwfHNVQXln3wt2VKVal-mw7ghsnDmiIHF6nrtB-CA/exec";
-  
-    function register() {
-      const nama = document.getElementById("reg-nama").value.trim();
-      const email = document.getElementById("reg-email").value.trim();
-      const pondok = document.getElementById("reg-pondok").value.trim();
-      const password = document.getElementById("reg-password").value.trim();
-      const btn = document.querySelector("button");
-  
-      // Validasi dasar
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwFvBbNdf6_vM9NAgSftYpcBNL2sqJJz0_sVJZE-VIU6N2Baap45vKVm6Ad3J4dCzwLpw/exec';
+
+    async function register(event) {
+      event.preventDefault();
+    
+      const nama = document.getElementById('reg-nama').value.trim();
+      const email = document.getElementById('reg-email').value.trim();
+      const pondok = document.getElementById('reg-pondok').value.trim();
+      const password = document.getElementById('reg-password').value.trim();
+    
       if (!nama || !email || !pondok || !password) {
-        alert("Semua kolom harus diisi.");
+        alert("⚠️ Harap isi semua kolom.");
         return;
       }
-  
-      btn.classList.add("loading");
-  
-      const formData = new FormData();
-      formData.append("nama", nama);
-      formData.append("email", email);
-      formData.append("pondok", pondok);
-      formData.append("password", password);
-  
-      fetch(API_URL, {
-        method: "POST",
-        body: formData
-      })
-      .then(res => res.json())
-      .then(data => {
-        btn.classList.remove("loading");
-  
-        if (data.status === "exists") {
-          alert("Email sudah terdaftar!");
-        } else if (data.status === "success") {
-          alert("Registrasi berhasil! ID Anda: " + data.id);
-          window.location.href = `dashboard.html?id=${data.id}`;
-        } else {
-          alert("Gagal registrasi. Coba lagi nanti.");
+    
+      const button = event.target;
+      button.disabled = true;
+      button.textContent = "Mengirim...";
+    
+      const data = {
+        action: "register",
+        nama: nama,
+        email: email,
+        pondok: pondok,
+        password: password
+      };
+    
+      try {
+        console.log("Sending data:", data);
+        
+        const response = await fetch(scriptURL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
-      })
-      .catch(() => {
-        alert("Terjadi kesalahan jaringan.");
-        btn.classList.remove("loading");
-      });
+        
+        const result = await response.json();
+        console.log("Server response:", result);
+        
+        if (result.status === "success") {
+          alert("✅ Registrasi berhasil!\nID Anda: " + result.id);
+          // Reset form
+          document.getElementById('reg-nama').value = '';
+          document.getElementById('reg-email').value = '';
+          document.getElementById('reg-pondok').value = '';
+          document.getElementById('reg-password').value = '';
+        } else if (result.status === "exists") {
+          alert("❌ Email sudah terdaftar!");
+        } else {
+          alert(`❌ Gagal registrasi: ${result.message || 'Silakan coba lagi'}`);
+        }
+      } catch (err) {
+        console.error('Fetch error:', err);
+        alert("❌ Gagal menghubungi server. Silakan coba lagi nanti.");
+      } finally {
+        button.disabled = false;
+        button.textContent = "Daftar";
+      }
     }
-  
+
     function togglePassword() {
-      const input = document.getElementById("reg-password");
-      const icon = document.getElementById("eyeIcon");
-      if (input.type === "password") {
-        input.type = "text";
-        icon.classList.replace("fa-eye", "fa-eye-slash");
+      const passwordField = document.getElementById("reg-password");
+      const eyeIcon = document.getElementById("eyeIcon");
+      
+      if (!passwordField || !eyeIcon) return;
+      
+      if (passwordField.type === "password") {
+        passwordField.type = "text";
+        eyeIcon.classList.replace("fa-eye", "fa-eye-slash");
       } else {
-        input.type = "password";
-        icon.classList.replace("fa-eye-slash", "fa-eye");
+        passwordField.type = "password";
+        eyeIcon.classList.replace("fa-eye-slash", "fa-eye");
       }
     }
   </script>
   
+  <!-- Pastikan Font Awesome sudah di-load -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </body>
-
 </html>

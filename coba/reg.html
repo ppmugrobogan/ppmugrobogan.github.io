@@ -2,117 +2,294 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Form Pendaftaran Santri</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrasi Santri</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
     body {
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       padding: 20px;
     }
-    form {
+    
+    #container {
       background: white;
-      padding: 20px;
-      max-width: 400px;
-      margin: auto;
-      border-radius: 10px;
-      box-shadow: 0 0 10px #ccc;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 450px;
+      overflow: hidden;
     }
-    label {
-      display: block;
-      margin-top: 10px;
-      font-weight: bold;
+    
+    .form {
+      padding: 40px;
     }
+    
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+      font-size: 28px;
+    }
+    
     input {
       width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      padding: 15px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.3s;
     }
+    
+    input:focus {
+      border-color: #6a11cb;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.1);
+    }
+    
+    .password-wrapper {
+      position: relative;
+    }
+    
+    .toggle-password {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      cursor: pointer;
+      color: #777;
+    }
+    
     button {
-      margin-top: 15px;
-      background: #3080f7;
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
       color: white;
       border: none;
-      padding: 10px;
-      width: 100%;
-      border-radius: 5px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 600;
       cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 10px;
     }
+    
     button:hover {
-      background: #1d5edb;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
     }
-    #status {
-      margin-top: 15px;
+    
+    button:disabled {
+      background: #cccccc;
+      transform: none;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+    
+    p {
       text-align: center;
+      margin-top: 25px;
+      color: #666;
+    }
+    
+    a {
+      color: #2575fc;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    a:hover {
+      text-decoration: underline;
+    }
+    
+    .status-message {
+      padding: 10px;
+      border-radius: 5px;
+      margin: 15px 0;
+      text-align: center;
+      font-weight: 500;
+    }
+    
+    .success {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    
+    .error {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+    
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    
+    .spinner {
+      border: 3px solid rgba(0, 0, 0, 0.1);
+      border-top: 3px solid #2575fc;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
   </style>
 </head>
 <body>
+  <div id="container">
+    <div class="form">
+      <h2>Registrasi Santri</h2>
+      <div id="status-message" class="status-message"></div>
+      <div id="loading" class="loading" style="display: none;">
+        <div class="spinner"></div>
+        <span>Memproses...</span>
+      </div>
+      
+      <input type="text" id="reg-nama" placeholder="Nama Lengkap" required />
+      <input type="email" id="reg-email" placeholder="Email" required />
+      <input type="text" id="reg-pondok" placeholder="Pondok Pesantren" required />
+      <div class="password-wrapper">
+        <input type="password" id="reg-password" placeholder="Password" required />
+        <span class="toggle-password" onclick="togglePassword()">
+          <i id="eyeIcon" class="fas fa-eye"></i>
+        </span>
+      </div>
+      <button onclick="register(event)">Daftar</button>
+      <p>Sudah punya akun? <a href="login.html">Login di sini</a></p>
+    </div>
+  </div>
 
-<form id="regForm">
-  <h3>Pendaftaran Santri</h3>
-  <label for="nama">Nama Lengkap</label>
-  <input type="text" id="nama" required>
+  <script>
+    // URL Deployment Google Apps Script
+    const baseUrl = 'https://script.google.com/macros/s/AKfycbyHn4XJpPl5IV6jm-11Js8wpECyaUsXhIGjjSmWTCOhiKIkHpZJRREjesTSvOYaQwoG/exec';
+    
+    // Deteksi apakah di localhost
+    const isLocalhost = window.location.hostname === '127.0.0.1' || 
+                        window.location.hostname === 'localhost';
+    
+    // Gunakan proxy CORS jika di localhost
+    const scriptURL = isLocalhost 
+      ? `https://corsproxy.io/?${encodeURIComponent(baseUrl)}`
+      : baseUrl;
 
-  <label for="email">Email</label>
-  <input type="email" id="email" required>
-
-  <label for="pondok">Pondok Pesantren</label>
-  <input type="text" id="pondok" required>
-
-  <label for="password">Password</label>
-  <input type="password" id="password" required>
-
-  <button type="submit">Kirim</button>
-  <div id="status"></div>
-</form>
-
-<script>
-  const form = document.getElementById("regForm");
-  const statusDiv = document.getElementById("status");
-
-  function generateID() {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    let id = 'USR';
-    for (let i = 0; i < 9; i++) {
-      id += chars.charAt(Math.floor(Math.random() * chars.length));
+    // Fungsi untuk menampilkan pesan
+    function showMessage(message, isSuccess) {
+      const statusEl = document.getElementById('status-message');
+      statusEl.textContent = message;
+      statusEl.className = `status-message ${isSuccess ? 'success' : 'error'}`;
+      statusEl.style.display = 'block';
     }
-    return id;
-  }
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const id = generateID();
-    const nama = document.getElementById("nama").value;
-    const email = document.getElementById("email").value;
-    const pondok = document.getElementById("pondok").value;
-    const password = document.getElementById("password").value;
+    // Fungsi untuk menampilkan/menyembunyikan loading
+    function showLoading(show) {
+      document.getElementById('loading').style.display = show ? 'flex' : 'none';
+    }
 
-    const data = { id, nama, email, pondok, password };
-
-    try {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbzF-FHMpLlHniwnCnJsSkVRbG-NURoIaCu9CQ1Cs7-6SFxCaebjSPWtT3lqYk2OrjTHEg/exec", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      });
-
-      const result = await response.json();
-      if (result.status === "success") {
-        statusDiv.innerHTML = "✅ Data berhasil dikirim!";
-        form.reset();
-      } else {
-        statusDiv.innerHTML = "❌ Gagal mengirim data!";
+    // Fungsi registrasi utama
+    async function register(event) {
+      event.preventDefault();
+    
+      const nama = document.getElementById('reg-nama').value.trim();
+      const email = document.getElementById('reg-email').value.trim();
+      const pondok = document.getElementById('reg-pondok').value.trim();
+      const password = document.getElementById('reg-password').value.trim();
+    
+      if (!nama || !email || !pondok || !password) {
+        showMessage("⚠️ Harap isi semua kolom.", false);
+        return;
       }
-    } catch (error) {
-      console.error(error);
-      statusDiv.innerHTML = "❌ Terjadi kesalahan.";
+    
+      const button = event.target;
+      button.disabled = true;
+      button.textContent = "Mengirim...";
+      showLoading(true);
+      document.getElementById('status-message').style.display = 'none';
+    
+      const data = {
+        action: "register",
+        nama: nama,
+        email: email,
+        pondok: pondok,
+        password: password
+      };
+    
+      try {
+        console.log("Mengirim data:", data);
+        
+        // Tambahkan timestamp untuk menghindari cache
+        const urlWithCacheBust = `${scriptURL}?t=${Date.now()}`;
+        
+        const response = await fetch(urlWithCacheBust, {
+          method: 'POST',
+          headers: { 
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+        
+        console.log("Status response:", response.status);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        
+        const result = await response.json();
+        console.log("Response dari server:", result);
+        
+        if (result.status === "success") {
+          showMessage("✅ Registrasi berhasil! ID Anda: " + result.id, true);
+          // Reset form
+          document.getElementById('reg-nama').value = '';
+          document.getElementById('reg-email').value = '';
+          document.getElementById('reg-pondok').value = '';
+          document.getElementById('reg-password').value = '';
+        } else if (result.status === "exists") {
+          showMessage("❌ Email sudah terdaftar!", false);
+        } else {
+          const errorMsg = result.message || "Terjadi kesalahan saat mendaftar";
+          showMessage(`❌ ${errorMsg}`, false);
+        }
+      } catch (err) {
+        console.error('Error:', err);
+        showMessage(`❌ Gagal menghubungi server: ${err.message}`, false);
+      } finally {
+        button.disabled = false;
+        button.textContent = "Daftar";
+        showLoading(false);
+      }
     }
-  });
-</script>
 
+    // Fungsi toggle password visibility
+    function togglePassword() {
+      const passwordField = document.getElementById("reg-password");
+      const eyeIcon = document.getElementById("eyeIcon");
+      
+      if (passwordField.type === "password") {
+        passwordField.type = "text";
+        eyeIcon.classList.replace("fa-eye", "fa-eye-slash");
+      } else {
+        passwordField.type = "password";
+        eyeIcon.classList.replace("fa-eye-slash", "fa-eye");
+      }
+    }
+  </script>
 </body>
 </html>

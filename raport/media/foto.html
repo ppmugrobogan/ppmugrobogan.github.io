@@ -494,11 +494,20 @@ document.querySelector('.search-box').addEventListener('submit', function(event)
           // Get URL from column E (index 4)
           const url = row[4];
     
-           newRowDiv.addEventListener('click', function() {
-  const cleanUrl = url.replace(/^https?:\/\//, '');
-  const finalUrl = `https://${cleanUrl}`;
-  window.location.href = finalUrl;
-});
+          newRowDiv.addEventListener('click', function () {
+            if (url.includes("drive.google.com")) {
+              if (typeof AndroidFunction !== "undefined" && AndroidFunction.openDriveLink) {
+                AndroidFunction.openDriveLink(url); // panggil ke Android
+              } else {
+                window.open(url, "_blank"); // fallback jika tidak di Android
+              }
+            } else {
+              const cleanUrl = url.replace(/^https?:\/\//, '');
+              const finalUrl = `https://${cleanUrl}`;
+              window.location.href = finalUrl;
+            }
+          });
+          
           newRow.appendChild(newRowDiv); // Insert the row div into the table
 
           row.forEach((cellValue, index) => {

@@ -497,9 +497,15 @@ document.querySelector('.search-box').addEventListener('submit', function(event)
           newRowDiv.addEventListener('click', function () {
             if (url.includes("drive.google.com")) {
               if (typeof AndroidFunction !== "undefined" && AndroidFunction.openDriveLink) {
-                AndroidFunction.openDriveLink(url); // panggil ke Android
+                AndroidFunction.openDriveLink(url); // Android: buka di Google Drive app
               } else {
-                window.open(url, "_blank"); // fallback jika tidak di Android
+                window.open(url, "_blank"); // Fallback untuk browser
+              }
+            } else if (url.includes("youtube.com") || url.includes("youtu.be")) {
+              if (typeof AndroidFunction !== "undefined" && AndroidFunction.openYoutubeLink) {
+                AndroidFunction.openYoutubeLink(url); // Android: buka di YouTube app
+              } else {
+                window.open(url, "_blank"); // Fallback browser
               }
             } else {
               const cleanUrl = url.replace(/^https?:\/\//, '');

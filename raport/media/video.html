@@ -505,11 +505,26 @@ document.querySelector('.search-box').addEventListener('submit', function(event)
           // Get URL from column E (index 4)
           const url = row[4];
     
-           newRowDiv.addEventListener('click', function() {
-        const cleanUrl = url.replace(/^https?:\/\//, '');
-        const finalUrl = `https://${cleanUrl}`;
-        window.location.href = finalUrl;
-});
+          newRowDiv.addEventListener('click', function () {
+            if (url.includes("drive.google.com")) {
+              if (typeof AndroidFunction !== "undefined" && AndroidFunction.openDriveLink) {
+                AndroidFunction.openDriveLink(url); // Android: buka di Google Drive app
+              } else {
+                window.open(url, "_blank"); // Fallback untuk browser
+              }
+            } else if (url.includes("youtube.com") || url.includes("youtu.be")) {
+              if (typeof AndroidFunction !== "undefined" && AndroidFunction.openYoutubeLink) {
+                AndroidFunction.openYoutubeLink(url); // Android: buka di YouTube app
+              } else {
+                window.open(url, "_blank"); // Fallback browser
+              }
+            } else {
+              const cleanUrl = url.replace(/^https?:\/\//, '');
+              const finalUrl = `https://${cleanUrl}`;
+              window.location.href = finalUrl;
+            }
+          });
+          
           newRow.appendChild(newRowDiv); // Insert the row div into the table
 
           row.forEach((cellValue, index) => {

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jadwal Sholat Harian</title>
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      margin: 0; padding: 0;
+      background: #f0f4f8;
+      color: #333;
+    }
+    .wrapper {
+      max-width: 400px;
+      margin: 2rem auto;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    header {
+      background: #4a7dbb;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    header h1 { margin: 0; font-size: 1.5rem; }
+    #city { font-size: 1.2rem; margin-top: 0.5rem; }
+    main { padding: 1.5rem; }
+    .time {
+      display: flex;
+      justify-content: space-between;
+      margin: 0.5rem 0;
+      font-size: 1.1rem;
+    }
+    .timelabel { text-transform: capitalize; }
+    #last-updated {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #666;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <h1>Jadwal Sholat</h1>
+      <div id="city">Mendeteksi lokasi...</div>
+    </header>
+    <main id="times">
+      <div class="time"><span>Subuh</span><span id="subuh">--:--</span></div>
+      <div class="time"><span>Dzuhur</span><span id="dzuhur">--:--</span></div>
+      <div class="time"><span>Ashar</span><span id="ashar">--:--</span></div>
+      <div class="time"><span>Maghrib</span><span id="maghrib">--:--</span></div>
+      <div class="time"><span>Isya</span><span id="isya">--:--</span></div>
+      <div id="last-updated">--</div>
+    </main>
+  </div>
+
+  <script>
+    async function getLocation() {
+      return new Promise((ok, fail) =>
+        navigator.geolocation.getCurrentPosition(pos => ok(pos.coords), err => fail(err))
+      );
+    }
+
+    async function fetchPrayer(lat, lon) {
+      const res = await fetch(`https://api.myquran.com/v2/sholat/jadwal/${lat},${lon}`);
+      // Note: This endpoint is illustrative; adjust to actual format per docs :contentReference[oaicite:2]{index=2}
+      return res.json();
+    }
+
+    function fillPrayers(data) {
+      document.getElementById('city').textContent = data.lokasi + ', ' + data.daerah;
+      ['subuh', 'dzuhur', 'ashar', 'maghrib', 'isya'].forEach(name => {
+        document.getElementById(name).textContent = data.jadwal.timings[name.charAt(0).toUpperCase() + name.slice(1)];
+      });
+      document.getElementById('last-updated').textContent = 'Data tanggal ' + data.jadwal.date;
+    }
+
+    (async () => {
+      try {
+        const coords = await getLocation();
+        const lat = coords.latitude.toFixed(6);
+        const lon = coords.longitude.toFixed(6);
+
+        const raw = await fetch(`https://api.myquran.com/v2/sholat/jadwal/${lat}/${lon}`);
+        const json = await raw.json();
+        if (json.status === false) throw new Error(json.message || 'Error API');
+        fillPrayers(json.data);
+      } catch (err) {
+        console.error(err);
+        document.getElementById('city').textContent = 'Tidak bisa mendapatkan data';
+        document.getElementById('last-updated').textContent = err.message;
+      }
+    })();
+  </script>
+</body>
+</html>

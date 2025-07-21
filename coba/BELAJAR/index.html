@@ -1,101 +1,519 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jadwal Sholat Harian</title>
-  <style>
-    body {
-      font-family: 'Open Sans', sans-serif;
-      margin: 0; padding: 0;
-      background: #f0f4f8;
-      color: #333;
-    }
-    .wrapper {
-      max-width: 400px;
-      margin: 2rem auto;
-      background: #fff;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    header {
-      background: #4a7dbb;
-      color: white;
-      padding: 1rem;
-      text-align: center;
-    }
-    header h1 { margin: 0; font-size: 1.5rem; }
-    #city { font-size: 1.2rem; margin-top: 0.5rem; }
-    main { padding: 1.5rem; }
-    .time {
-      display: flex;
-      justify-content: space-between;
-      margin: 0.5rem 0;
-      font-size: 1.1rem;
-    }
-    .timelabel { text-transform: capitalize; }
-    #last-updated {
-      margin-top: 1rem;
-      font-size: 0.85rem;
-      color: #666;
-      text-align: center;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jadwal Sholat Indonesia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #7f8c8d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7fa;
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .date-display {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .gregorian-date {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .hijri-date {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-top: 5px;
+        }
+        
+        .city-selector {
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        select {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            background-color: white;
+        }
+        
+        button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        .prayer-times {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .prayer-times th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .prayer-times td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .prayer-times tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .prayer-times tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--secondary-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .error-message {
+            color: var(--accent-color);
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(231, 76, 60, 0.1);
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .next-prayer {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .next-prayer-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .countdown {
+            font-size: 1.2rem;
+            font-weight: bold;
+            font-family: monospace;
+        }
+    </style>
 </head>
 <body>
-  <div class="wrapper">
-    <header>
-      <h1>Jadwal Sholat</h1>
-      <div id="city">Mendeteksi lokasi...</div>
-    </header>
-    <main id="times">
-      <div class="time"><span>Subuh</span><span id="subuh">--:--</span></div>
-      <div class="time"><span>Dzuhur</span><span id="dzuhur">--:--</span></div>
-      <div class="time"><span>Ashar</span><span id="ashar">--:--</span></div>
-      <div class="time"><span>Maghrib</span><span id="maghrib">--:--</span></div>
-      <div class="time"><span>Isya</span><span id="isya">--:--</span></div>
-      <div id="last-updated">--</div>
-    </main>
-  </div>
+    <div class="container">
+        <h1><i class="fas fa-mosque"></i> Jadwal Sholat</h1>
+        
+        <div class="date-display">
+            <div class="gregorian-date" id="gregorian-date">-</div>
+            <div class="hijri-date" id="hijri-date">-</div>
+        </div>
+        
+        <div class="city-selector">
+            <select id="province-select">
+                <option value="">Pilih Provinsi</option>
+            </select>
+            <select id="city-select" disabled>
+                <option value="">Pilih Kota/Kabupaten</option>
+            </select>
+            <button id="get-schedule-btn">
+                <i class="fas fa-search"></i> Tampilkan Jadwal
+            </button>
+        </div>
+        
+        <div id="loading" class="loading" style="display: none;">
+            <div class="spinner"></div>
+        </div>
+        
+        <div id="error-message" class="error-message" style="display: none;">
+            <i class="fas fa-exclamation-triangle"></i> <span id="error-text">Gagal memuat jadwal sholat. Silakan coba lagi.</span>
+        </div>
+        
+        <table class="prayer-times" id="prayer-times" style="display: none;">
+            <thead>
+                <tr>
+                    <th>Waktu Sholat</th>
+                    <th>Jam</th>
+                </tr>
+            </thead>
+            <tbody id="prayer-times-body">
+                <!-- Data akan diisi oleh JavaScript -->
+            </tbody>
+        </table>
+        
+        <div id="next-prayer" class="next-prayer" style="display: none;">
+            <div class="next-prayer-info">
+                <i class="fas fa-clock"></i>
+                <div>
+                    <div>Sholat Berikutnya:</div>
+                    <div id="next-prayer-name">-</div>
+                </div>
+            </div>
+            <div id="countdown" class="countdown">--:--:--</div>
+        </div>
+    </div>
 
-  <script>
-    async function getLocation() {
-      return new Promise((ok, fail) =>
-        navigator.geolocation.getCurrentPosition(pos => ok(pos.coords), err => fail(err))
-      );
-    }
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const provinceSelect = document.getElementById('province-select');
+            const citySelect = document.getElementById('city-select');
+            const getScheduleBtn = document.getElementById('get-schedule-btn');
+            const loadingElement = document.getElementById('loading');
+            const errorElement = document.getElementById('error-message');
+            const errorText = document.getElementById('error-text');
+            const prayerTimesTable = document.getElementById('prayer-times');
+            const prayerTimesBody = document.getElementById('prayer-times-body');
+            const gregorianDateElement = document.getElementById('gregorian-date');
+            const hijriDateElement = document.getElementById('hijri-date');
+            const nextPrayerElement = document.getElementById('next-prayer');
+            const nextPrayerName = document.getElementById('next-prayer-name');
+            const countdownElement = document.getElementById('countdown');
 
-    async function fetchPrayer(lat, lon) {
-      const res = await fetch(`https://api.myquran.com/v2/sholat/jadwal/${lat},${lon}`);
-      // Note: This endpoint is illustrative; adjust to actual format per docs :contentReference[oaicite:2]{index=2}
-      return res.json();
-    }
+            // Data
+            let cities = [];
+            let selectedCityId = null;
+            let todayPrayerTimes = null;
+            let countdownInterval = null;
 
-    function fillPrayers(data) {
-      document.getElementById('city').textContent = data.lokasi + ', ' + data.daerah;
-      ['subuh', 'dzuhur', 'ashar', 'maghrib', 'isya'].forEach(name => {
-        document.getElementById(name).textContent = data.jadwal.timings[name.charAt(0).toUpperCase() + name.slice(1)];
-      });
-      document.getElementById('last-updated').textContent = 'Data tanggal ' + data.jadwal.date;
-    }
+            // Initialize
+            updateDateDisplay();
+            loadProvinces();
 
-    (async () => {
-      try {
-        const coords = await getLocation();
-        const lat = coords.latitude.toFixed(6);
-        const lon = coords.longitude.toFixed(6);
+            // Event listeners
+            provinceSelect.addEventListener('change', function() {
+                const provinceName = this.value;
+                if (provinceName) {
+                    loadCities(provinceName);
+                } else {
+                    citySelect.innerHTML = '<option value="">Pilih Kota/Kabupaten</option>';
+                    citySelect.disabled = true;
+                }
+            });
 
-        const raw = await fetch(`https://api.myquran.com/v2/sholat/jadwal/${lat}/${lon}`);
-        const json = await raw.json();
-        if (json.status === false) throw new Error(json.message || 'Error API');
-        fillPrayers(json.data);
-      } catch (err) {
-        console.error(err);
-        document.getElementById('city').textContent = 'Tidak bisa mendapatkan data';
-        document.getElementById('last-updated').textContent = err.message;
-      }
-    })();
-  </script>
+            citySelect.addEventListener('change', function() {
+                selectedCityId = this.value;
+            });
+
+            getScheduleBtn.addEventListener('click', getPrayerSchedule);
+
+            // Functions
+            function updateDateDisplay() {
+                const today = new Date();
+                gregorianDateElement.textContent = formatGregorianDate(today);
+                hijriDateElement.textContent = getHijriDate(today);
+            }
+
+            function formatGregorianDate(date) {
+                const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+                const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 
+                            'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+                
+                return `${days[date.getDay()]}, ${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
+            }
+
+            function getHijriDate(gregorianDate) {
+                // Konversi sederhana (untuk akurasi lebih baik gunakan API)
+                const hijriMonths = ['Muharram', 'Shafar', 'Rabiul Awwal', 'Rabiul Akhir', 
+                                    'Jumadil Awwal', 'Jumadil Akhir', 'Rajab', 'Sya\'ban', 
+                                    'Ramadhan', 'Syawwal', 'Dzulqa\'dah', 'Dzulhijjah'];
+                
+                // Perhitungan sederhana (tidak akurat)
+                const hijriYear = Math.floor((gregorianDate.getFullYear() - 622) * (33 / 32));
+                const hijriMonth = hijriMonths[gregorianDate.getMonth()];
+                const hijriDay = gregorianDate.getDate() > 1 ? gregorianDate.getDate() - 1 : 1;
+                
+                return `${hijriDay} ${hijriMonth} ${hijriYear} H`;
+            }
+
+            async function loadProvinces() {
+                try {
+                    loadingElement.style.display = 'flex';
+                    errorElement.style.display = 'none';
+                    
+                    // Gunakan API myQuran v2
+                    const response = await fetch('https://api.myquran.com/v2/sholat/kokab');
+                    
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    
+                    const data = await response.json();
+                    
+                    if (data.status) {
+                        cities = data.data;
+                        const provinces = [...new Set(data.data.map(city => city.provinsi))];
+                        
+                        provinceSelect.innerHTML = '<option value="">Pilih Provinsi</option>' + 
+                            provinces.sort().map(province => 
+                                `<option value="${province}">${province}</option>`
+                            ).join('');
+                    }
+                } catch (error) {
+                    console.error('Error loading provinces:', error);
+                    errorText.textContent = 'Gagal memuat daftar provinsi. Silakan refresh halaman.';
+                    errorElement.style.display = 'block';
+                    
+                    // Gunakan data statis jika API gagal
+                    loadBackupProvinces();
+                } finally {
+                    loadingElement.style.display = 'none';
+                }
+            }
+
+            function loadBackupProvinces() {
+                const backupData = [
+                    {id: "1101", provinsi: "ACEH", lokasi: "KAB. ACEH SELATAN"},
+                    {id: "3171", provinsi: "DKI JAKARTA", lokasi: "KOTA JAKARTA SELATAN"},
+                    {id: "3273", provinsi: "JAWA BARAT", lokasi: "KOTA BANDUNG"},
+                    {id: "3515", provinsi: "JAWA TIMUR", lokasi: "KOTA SURABAYA"},
+                    {id: "7371", provinsi: "SULAWESI SELATAN", lokasi: "KOTA MAKASSAR"}
+                ];
+                
+                cities = backupData;
+                const provinces = [...new Set(backupData.map(city => city.provinsi))];
+                
+                provinceSelect.innerHTML = '<option value="">Pilih Provinsi</option>' + 
+                    provinces.sort().map(province => 
+                        `<option value="${province}">${province}</option>`
+                    ).join('');
+            }
+
+            function loadCities(provinceName) {
+                const filteredCities = cities.filter(city => city.provinsi === provinceName);
+                
+                citySelect.innerHTML = '<option value="">Pilih Kota/Kabupaten</option>' + 
+                    filteredCities.sort((a,b) => a.lokasi.localeCompare(b.lokasi))
+                        .map(city => `<option value="${city.id}">${city.lokasi}</option>`)
+                        .join('');
+                
+                citySelect.disabled = false;
+            }
+
+            async function getPrayerSchedule() {
+                if (!selectedCityId) {
+                    showError('Silakan pilih kota/kabupaten terlebih dahulu');
+                    return;
+                }
+
+                try {
+                    // Clear previous countdown
+                    if (countdownInterval) {
+                        clearInterval(countdownInterval);
+                    }
+
+                    loadingElement.style.display = 'flex';
+                    errorElement.style.display = 'none';
+                    prayerTimesTable.style.display = 'none';
+                    nextPrayerElement.style.display = 'none';
+                    
+                    const today = new Date();
+                    const dateStr = `${today.getFullYear()}/${today.getMonth() + 1}/${today.getDate()}`;
+                    
+                    const response = await fetch(`https://api.myquran.com/v2/sholat/jadwal/${selectedCityId}/${dateStr}`);
+                    
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    
+                    const data = await response.json();
+                    
+                    if (data.status) {
+                        todayPrayerTimes = data.data.jadwal;
+                        displayPrayerTimes(data.data);
+                        startCountdown();
+                    } else {
+                        throw new Error('Data jadwal tidak ditemukan');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    showError('Gagal memuat jadwal sholat. Silakan coba lagi.');
+                } finally {
+                    loadingElement.style.display = 'none';
+                }
+            }
+
+            function showError(message) {
+                errorText.textContent = message;
+                errorElement.style.display = 'block';
+            }
+
+            function displayPrayerTimes(data) {
+                const jadwal = data.jadwal;
+                
+                prayerTimesBody.innerHTML = `
+                    <tr>
+                        <td>Subuh</td>
+                        <td>${jadwal.subuh}</td>
+                    </tr>
+                    <tr>
+                        <td>Dzuhur</td>
+                        <td>${jadwal.dzuhur}</td>
+                    </tr>
+                    <tr>
+                        <td>Ashar</td>
+                        <td>${jadwal.ashar}</td>
+                    </tr>
+                    <tr>
+                        <td>Maghrib</td>
+                        <td>${jadwal.maghrib}</td>
+                    </tr>
+                    <tr>
+                        <td>Isya</td>
+                        <td>${jadwal.isya}</td>
+                    </tr>
+                `;
+                
+                prayerTimesTable.style.display = 'table';
+                nextPrayerElement.style.display = 'flex';
+            }
+
+            function startCountdown() {
+                if (!todayPrayerTimes) return;
+
+                const now = new Date();
+                const prayers = [
+                    { name: 'Subuh', time: todayPrayerTimes.subuh },
+                    { name: 'Dzuhur', time: todayPrayerTimes.dzuhur },
+                    { name: 'Ashar', time: todayPrayerTimes.ashar },
+                    { name: 'Maghrib', time: todayPrayerTimes.maghrib },
+                    { name: 'Isya', time: todayPrayerTimes.isya }
+                ];
+
+                // Find next prayer
+                let nextPrayer = null;
+                let nextPrayerTime = null;
+
+                for (const prayer of prayers) {
+                    const prayerTime = convertTimeToDate(prayer.time, now);
+                    
+                    if (prayerTime > now) {
+                        nextPrayer = prayer.name;
+                        nextPrayerTime = prayerTime;
+                        break;
+                    }
+                }
+
+                // If no prayer left today, use Subuh tomorrow
+                if (!nextPrayer) {
+                    nextPrayer = 'Subuh';
+                    const tomorrow = new Date(now);
+                    tomorrow.setDate(tomorrow.getDate() + 1);
+                    nextPrayerTime = convertTimeToDate(todayPrayerTimes.subuh, tomorrow);
+                }
+
+                nextPrayerName.textContent = nextPrayer;
+
+                // Update countdown every second
+                countdownInterval = setInterval(() => {
+                    updateCountdown(nextPrayerTime);
+                }, 1000);
+
+                // Initial update
+                updateCountdown(nextPrayerTime);
+            }
+
+            function convertTimeToDate(timeStr, date) {
+                const [hours, minutes] = timeStr.split(':').map(Number);
+                const prayerDate = new Date(date);
+                prayerDate.setHours(hours, minutes, 0, 0);
+                return prayerDate;
+            }
+
+            function updateCountdown(nextPrayerTime) {
+                const now = new Date();
+                let diff = nextPrayerTime - now;
+
+                // If prayer time has passed
+                if (diff <= 0) {
+                    clearInterval(countdownInterval);
+                    countdownElement.textContent = "00:00:00";
+                    getPrayerSchedule(); // Refresh schedule
+                    return;
+                }
+
+                // Calculate time remaining
+                const totalSeconds = Math.floor(diff / 1000);
+                const hours = Math.floor(totalSeconds / 3600);
+                const minutes = Math.floor((totalSeconds % 3600) / 60);
+                const seconds = totalSeconds % 60;
+
+                // Update display
+                countdownElement.textContent = 
+                    `${hours.toString().padStart(2, '0')}:` +
+                    `${minutes.toString().padStart(2, '0')}:` +
+                    `${seconds.toString().padStart(2, '0')}`;
+            }
+        });
+    </script>
 </body>
 </html>

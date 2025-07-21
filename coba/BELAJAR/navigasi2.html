@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Navigation Bar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 90px;
+            color: #333;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.2rem;
+            color: #4a69bd;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+        
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        .page h2 {
+            color: #4a69bd;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #4a69bd;
+            padding-bottom: 10px;
+        }
+        
+        .page-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #eef2ff 100%);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card h3 {
+            color: #4a69bd;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .feature-card h3 i {
+            font-size: 1.4rem;
+            color: #6a89cc;
+        }
+        
+        .feature-card p {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        /* Bottom Navigation Styles */
+        .bottom-nav {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            background: white;
+            padding: 10px 15px;
+            border-radius: 50px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            z-index: 1000;
+            transition: all 0.4s ease;
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            position: relative;
+            padding: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin: 0 5px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+        
+        .nav-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            background: #f1f3f9;
+            color: #4a69bd;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+        }
+        
+        .nav-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-left: 0;
+        }
+        
+        /* Active State */
+        .nav-item.active {
+            width: auto;
+            padding: 0 20px 0 10px;
+            background: linear-gradient(135deg, #6a89cc 0%, #4a69bd 100%);
+            border-radius: 30px;
+            justify-content: flex-start;
+        }
+        
+        .nav-item.active .nav-icon {
+            background: white;
+            color: #4a69bd;
+            box-shadow: 0 6px 15px rgba(74, 105, 189, 0.4);
+            transform: scale(1.1);
+        }
+        
+        .nav-item.active .nav-text {
+            opacity: 1;
+            width: auto;
+            margin-left: 15px;
+            position: static;
+            color: white;
+            font-weight: 600;
+        }
+        
+        /* Inactive State Hover */
+        .nav-item:not(.active):hover .nav-icon {
+            background: #6a89cc;
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #4a69bd 0%, #6a89cc 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(74, 105, 189, 0.4);
+        }
+        
+        .stat-card h3 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+        
+        .stat-card p {
+            font-weight: 500;
+        }
+        
+        @media (max-width: 600px) {
+            .bottom-nav {
+                padding: 8px 10px;
+                bottom: 10px;
+            }
+            
+            .nav-item {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .nav-icon {
+                width: 42px;
+                height: 42px;
+                font-size: 18px;
+            }
+            
+            .nav-item.active {
+                padding: 0 15px 0 8px;
+            }
+            
+            .nav-item.active .nav-text {
+                font-size: 14px;
+                margin-left: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Modern Navigation Bar</h1>
+        <p>Navigasi dengan teks di samping ikon untuk item aktif</p>
+    </div>
+    
+    <div class="content">
+        <!-- Home Page -->
+        <div class="page active" id="home">
+            <h2><i class="fas fa-home"></i> Halaman Utama</h2>
+            <div class="page-content">
+                <div class="feature-card">
+                    <h3><i class="fas fa-star"></i> Fitur Unggulan</h3>
+                    <p>Selamat datang di aplikasi kami. Navigasi di bagian bawah memungkinkan Anda berpindah antara berbagai fitur dengan pengalaman yang intuitif.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3><i class="fas fa-lightbulb"></i> Cara Penggunaan</h3>
+                    <p>Klik pada salah satu menu di navigasi bawah untuk mengaktifkannya. Menu aktif akan berubah menjadi latar belakang lonjong dengan teks di samping ikon.</p>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-card">
+                        <h3>98%</h3>
+                        <p>Kepuasan Pengguna</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>24/7</h3>
+                        <p>Dukungan Pelanggan</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>10K+</h3>
+                        <p>Pengguna Aktif</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Ask Page -->
+        <div class="page" id="ask">
+            <h2><i class="fas fa-question-circle"></i> Bertanya</h2>
+            <div class="page-content">
+                <div class="feature-card">
+                    <h3><i class="fas fa-comments"></i> Forum Diskusi</h3>
+                    <p>Ajukan pertanyaan Anda di forum diskusi kami dan dapatkan jawaban dari komunitas pengguna yang berpengalaman.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3><i class="fas fa-search"></i> Pertanyaan Populer</h3>
+                    <p>Temukan solusi dari pertanyaan-pertanyaan yang sering diajukan oleh pengguna lainnya.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3><i class="fas fa-trophy"></i> Sistem Reputasi</h3>
+                    <p>Dapatkan poin reputasi setiap kali Anda memberikan jawaban yang bermanfaat bagi pengguna lain.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Library Page -->
+        <div class="page" id="library">
+            <h2><i class="fas fa-book"></i> Pustaka</h2>
+            <div class="page-content">
+                <div class="feature-card">
+                    <h3><i class="fas fa-book-open"></i> E-Books</h3>
+                    <p>Akses koleksi ebook terbaru tentang teknologi, desain, dan pengembangan bisnis.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3><i class="fas fa-video"></i> Video Tutorial</h3>
+                    <p>Belajar melalui video tutorial yang dipandu oleh instruktur profesional.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3><i class="fas fa-file-code"></i> Template & Snippet</h3>
+                    <p>Download template dan kode snippet siap pakai untuk mempercepat pekerjaan Anda.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Admin Page -->
+        <div class="page" id="admin">
+            <h2><i class="fas fa-user-cog"></i> Admin</h2>
+            <div class="page-content">
+                <div class="feature-card">
+                    <h3><i class="fas fa-user"></i> Kelola Profil</h3>
+                    <p>Ubah informasi profil, foto, dan preferensi akun Anda.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3><i class="fas fa-shield-alt"></i> Keamanan</h3>
+                    <p>Tingkatkan keamanan akun dengan pengaturan verifikasi dua langkah.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3><i class="fas fa-bell"></i> Notifikasi</h3>
+                    <p>Kelola preferensi notifikasi untuk email dan pemberitahuan aplikasi.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item active" data-target="home">
+            <div class="nav-icon">
+                <i class="fas fa-home"></i>
+            </div>
+            <div class="nav-text">Home</div>
+        </a>
+        
+        <a href="#" class="nav-item" data-target="ask">
+            <div class="nav-icon">
+                <i class="fas fa-question-circle"></i>
+            </div>
+            <div class="nav-text">Bertanya</div>
+        </a>
+        
+        <a href="#" class="nav-item" data-target="library">
+            <div class="nav-icon">
+                <i class="fas fa-book"></i>
+            </div>
+            <div class="nav-text">Library</div>
+        </a>
+        
+        <a href="#" class="nav-item" data-target="admin">
+            <div class="nav-icon">
+                <i class="fas fa-user-cog"></i>
+            </div>
+            <div class="nav-text">Admin</div>
+        </a>
+    </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('.nav-item');
+            const pages = document.querySelectorAll('.page');
+            
+            navItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all items
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    
+                    // Add active class to clicked item
+                    this.classList.add('active');
+                    
+                    // Hide all pages
+                    pages.forEach(page => page.classList.remove('active'));
+                    
+                    // Show selected page
+                    const targetId = this.getAttribute('data-target');
+                    document.getElementById(targetId).classList.add('active');
+                    
+                    // Add pulse animation to the icon
+                    const icon = this.querySelector('.nav-icon');
+                    icon.style.animation = 'pulse 0.5s ease';
+                    setTimeout(() => {
+                        icon.style.animation = '';
+                    }, 500);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

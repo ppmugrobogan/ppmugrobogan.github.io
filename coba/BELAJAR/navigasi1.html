@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Menu Navigasi Bawah</title>
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .navbar {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #006400;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 10px 0;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+      z-index: 999;
+    }
+
+    .nav-item {
+      background-color: white;
+      color: #006400;
+      padding: 10px 16px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .nav-item i {
+      font-size: 20px;
+    }
+
+    .nav-item.active {
+      border-radius: 40px;
+      padding: 10px 20px;
+    }
+
+    .nav-item.active span {
+      display: inline;
+      margin-left: 10px;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .nav-item span {
+      display: none;
+    }
+
+    @media (max-width: 500px) {
+      .nav-item.active span {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="nav-item active" data-name="Home">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </div>
+    <div class="nav-item" data-name="Bertanya">
+      <i class="fa-solid fa-paper-plane"></i>
+      <span>Bertanya</span>
+    </div>
+    <div class="nav-item" data-name="Library">
+      <i class="fa-solid fa-book"></i>
+      <span>Library</span>
+    </div>
+    <div class="nav-item" data-name="Profile">
+      <i class="fa-solid fa-user"></i>
+      <span>Profile</span>
+    </div>
+  </div>
+
+  <script>
+    const navItems = document.querySelectorAll('.nav-item');
+
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        navItems.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -2,216 +2,133 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Penyimpanan Data Catatan</title>
+  <title>Data Judul & Isi</title>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f7fb;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      min-height: 100vh;
+      background: #f4f6f9;
       margin: 0;
-      padding: 30px;
+      padding: 20px;
     }
     .container {
-      background: white;
-      padding: 20px 30px;
+      max-width: 700px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      width: 100%;
-      max-width: 500px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
     h2 {
       text-align: center;
       color: #333;
-      margin-bottom: 20px;
-    }
-    label {
-      font-weight: bold;
-      display: block;
-      margin-top: 10px;
-      color: #444;
     }
     input, textarea {
       width: 100%;
       padding: 10px;
-      margin-top: 5px;
-      border-radius: 8px;
+      margin: 8px 0;
       border: 1px solid #ccc;
-      outline: none;
-      font-family: inherit;
-    }
-    input:focus, textarea:focus {
-      border-color: #3080f7;
-    }
-    textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-    button {
-      margin-top: 15px;
-      padding: 8px 14px;
-      background: #3080f7;
-      color: white;
-      border: none;
       border-radius: 8px;
       font-size: 14px;
+    }
+    button {
+      padding: 10px 15px;
+      background: #3080f7;
+      border: none;
+      border-radius: 8px;
+      color: white;
       cursor: pointer;
-      transition: background 0.3s;
+      font-size: 14px;
     }
     button:hover {
-      background: #1c64d1;
+      background: #1e5ed8;
     }
-    .actions button {
-      margin-left: 6px;
+    .data-list {
+      margin-top: 20px;
     }
-    ul {
-      list-style: none;
-      padding: 0;
-      margin-top: 15px;
+    .item {
+      padding: 15px;
+      margin-bottom: 12px;
+      background: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
-    li {
-      background: #f0f4ff;
-      padding: 10px;
-      margin-bottom: 8px;
-      border-radius: 6px;
-    }
-    li .judul {
-      font-weight: bold;
+    .item h3 {
+      margin: 0 0 8px;
       color: #222;
     }
-    li .isi {
-      display: block;
-      margin-top: 4px;
-      color: #555;
+    .isi {
+      white-space: pre-wrap; /* agar baris/paragraf terjaga */
+      line-height: 1.5;
     }
-    .search-box {
-      margin-top: 20px;
+    .arabic {
+      direction: rtl;
+      text-align: right;
+      font-family: "Amiri", serif;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Form Catatan</h2>
-    <form id="dataForm">
-      <label>Judul:</label>
-      <input type="text" id="judul" required>
-      
-      <label>Isi:</label>
-      <textarea id="isi" required></textarea>
-      
-      <button type="submit">Simpan</button>
-    </form>
+    <h2>Input Judul & Isi</h2>
+    <input type="text" id="judul" placeholder="Masukkan judul">
+    <textarea id="isi" rows="5" placeholder="Masukkan isi (bisa campuran Indonesia & Arab)"></textarea>
+    <button onclick="simpanData()">Simpan</button>
 
-    <div class="search-box">
-      <label>Cari Catatan:</label>
-      <input type="text" id="search" placeholder="Cari judul atau isi...">
-    </div>
-
-    <h2>Daftar Catatan</h2>
-    <ul id="listData"></ul>
+    <div class="data-list" id="dataList"></div>
   </div>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-    import { getDatabase, ref, push, set, onValue, update, remove } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
-
-    // 🔹 Konfigurasi Firebase
+  <script>
+    // Konfigurasi Firebase (punya Kang Teguh)
     const firebaseConfig = {
-      apiKey: "AIzaSyAwl7fGgei05Yp1uvMIFj7qUDrrnsmORkg",
-      authDomain: "santri-b3d36.firebaseapp.com",
-      databaseURL: "https://santri-b3d36-default-rtdb.asia-southeast1.firebasedatabase.app",
-      projectId: "santri-b3d36",
-      storageBucket: "santri-b3d36.firebasestorage.app",
-      messagingSenderId: "167082496158",
-      appId: "1:167082496158:web:ea8a66a2fc9a4fa45dab8f",
-      measurementId: "G-HD6CQ15SV5"
+      apiKey: "AIzaSyAE8oGqEq0jbx_LUjsTZauTmu6PPr7meQ0",
+      authDomain: "coba-a8ef4.firebaseapp.com",
+      databaseURL: "https://coba-a8ef4-default-rtdb.firebaseio.com",
+      projectId: "coba-a8ef4",
+      storageBucket: "coba-a8ef4.appspot.com",
+      messagingSenderId: "59325024726",
+      appId: "1:59325024726:web:deea61cc2a2a3cf60c546f"
     };
 
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
 
-    let editId = null; // simpan id catatan yang sedang di-edit
+    function simpanData() {
+      const judul = document.getElementById('judul').value.trim();
+      const isi = document.getElementById('isi').value.trim();
 
-    // 🔹 Simpan / update data
-    document.getElementById("dataForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      let judul = document.getElementById("judul").value.trim();
-      let isi = document.getElementById("isi").value.trim();
+      if(judul && isi) {
+        const newRef = db.ref('tulisan').push();
+        newRef.set({ judul, isi });
 
-      if(judul && isi){
-        if (editId) {
-          update(ref(db, "catatan/" + editId), {
-            judul: judul,
-            isi: isi
-          });
-          editId = null;
-        } else {
-          const newRef = push(ref(db, "catatan"));
-          set(newRef, {
-            judul: judul,
-            isi: isi
-          });
-        }
-        document.getElementById("dataForm").reset();
-      }
-    });
-
-    const listData = document.getElementById("listData");
-    let allData = {};
-
-    // 🔹 Ambil & tampilkan data
-    onValue(ref(db, "catatan"), (snapshot) => {
-      allData = snapshot.val() || {};
-      tampilkanData(allData);
-    });
-
-    function tampilkanData(data){
-      listData.innerHTML = "";
-      for (let id in data){
-        let li = document.createElement("li");
-        li.innerHTML = `
-          <span class="judul">${data[id].judul}</span>
-          <span class="isi">${data[id].isi}</span>
-          <span class="actions">
-            <button onclick="editData('${id}','${data[id].judul}','${data[id].isi}')">Edit</button>
-            <button onclick="hapusData('${id}')">Hapus</button>
-          </span>
-        `;
-        listData.appendChild(li);
+        document.getElementById('judul').value = '';
+        document.getElementById('isi').value = '';
       }
     }
 
-    // 🔹 Pencarian
-    document.getElementById("search").addEventListener("input", function(){
-      let keyword = this.value.toLowerCase();
-      let hasil = {};
-      for (let id in allData){
-        let judul = allData[id].judul.toLowerCase();
-        let isi = allData[id].isi.toLowerCase();
-        if (judul.includes(keyword) || isi.includes(keyword)){
-          hasil[id] = allData[id];
-        }
-      }
-      tampilkanData(hasil);
-    });
+    function tampilkanData() {
+      const list = document.getElementById('dataList');
+      db.ref('tulisan').on('value', snapshot => {
+        list.innerHTML = '';
+        snapshot.forEach(child => {
+          const data = child.val();
 
-    // 🔹 Edit
-    window.editData = function(id, judul, isi){
-      document.getElementById("judul").value = judul;
-      document.getElementById("isi").value = isi;
-      editId = id;
-    };
+          // Deteksi jika ada huruf Arab
+          const isArabic = /[\u0600-\u06FF]/.test(data.isi);
 
-    // 🔹 Hapus
-    window.hapusData = function(id){
-      if (confirm("Yakin ingin menghapus catatan ini?")){
-        remove(ref(db, "catatan/" + id));
-      }
-    };
+          const div = document.createElement('div');
+          div.className = 'item';
+          div.innerHTML = `
+            <h3>${data.judul}</h3>
+            <div class="isi ${isArabic ? 'arabic' : ''}">${data.isi}</div>
+          `;
+          list.appendChild(div);
+        });
+      });
+    }
+
+    tampilkanData();
   </script>
 </body>
 </html>

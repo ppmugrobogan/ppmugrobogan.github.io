@@ -47,24 +47,26 @@
       border-color: #3080f7;
     }
     button {
-      margin-top: 20px;
-      width: 100%;
-      padding: 12px;
+      margin-top: 15px;
+      padding: 8px 14px;
       background: #3080f7;
       color: white;
       border: none;
       border-radius: 8px;
-      font-size: 16px;
+      font-size: 14px;
       cursor: pointer;
       transition: background 0.3s;
     }
     button:hover {
       background: #1c64d1;
     }
+    .actions button {
+      margin-left: 6px;
+    }
     ul {
       list-style: none;
       padding: 0;
-      margin-top: 20px;
+      margin-top: 15px;
     }
     li {
       background: #f0f4ff;
@@ -75,20 +77,8 @@
       justify-content: space-between;
       align-items: center;
     }
-    .actions button {
-      margin-left: 6px;
-      padding: 6px 10px;
-      border-radius: 6px;
-      font-size: 12px;
-      border: none;
-      cursor: pointer;
-    }
-    .edit {
-      background: #f7b500;
-      color: white;
-    }
-    .edit:hover {
-      background: #d99600;
+    .search-box {
+      margin-top: 20px;
     }
   </style>
 </head>
@@ -96,8 +86,6 @@
   <div class="container">
     <h2>Form Data Santri</h2>
     <form id="dataForm">
-      <input type="hidden" id="editId">
-      
       <label>Nama:</label>
       <input type="text" id="nama" required>
       
@@ -107,13 +95,18 @@
       <button type="submit">Simpan</button>
     </form>
 
+    <div class="search-box">
+      <label>Cari Data:</label>
+      <input type="text" id="search" placeholder="Cari nama atau kelas...">
+    </div>
+
     <h2>Data Tersimpan</h2>
     <ul id="listData"></ul>
   </div>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-    import { getDatabase, ref, push, set, update, onValue } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+    import { getDatabase, ref, push, set, onValue, update, remove } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 
     // 🔹 Konfigurasi Firebase kamu
     const firebaseConfig = {
@@ -131,62 +124,86 @@
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
 
-    const form = document.getElementById("dataForm");
-    const inputNama = document.getElementById("nama");
-    const inputKelas = document.getElementById("kelas");
-    const editId = document.getElementById("editId");
-    const listData = document.getElementById("listData");
+    let editId = null; // untuk simpan id data yang sedang di-edit
 
-    // 🔹 Simpan atau Update data
-    form.addEventListener("submit", function(e) {
+    // 🔹 Simpan atau update data
+    document.getElementById("dataForm").addEventListener("submit", function(e) {
       e.preventDefault();
-      let nama = inputNama.value.trim();
-      let kelas = inputKelas.value.trim();
-      let id = editId.value;
+      let nama = document.getElementById("nama").value.trim();
+      let kelas = document.getElementById("kelas").value.trim();
 
-      if (nama && kelas) {
-        if (id) {
+      if(nama && kelas){
+        if (editId) {
           // update data
-          update(ref(db, "siswa/" + id), {
+          update(ref(db, "siswa/" + editId), {
             nama: nama,
             kelas: kelas
           });
-          editId.value = "";
+          editId = null;
         } else {
           // tambah data baru
           const newRef = push(ref(db, "siswa"));
-          set(newRef, { nama, kelas });
+          set(newRef, {
+            nama: nama,
+            kelas: kelas
+          });
         }
-        form.reset();
+        document.getElementById("dataForm").reset();
       }
     });
 
-    // 🔹 Ambil & tampilkan data dari Firebase
+    // 🔹 Ambil & tampilkan data
+    const listData = document.getElementById("listData");
+    let allData = {}; // simpan semua data untuk pencarian
     onValue(ref(db, "siswa"), (snapshot) => {
       listData.innerHTML = "";
-      snapshot.forEach((childSnapshot) => {
-        let id = childSnapshot.key;
-        let data = childSnapshot.val();
+      allData = snapshot.val() || {};
+      tampilkanData(allData);
+    });
 
+    // 🔹 Fungsi tampilkan data
+    function tampilkanData(data){
+      listData.innerHTML = "";
+      for (let id in data){
         let li = document.createElement("li");
         li.innerHTML = `
-          <span>${data.nama} - ${data.kelas}</span>
-          <div class="actions">
-            <button class="edit" data-id="${id}" data-nama="${data.nama}" data-kelas="${data.kelas}">Edit</button>
-          </div>
+          <span>${data[id].nama} - ${data[id].kelas}</span>
+          <span class="actions">
+            <button onclick="editData('${id}','${data[id].nama}','${data[id].kelas}')">Edit</button>
+            <button onclick="hapusData('${id}')">Hapus</button>
+          </span>
         `;
         listData.appendChild(li);
-      });
+      }
+    }
 
-      // event tombol edit
-      document.querySelectorAll(".edit").forEach(btn => {
-        btn.addEventListener("click", () => {
-          inputNama.value = btn.dataset.nama;
-          inputKelas.value = btn.dataset.kelas;
-          editId.value = btn.dataset.id;
-        });
-      });
+    // 🔹 Cari data
+    document.getElementById("search").addEventListener("input", function(){
+      let keyword = this.value.toLowerCase();
+      let hasil = {};
+      for (let id in allData){
+        let nama = allData[id].nama.toLowerCase();
+        let kelas = allData[id].kelas.toLowerCase();
+        if (nama.includes(keyword) || kelas.includes(keyword)){
+          hasil[id] = allData[id];
+        }
+      }
+      tampilkanData(hasil);
     });
+
+    // 🔹 Edit data
+    window.editData = function(id, nama, kelas){
+      document.getElementById("nama").value = nama;
+      document.getElementById("kelas").value = kelas;
+      editId = id;
+    };
+
+    // 🔹 Hapus data
+    window.hapusData = function(id){
+      if (confirm("Yakin ingin menghapus data ini?")){
+        remove(ref(db, "siswa/" + id));
+      }
+    };
   </script>
 </body>
 </html>

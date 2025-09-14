@@ -23,6 +23,7 @@
     h2 {
       text-align: center;
       color: #333;
+      margin-bottom: 20px;
     }
     input, textarea {
       width: 100%;
@@ -31,6 +32,11 @@
       border: 1px solid #ccc;
       border-radius: 8px;
       font-size: 14px;
+      box-sizing: border-box;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 100px;
     }
     button {
       padding: 10px 15px;
@@ -40,28 +46,31 @@
       color: white;
       cursor: pointer;
       font-size: 14px;
+      width: 100%;
+      margin-top: 10px;
     }
     button:hover {
       background: #1e5ed8;
     }
     .data-list {
-      margin-top: 20px;
+      margin-top: 30px;
     }
     .item {
       padding: 15px;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
       background: #f9f9f9;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
     .item h3 {
-      margin: 0 0 8px;
+      margin: 0 0 10px;
       color: #222;
     }
     .isi {
-      white-space: pre-wrap; /* agar baris/paragraf terjaga */
-      line-height: 1.5;
+      white-space: pre-wrap;
+      line-height: 1.6;
     }
+    /* untuk teks Arab */
     .arabic {
       direction: rtl;
       text-align: right;
@@ -73,32 +82,36 @@
   <div class="container">
     <h2>Input Judul & Isi</h2>
     <input type="text" id="judul" placeholder="Masukkan judul">
-    <textarea id="isi" rows="5" placeholder="Masukkan isi (bisa campuran Indonesia & Arab)"></textarea>
+    <textarea id="isi" placeholder="Masukkan isi (bisa paragraf, baris, Arab & Indonesia)"></textarea>
     <button onclick="simpanData()">Simpan</button>
 
+    <h2>Data Tersimpan</h2>
     <div class="data-list" id="dataList"></div>
   </div>
 
   <script>
     // Konfigurasi Firebase (punya Kang Teguh)
     const firebaseConfig = {
-      apiKey: "AIzaSyAE8oGqEq0jbx_LUjsTZauTmu6PPr7meQ0",
-      authDomain: "coba-a8ef4.firebaseapp.com",
-      databaseURL: "https://coba-a8ef4-default-rtdb.firebaseio.com",
-      projectId: "coba-a8ef4",
-      storageBucket: "coba-a8ef4.appspot.com",
-      messagingSenderId: "59325024726",
-      appId: "1:59325024726:web:deea61cc2a2a3cf60c546f"
+      apiKey: "AIzaSyAwl7fGgei05Yp1uvMIFj7qUDrrnsmORkg",
+      authDomain: "santri-b3d36.firebaseapp.com",
+      databaseURL: "https://santri-b3d36-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "santri-b3d36",
+      storageBucket: "santri-b3d36.firebasestorage.app",
+      messagingSenderId: "167082496158",
+      appId: "1:167082496158:web:ea8a66a2fc9a4fa45dab8f",
+      measurementId: "G-HD6CQ15SV5"
     };
 
+    // Inisialisasi Firebase
     const app = firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
+    // Simpan data
     function simpanData() {
       const judul = document.getElementById('judul').value.trim();
       const isi = document.getElementById('isi').value.trim();
 
-      if(judul && isi) {
+      if (judul && isi) {
         const newRef = db.ref('tulisan').push();
         newRef.set({ judul, isi });
 
@@ -107,6 +120,7 @@
       }
     }
 
+    // Tampilkan data
     function tampilkanData() {
       const list = document.getElementById('dataList');
       db.ref('tulisan').on('value', snapshot => {
@@ -114,14 +128,17 @@
         snapshot.forEach(child => {
           const data = child.val();
 
-          // Deteksi jika ada huruf Arab
+          // Deteksi huruf Arab
           const isArabic = /[\u0600-\u06FF]/.test(data.isi);
+
+          // Ganti baris baru dengan <br>
+          const isiFormatted = data.isi.replace(/\n/g, "<br>");
 
           const div = document.createElement('div');
           div.className = 'item';
           div.innerHTML = `
             <h3>${data.judul}</h3>
-            <div class="isi ${isArabic ? 'arabic' : ''}">${data.isi}</div>
+            <div class="isi ${isArabic ? 'arabic' : ''}">${isiFormatted}</div>
           `;
           list.appendChild(div);
         });

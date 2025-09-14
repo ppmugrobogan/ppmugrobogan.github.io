@@ -2,135 +2,140 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Belajar Firebase Firestore</title>
+  <title>Penyimpanan Data Santri</title>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f6f8;
+      background: #f4f7fb;
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      padding: 20px;
+      min-height: 100vh;
+      margin: 0;
+      padding: 30px;
     }
     .container {
-      background: #fff;
-      padding: 20px;
+      background: white;
+      padding: 20px 30px;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      max-width: 500px;
       width: 100%;
+      max-width: 400px;
     }
-    h1 {
+    h2 {
       text-align: center;
       color: #333;
+      margin-bottom: 20px;
     }
-    input, textarea, button {
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+      color: #444;
+    }
+    input {
       width: 100%;
-      margin: 8px 0;
       padding: 10px;
-      border: 1px solid #ddd;
+      margin-top: 5px;
       border-radius: 8px;
-      font-size: 14px;
+      border: 1px solid #ccc;
+      outline: none;
+    }
+    input:focus {
+      border-color: #3080f7;
     }
     button {
-      background: #4CAF50;
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background: #3080f7;
       color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
       cursor: pointer;
-      font-weight: bold;
+      transition: background 0.3s;
     }
     button:hover {
-      background: #45a049;
+      background: #1c64d1;
     }
-    .pesan {
+    ul {
+      list-style: none;
+      padding: 0;
       margin-top: 20px;
     }
-    .pesan-item {
-      background: #f9f9f9;
+    li {
+      background: #f0f4ff;
       padding: 10px;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      border-left: 4px solid #4CAF50;
-    }
-    .pesan-item strong {
-      display: block;
-      margin-bottom: 5px;
-      color: #333;
-    }
-    .pesan-item small {
-      color: #888;
-      font-size: 12px;
+      margin-bottom: 8px;
+      border-radius: 6px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Buku Tamu</h1>
-    <input id="nama" placeholder="Nama">
-    <textarea id="pesan" placeholder="Pesan"></textarea>
-    <button onclick="simpanData()">Simpan</button>
+    <h2>Form Data Santri</h2>
+    <form id="dataForm">
+      <label>Nama:</label>
+      <input type="text" id="nama" required>
+      
+      <label>Kelas:</label>
+      <input type="text" id="kelas" required>
+      
+      <button type="submit">Simpan</button>
+    </form>
 
-    <div class="pesan">
-      <h2>Daftar Pesan</h2>
-      <div id="daftarPesan"></div>
-    </div>
+    <h2>Data Tersimpan</h2>
+    <ul id="listData"></ul>
   </div>
 
   <script type="module">
-    // === Import Firebase ===
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-    import { getFirestore, collection, addDoc, onSnapshot, orderBy, query } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+    import { getDatabase, ref, push, set, onValue } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 
-    // === Config Projectmu ===
+    // 🔹 Konfigurasi Firebase kamu
     const firebaseConfig = {
-      apiKey: "AIzaSyAbcvL9x5TIp_t4SlV5gKHijxp_3MBJXbE",
-      authDomain: "ppmu-15049.firebaseapp.com",
-      projectId: "ppmu-15049",
-      storageBucket: "ppmu-15049.firebasestorage.app",
-      messagingSenderId: "903152782706",
-      appId: "1:903152782706:web:d1ae38bb46ab6eb35961eb",
-      measurementId: "G-NCJ5ZWWWZH"
+      apiKey: "AIzaSyAwl7fGgei05Yp1uvMIFj7qUDrrnsmORkg",
+      authDomain: "santri-b3d36.firebaseapp.com",
+      databaseURL: "https://santri-b3d36-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "santri-b3d36",
+      storageBucket: "santri-b3d36.firebasestorage.app",
+      messagingSenderId: "167082496158",
+      appId: "1:167082496158:web:ea8a66a2fc9a4fa45dab8f",
+      measurementId: "G-HD6CQ15SV5"
     };
 
-    // === Inisialisasi ===
+    // 🔹 Inisialisasi Firebase
     const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+    const db = getDatabase(app);
 
-    // === Simpan Data ===
-    window.simpanData = async function() {
-      const nama = document.getElementById("nama").value.trim();
-      const pesan = document.getElementById("pesan").value.trim();
+    // 🔹 Simpan data ke Firebase
+    document.getElementById("dataForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      let nama = document.getElementById("nama").value.trim();
+      let kelas = document.getElementById("kelas").value.trim();
 
-      if (!nama || !pesan) {
-        alert("Nama dan pesan harus diisi!");
-        return;
+      if(nama && kelas){
+        const newRef = push(ref(db, "siswa"));
+        set(newRef, {
+          nama: nama,
+          kelas: kelas
+        });
+        document.getElementById("dataForm").reset();
       }
+    });
 
-      await addDoc(collection(db, "pesan"), {
-        nama: nama,
-        pesan: pesan,
-        waktu: new Date()
-      });
-
-      document.getElementById("nama").value = "";
-      document.getElementById("pesan").value = "";
-    };
-
-    // === Baca Data Realtime ===
-    const daftarPesan = document.getElementById("daftarPesan");
-    const q = query(collection(db, "pesan"), orderBy("waktu", "desc"));
-    onSnapshot(q, (snapshot) => {
-      daftarPesan.innerHTML = "";
-      snapshot.forEach((doc) => {
-        const data = doc.data();
-        const item = document.createElement("div");
-        item.className = "pesan-item";
-        item.innerHTML = `
-          <strong>${data.nama}</strong>
-          <p>${data.pesan}</p>
-          <small>${data.waktu.toDate().toLocaleString()}</small>
-        `;
-        daftarPesan.appendChild(item);
+    // 🔹 Ambil & tampilkan data dari Firebase
+    const listData = document.getElementById("listData");
+    onValue(ref(db, "siswa"), (snapshot) => {
+      listData.innerHTML = "";
+      snapshot.forEach((childSnapshot) => {
+        let data = childSnapshot.val();
+        let li = document.createElement("li");
+        li.textContent = data.nama + " - " + data.kelas;
+        listData.appendChild(li);
       });
     });
   </script>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Belajar Firebase Firestore</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px;
+    }
+    .container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 100%;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    input, textarea, button {
+      width: 100%;
+      margin: 8px 0;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .pesan {
+      margin-top: 20px;
+    }
+    .pesan-item {
+      background: #f9f9f9;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      border-left: 4px solid #4CAF50;
+    }
+    .pesan-item strong {
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+    }
+    .pesan-item small {
+      color: #888;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Buku Tamu</h1>
+    <input id="nama" placeholder="Nama">
+    <textarea id="pesan" placeholder="Pesan"></textarea>
+    <button onclick="simpanData()">Simpan</button>
+
+    <div class="pesan">
+      <h2>Daftar Pesan</h2>
+      <div id="daftarPesan"></div>
+    </div>
+  </div>
+
+  <script type="module">
+    // === Import Firebase ===
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+    import { getFirestore, collection, addDoc, onSnapshot, orderBy, query } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+    // === Config Projectmu ===
+    const firebaseConfig = {
+      apiKey: "AIzaSyAbcvL9x5TIp_t4SlV5gKHijxp_3MBJXbE",
+      authDomain: "ppmu-15049.firebaseapp.com",
+      projectId: "ppmu-15049",
+      storageBucket: "ppmu-15049.firebasestorage.app",
+      messagingSenderId: "903152782706",
+      appId: "1:903152782706:web:d1ae38bb46ab6eb35961eb",
+      measurementId: "G-NCJ5ZWWWZH"
+    };
+
+    // === Inisialisasi ===
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // === Simpan Data ===
+    window.simpanData = async function() {
+      const nama = document.getElementById("nama").value.trim();
+      const pesan = document.getElementById("pesan").value.trim();
+
+      if (!nama || !pesan) {
+        alert("Nama dan pesan harus diisi!");
+        return;
+      }
+
+      await addDoc(collection(db, "pesan"), {
+        nama: nama,
+        pesan: pesan,
+        waktu: new Date()
+      });
+
+      document.getElementById("nama").value = "";
+      document.getElementById("pesan").value = "";
+    };
+
+    // === Baca Data Realtime ===
+    const daftarPesan = document.getElementById("daftarPesan");
+    const q = query(collection(db, "pesan"), orderBy("waktu", "desc"));
+    onSnapshot(q, (snapshot) => {
+      daftarPesan.innerHTML = "";
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        const item = document.createElement("div");
+        item.className = "pesan-item";
+        item.innerHTML = `
+          <strong>${data.nama}</strong>
+          <p>${data.pesan}</p>
+          <small>${data.waktu.toDate().toLocaleString()}</small>
+        `;
+        daftarPesan.appendChild(item);
+      });
+    });
+  </script>
+</body>
+</html>

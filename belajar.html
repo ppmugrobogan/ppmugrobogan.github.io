@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Penyimpanan Data Santri</title>
+  <title>Penyimpanan Data Catatan</title>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js"></script>
   <style>
@@ -22,7 +22,7 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       width: 100%;
-      max-width: 450px;
+      max-width: 500px;
     }
     h2 {
       text-align: center;
@@ -35,16 +35,21 @@
       margin-top: 10px;
       color: #444;
     }
-    input {
+    input, textarea {
       width: 100%;
       padding: 10px;
       margin-top: 5px;
       border-radius: 8px;
       border: 1px solid #ccc;
       outline: none;
+      font-family: inherit;
     }
-    input:focus {
+    input:focus, textarea:focus {
       border-color: #3080f7;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 80px;
     }
     button {
       margin-top: 15px;
@@ -73,9 +78,15 @@
       padding: 10px;
       margin-bottom: 8px;
       border-radius: 6px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    }
+    li .judul {
+      font-weight: bold;
+      color: #222;
+    }
+    li .isi {
+      display: block;
+      margin-top: 4px;
+      color: #555;
     }
     .search-box {
       margin-top: 20px;
@@ -84,23 +95,23 @@
 </head>
 <body>
   <div class="container">
-    <h2>Form Data Santri</h2>
+    <h2>Form Catatan</h2>
     <form id="dataForm">
-      <label>Nama:</label>
-      <input type="text" id="nama" required>
+      <label>Judul:</label>
+      <input type="text" id="judul" required>
       
-      <label>Kelas:</label>
-      <input type="text" id="kelas" required>
+      <label>Isi:</label>
+      <textarea id="isi" required></textarea>
       
       <button type="submit">Simpan</button>
     </form>
 
     <div class="search-box">
-      <label>Cari Data:</label>
-      <input type="text" id="search" placeholder="Cari nama atau kelas...">
+      <label>Cari Catatan:</label>
+      <input type="text" id="search" placeholder="Cari judul atau isi...">
     </div>
 
-    <h2>Data Tersimpan</h2>
+    <h2>Daftar Catatan</h2>
     <ul id="listData"></ul>
   </div>
 
@@ -108,7 +119,7 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
     import { getDatabase, ref, push, set, onValue, update, remove } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 
-    // 🔹 Konfigurasi Firebase kamu
+    // 🔹 Konfigurasi Firebase
     const firebaseConfig = {
       apiKey: "AIzaSyAwl7fGgei05Yp1uvMIFj7qUDrrnsmORkg",
       authDomain: "santri-b3d36.firebaseapp.com",
@@ -120,56 +131,53 @@
       measurementId: "G-HD6CQ15SV5"
     };
 
-    // 🔹 Inisialisasi Firebase
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
 
-    let editId = null; // untuk simpan id data yang sedang di-edit
+    let editId = null; // simpan id catatan yang sedang di-edit
 
-    // 🔹 Simpan atau update data
+    // 🔹 Simpan / update data
     document.getElementById("dataForm").addEventListener("submit", function(e) {
       e.preventDefault();
-      let nama = document.getElementById("nama").value.trim();
-      let kelas = document.getElementById("kelas").value.trim();
+      let judul = document.getElementById("judul").value.trim();
+      let isi = document.getElementById("isi").value.trim();
 
-      if(nama && kelas){
+      if(judul && isi){
         if (editId) {
-          // update data
-          update(ref(db, "siswa/" + editId), {
-            nama: nama,
-            kelas: kelas
+          update(ref(db, "catatan/" + editId), {
+            judul: judul,
+            isi: isi
           });
           editId = null;
         } else {
-          // tambah data baru
-          const newRef = push(ref(db, "siswa"));
+          const newRef = push(ref(db, "catatan"));
           set(newRef, {
-            nama: nama,
-            kelas: kelas
+            judul: judul,
+            isi: isi
           });
         }
         document.getElementById("dataForm").reset();
       }
     });
 
-    // 🔹 Ambil & tampilkan data
     const listData = document.getElementById("listData");
-    let allData = {}; // simpan semua data untuk pencarian
-    onValue(ref(db, "siswa"), (snapshot) => {
-      listData.innerHTML = "";
+    let allData = {};
+
+    // 🔹 Ambil & tampilkan data
+    onValue(ref(db, "catatan"), (snapshot) => {
       allData = snapshot.val() || {};
       tampilkanData(allData);
     });
 
-    // 🔹 Fungsi tampilkan data
     function tampilkanData(data){
       listData.innerHTML = "";
       for (let id in data){
         let li = document.createElement("li");
         li.innerHTML = `
-          <span>${data[id].nama} - ${data[id].kelas}</span>
+          <span class="judul">${data[id].judul}</span>
+          <span class="isi">${data[id].isi}</span>
           <span class="actions">
-            <button onclick="editData('${id}','${data[id].nama}','${data[id].kelas}')">Edit</button>
+            <button onclick="editData('${id}','${data[id].judul}','${data[id].isi}')">Edit</button>
             <button onclick="hapusData('${id}')">Hapus</button>
           </span>
         `;
@@ -177,31 +185,31 @@
       }
     }
 
-    // 🔹 Cari data
+    // 🔹 Pencarian
     document.getElementById("search").addEventListener("input", function(){
       let keyword = this.value.toLowerCase();
       let hasil = {};
       for (let id in allData){
-        let nama = allData[id].nama.toLowerCase();
-        let kelas = allData[id].kelas.toLowerCase();
-        if (nama.includes(keyword) || kelas.includes(keyword)){
+        let judul = allData[id].judul.toLowerCase();
+        let isi = allData[id].isi.toLowerCase();
+        if (judul.includes(keyword) || isi.includes(keyword)){
           hasil[id] = allData[id];
         }
       }
       tampilkanData(hasil);
     });
 
-    // 🔹 Edit data
-    window.editData = function(id, nama, kelas){
-      document.getElementById("nama").value = nama;
-      document.getElementById("kelas").value = kelas;
+    // 🔹 Edit
+    window.editData = function(id, judul, isi){
+      document.getElementById("judul").value = judul;
+      document.getElementById("isi").value = isi;
       editId = id;
     };
 
-    // 🔹 Hapus data
+    // 🔹 Hapus
     window.hapusData = function(id){
-      if (confirm("Yakin ingin menghapus data ini?")){
-        remove(ref(db, "siswa/" + id));
+      if (confirm("Yakin ingin menghapus catatan ini?")){
+        remove(ref(db, "catatan/" + id));
       }
     };
   </script>

@@ -22,7 +22,7 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       width: 100%;
-      max-width: 400px;
+      max-width: 450px;
     }
     h2 {
       text-align: center;
@@ -71,6 +71,24 @@
       padding: 10px;
       margin-bottom: 8px;
       border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .actions button {
+      margin-left: 6px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      border: none;
+      cursor: pointer;
+    }
+    .edit {
+      background: #f7b500;
+      color: white;
+    }
+    .edit:hover {
+      background: #d99600;
     }
   </style>
 </head>
@@ -78,6 +96,8 @@
   <div class="container">
     <h2>Form Data Santri</h2>
     <form id="dataForm">
+      <input type="hidden" id="editId">
+      
       <label>Nama:</label>
       <input type="text" id="nama" required>
       
@@ -93,7 +113,7 @@
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-    import { getDatabase, ref, push, set, onValue } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+    import { getDatabase, ref, push, set, update, onValue } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 
     // 🔹 Konfigurasi Firebase kamu
     const firebaseConfig = {
@@ -111,31 +131,60 @@
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
 
-    // 🔹 Simpan data ke Firebase
-    document.getElementById("dataForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      let nama = document.getElementById("nama").value.trim();
-      let kelas = document.getElementById("kelas").value.trim();
+    const form = document.getElementById("dataForm");
+    const inputNama = document.getElementById("nama");
+    const inputKelas = document.getElementById("kelas");
+    const editId = document.getElementById("editId");
+    const listData = document.getElementById("listData");
 
-      if(nama && kelas){
-        const newRef = push(ref(db, "siswa"));
-        set(newRef, {
-          nama: nama,
-          kelas: kelas
-        });
-        document.getElementById("dataForm").reset();
+    // 🔹 Simpan atau Update data
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      let nama = inputNama.value.trim();
+      let kelas = inputKelas.value.trim();
+      let id = editId.value;
+
+      if (nama && kelas) {
+        if (id) {
+          // update data
+          update(ref(db, "siswa/" + id), {
+            nama: nama,
+            kelas: kelas
+          });
+          editId.value = "";
+        } else {
+          // tambah data baru
+          const newRef = push(ref(db, "siswa"));
+          set(newRef, { nama, kelas });
+        }
+        form.reset();
       }
     });
 
     // 🔹 Ambil & tampilkan data dari Firebase
-    const listData = document.getElementById("listData");
     onValue(ref(db, "siswa"), (snapshot) => {
       listData.innerHTML = "";
       snapshot.forEach((childSnapshot) => {
+        let id = childSnapshot.key;
         let data = childSnapshot.val();
+
         let li = document.createElement("li");
-        li.textContent = data.nama + " - " + data.kelas;
+        li.innerHTML = `
+          <span>${data.nama} - ${data.kelas}</span>
+          <div class="actions">
+            <button class="edit" data-id="${id}" data-nama="${data.nama}" data-kelas="${data.kelas}">Edit</button>
+          </div>
+        `;
         listData.appendChild(li);
+      });
+
+      // event tombol edit
+      document.querySelectorAll(".edit").forEach(btn => {
+        btn.addEventListener("click", () => {
+          inputNama.value = btn.dataset.nama;
+          inputKelas.value = btn.dataset.kelas;
+          editId.value = btn.dataset.id;
+        });
       });
     });
   </script>
